@@ -1,0 +1,999 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A53546C919FFCC67005C629B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546BC19FFCC67005C629B /* AppDelegate.m */; };
+		A53546CA19FFCC67005C629B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53546BD19FFCC67005C629B /* LaunchScreen.xib */; };
+		A53546CB19FFCC67005C629B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53546BF19FFCC67005C629B /* Main.storyboard */; };
+		A53546CE19FFCC67005C629B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546C519FFCC67005C629B /* GameViewController.m */; };
+		A53546D119FFCC67005C629B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546C819FFCC67005C629B /* main.m */; };
+		A53546D619FFCD68005C629B /* PathFinding_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546D419FFCD68005C629B /* PathFinding_iOSTests.m */; };
+		A53546E119FFD4F0005C629B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546E019FFD4F0005C629B /* AppDelegate.m */; };
+		A53546E319FFD4F0005C629B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546E219FFD4F0005C629B /* main.m */; };
+		A53546ED19FFD4F0005C629B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53546EB19FFD4F0005C629B /* MainMenu.xib */; };
+		A53546F919FFD4F0005C629B /* PathFinding_MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546F819FFD4F0005C629B /* PathFinding_MacTests.m */; };
+		A535470519FFDAAA005C629B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A535470419FFDAAA005C629B /* Images.xcassets */; };
+		A535470619FFDAAA005C629B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A535470419FFDAAA005C629B /* Images.xcassets */; };
+		A53547F019FFEEBB005C629B /* Heuristic.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E219FFEEBB005C629B /* Heuristic.m */; };
+		A53547F119FFEEBB005C629B /* Heuristic.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E219FFEEBB005C629B /* Heuristic.m */; };
+		A53547F219FFEEBB005C629B /* Heuristic.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E219FFEEBB005C629B /* Heuristic.m */; };
+		A53547F319FFEEBB005C629B /* Heuristic.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E219FFEEBB005C629B /* Heuristic.m */; };
+		A53547F419FFEEBB005C629B /* PFGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E419FFEEBB005C629B /* PFGrid.m */; };
+		A53547F519FFEEBB005C629B /* PFGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E419FFEEBB005C629B /* PFGrid.m */; };
+		A53547F619FFEEBB005C629B /* PFGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E419FFEEBB005C629B /* PFGrid.m */; };
+		A53547F719FFEEBB005C629B /* PFGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E419FFEEBB005C629B /* PFGrid.m */; };
+		A53547F819FFEEBB005C629B /* PFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E619FFEEBB005C629B /* PFNode.m */; };
+		A53547F919FFEEBB005C629B /* PFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E619FFEEBB005C629B /* PFNode.m */; };
+		A53547FA19FFEEBB005C629B /* PFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E619FFEEBB005C629B /* PFNode.m */; };
+		A53547FB19FFEEBB005C629B /* PFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E619FFEEBB005C629B /* PFNode.m */; };
+		A53547FC19FFEEBB005C629B /* PFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E819FFEEBB005C629B /* PFUtil.m */; };
+		A53547FD19FFEEBB005C629B /* PFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E819FFEEBB005C629B /* PFUtil.m */; };
+		A53547FE19FFEEBB005C629B /* PFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E819FFEEBB005C629B /* PFUtil.m */; };
+		A53547FF19FFEEBB005C629B /* PFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E819FFEEBB005C629B /* PFUtil.m */; };
+		A535480019FFEEBB005C629B /* AStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EB19FFEEBB005C629B /* AStarFinder.m */; };
+		A535480119FFEEBB005C629B /* AStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EB19FFEEBB005C629B /* AStarFinder.m */; };
+		A535480219FFEEBB005C629B /* AStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EB19FFEEBB005C629B /* AStarFinder.m */; };
+		A535480319FFEEBB005C629B /* AStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EB19FFEEBB005C629B /* AStarFinder.m */; };
+		A535480419FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
+		A535480519FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
+		A535480619FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
+		A535480719FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
+		A535480819FFEEBB005C629B /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
+		A55319CC19FFF6F700503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
+		A55319CD19FFF6F700503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
+		A55319CE19FFF6F800503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
+		A55319D019FFF8C900503E11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319CF19FFF8C900503E11 /* Foundation.framework */; };
+		A55319D219FFF8DD00503E11 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319D119FFF8DD00503E11 /* SpriteKit.framework */; };
+		A55319D419FFF8F000503E11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319D319FFF8F000503E11 /* CoreGraphics.framework */; };
+		A55319D519FFF90000503E11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319D319FFF8F000503E11 /* CoreGraphics.framework */; };
+		A55319D619FFF90300503E11 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319D119FFF8DD00503E11 /* SpriteKit.framework */; };
+		A55319D719FFF90700503E11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319CF19FFF8C900503E11 /* Foundation.framework */; };
+		A55319DB19FFF92D00503E11 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319DA19FFF92D00503E11 /* UIKit.framework */; };
+		A55319DD19FFF95200503E11 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319DC19FFF95200503E11 /* AppKit.framework */; };
+		A55319DF19FFF9C300503E11 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319DE19FFF9C300503E11 /* libz.dylib */; };
+		A55319E119FFF9CF00503E11 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319E019FFF9CF00503E11 /* libobjc.dylib */; };
+		A55319E219FFF9D400503E11 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319DE19FFF9C300503E11 /* libz.dylib */; };
+		A55319E319FFF9D800503E11 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319E019FFF9CF00503E11 /* libobjc.dylib */; };
+		A55319E619FFFCAE00503E11 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E419FFFCAE00503E11 /* GameScene.m */; };
+		A55319E719FFFCAE00503E11 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E419FFFCAE00503E11 /* GameScene.m */; };
+		A55319EA19FFFECB00503E11 /* WBGameUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E919FFFECB00503E11 /* WBGameUtilities.m */; };
+		A55319EB19FFFECB00503E11 /* WBGameUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E919FFFECB00503E11 /* WBGameUtilities.m */; };
+		A55319EC19FFFECB00503E11 /* WBGameUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E919FFFECB00503E11 /* WBGameUtilities.m */; };
+		A55319ED19FFFECB00503E11 /* WBGameUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E919FFFECB00503E11 /* WBGameUtilities.m */; };
+		A55319F719FFFFB800503E11 /* WBArrowShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */; };
+		A55319F819FFFFB800503E11 /* WBArrowShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */; };
+		A55319F919FFFFB800503E11 /* WBArrowShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */; };
+		A55319FA19FFFFB800503E11 /* WBArrowShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */; };
+		A55319FB19FFFFB800503E11 /* BFPhysicsShape.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F219FFFFB800503E11 /* BFPhysicsShape.m */; };
+		A55319FC19FFFFB800503E11 /* BFPhysicsShape.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F219FFFFB800503E11 /* BFPhysicsShape.m */; };
+		A55319FD19FFFFB800503E11 /* BFPhysicsShape.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F219FFFFB800503E11 /* BFPhysicsShape.m */; };
+		A55319FE19FFFFB800503E11 /* BFPhysicsShape.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F219FFFFB800503E11 /* BFPhysicsShape.m */; };
+		A55319FF19FFFFB800503E11 /* SKNode+WBKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F419FFFFB800503E11 /* SKNode+WBKit.m */; };
+		A5531A0019FFFFB800503E11 /* SKNode+WBKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F419FFFFB800503E11 /* SKNode+WBKit.m */; };
+		A5531A0119FFFFB800503E11 /* SKNode+WBKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F419FFFFB800503E11 /* SKNode+WBKit.m */; };
+		A5531A0219FFFFB800503E11 /* SKNode+WBKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F419FFFFB800503E11 /* SKNode+WBKit.m */; };
+		A5531A0319FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
+		A5531A0419FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
+		A5531A0519FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
+		A5531A0619FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A53546AB19FFC908005C629B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A535468419FFC908005C629B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A535468B19FFC908005C629B;
+			remoteInfo = "PathFindingForObjC-Example";
+		};
+		A53546F319FFD4F0005C629B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A535468419FFC908005C629B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A53546DA19FFD4F0005C629B;
+			remoteInfo = "PathFinding-Mac";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A535468C19FFC908005C629B /* PathFinding-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PathFinding-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53546AA19FFC908005C629B /* PathFinding-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PathFinding-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53546BB19FFCC67005C629B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A53546BC19FFCC67005C629B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A53546BE19FFCC67005C629B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A53546C019FFCC67005C629B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A53546C419FFCC67005C629B /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		A53546C519FFCC67005C629B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		A53546C719FFCC67005C629B /* Info-ios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-ios.plist"; sourceTree = "<group>"; };
+		A53546C819FFCC67005C629B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A53546D319FFCD68005C629B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A53546D419FFCD68005C629B /* PathFinding_iOSTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathFinding_iOSTests.m; sourceTree = "<group>"; };
+		A53546DB19FFD4F0005C629B /* PathFinding-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PathFinding-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53546DE19FFD4F0005C629B /* Info-mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-mac.plist"; sourceTree = "<group>"; };
+		A53546DF19FFD4F0005C629B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A53546E019FFD4F0005C629B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A53546E219FFD4F0005C629B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A53546EC19FFD4F0005C629B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A53546F219FFD4F0005C629B /* PathFinding-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PathFinding-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53546F719FFD4F0005C629B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A53546F819FFD4F0005C629B /* PathFinding_MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathFinding_MacTests.m; sourceTree = "<group>"; };
+		A535470419FFDAAA005C629B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A53547E119FFEEBB005C629B /* Heuristic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Heuristic.h; sourceTree = "<group>"; };
+		A53547E219FFEEBB005C629B /* Heuristic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Heuristic.m; sourceTree = "<group>"; };
+		A53547E319FFEEBB005C629B /* PFGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGrid.h; sourceTree = "<group>"; };
+		A53547E419FFEEBB005C629B /* PFGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGrid.m; sourceTree = "<group>"; };
+		A53547E519FFEEBB005C629B /* PFNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNode.h; sourceTree = "<group>"; };
+		A53547E619FFEEBB005C629B /* PFNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNode.m; sourceTree = "<group>"; };
+		A53547E719FFEEBB005C629B /* PFUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFUtil.h; sourceTree = "<group>"; };
+		A53547E819FFEEBB005C629B /* PFUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFUtil.m; sourceTree = "<group>"; };
+		A53547EA19FFEEBB005C629B /* AStarFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AStarFinder.h; sourceTree = "<group>"; };
+		A53547EB19FFEEBB005C629B /* AStarFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AStarFinder.m; sourceTree = "<group>"; };
+		A53547EC19FFEEBB005C629B /* BaseFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFinder.h; sourceTree = "<group>"; };
+		A53547ED19FFEEBB005C629B /* BaseFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFinder.m; sourceTree = "<group>"; };
+		A53547EE19FFEEBB005C629B /* PathFinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathFinding.h; sourceTree = "<group>"; };
+		A53547EF19FFEEBB005C629B /* PathFinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathFinding.m; sourceTree = "<group>"; };
+		A535480C19FFF26C005C629B /* PathFinding-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PathFinding-Prefix.pch"; sourceTree = "<group>"; };
+		A55319CF19FFF8C900503E11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A55319D119FFF8DD00503E11 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		A55319D319FFF8F000503E11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A55319DA19FFF92D00503E11 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A55319DC19FFF95200503E11 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		A55319DE19FFF9C300503E11 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A55319E019FFF9CF00503E11 /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = usr/lib/libobjc.dylib; sourceTree = SDKROOT; };
+		A55319E419FFFCAE00503E11 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		A55319E519FFFCAE00503E11 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		A55319E819FFFECB00503E11 /* WBGameUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBGameUtilities.h; sourceTree = "<group>"; };
+		A55319E919FFFECB00503E11 /* WBGameUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBGameUtilities.m; sourceTree = "<group>"; };
+		A55319EF19FFFFB800503E11 /* WBArrowShapeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBArrowShapeNode.h; sourceTree = "<group>"; };
+		A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBArrowShapeNode.m; sourceTree = "<group>"; };
+		A55319F119FFFFB800503E11 /* BFPhysicsShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPhysicsShape.h; sourceTree = "<group>"; };
+		A55319F219FFFFB800503E11 /* BFPhysicsShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPhysicsShape.m; sourceTree = "<group>"; };
+		A55319F319FFFFB800503E11 /* SKNode+WBKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+WBKit.h"; sourceTree = "<group>"; };
+		A55319F419FFFFB800503E11 /* SKNode+WBKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+WBKit.m"; sourceTree = "<group>"; };
+		A55319F519FFFFB800503E11 /* WBSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSpriteButton.h; sourceTree = "<group>"; };
+		A55319F619FFFFB800503E11 /* WBSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSpriteButton.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A535468919FFC908005C629B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A55319E119FFF9CF00503E11 /* libobjc.dylib in Frameworks */,
+				A55319DF19FFF9C300503E11 /* libz.dylib in Frameworks */,
+				A55319DB19FFF92D00503E11 /* UIKit.framework in Frameworks */,
+				A55319D419FFF8F000503E11 /* CoreGraphics.framework in Frameworks */,
+				A55319D219FFF8DD00503E11 /* SpriteKit.framework in Frameworks */,
+				A55319D019FFF8C900503E11 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53546A719FFC908005C629B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53546D819FFD4F0005C629B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A55319E319FFF9D800503E11 /* libobjc.dylib in Frameworks */,
+				A55319DD19FFF95200503E11 /* AppKit.framework in Frameworks */,
+				A55319E219FFF9D400503E11 /* libz.dylib in Frameworks */,
+				A55319D619FFF90300503E11 /* SpriteKit.framework in Frameworks */,
+				A55319D719FFF90700503E11 /* Foundation.framework in Frameworks */,
+				A55319D519FFF90000503E11 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53546EF19FFD4F0005C629B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A535468319FFC908005C629B = {
+			isa = PBXGroup;
+			children = (
+				A53547DF19FFEEBB005C629B /* PathFindingForObjC */,
+				A535470719FFDB33005C629B /* Classes */,
+				A53546BA19FFCC67005C629B /* iOS */,
+				A53546DC19FFD4F0005C629B /* OSX */,
+				A53546D219FFCD68005C629B /* iOSTests */,
+				A53546F519FFD4F0005C629B /* OSXTests */,
+				A535468D19FFC908005C629B /* Products */,
+				A535470D19FFDC2A005C629B /* Frameworks */,
+				A535470319FFDA56005C629B /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		A535468D19FFC908005C629B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A535468C19FFC908005C629B /* PathFinding-iOS.app */,
+				A53546AA19FFC908005C629B /* PathFinding-iOSTests.xctest */,
+				A53546DB19FFD4F0005C629B /* PathFinding-Mac.app */,
+				A53546F219FFD4F0005C629B /* PathFinding-MacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A53546BA19FFCC67005C629B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A53546BB19FFCC67005C629B /* AppDelegate.h */,
+				A53546BC19FFCC67005C629B /* AppDelegate.m */,
+				A53546BD19FFCC67005C629B /* LaunchScreen.xib */,
+				A53546BF19FFCC67005C629B /* Main.storyboard */,
+				A53546C419FFCC67005C629B /* GameViewController.h */,
+				A53546C519FFCC67005C629B /* GameViewController.m */,
+				A535470019FFD7B5005C629B /* Supporting Files */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		A53546D219FFCD68005C629B /* iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				A53546D319FFCD68005C629B /* Info.plist */,
+				A53546D419FFCD68005C629B /* PathFinding_iOSTests.m */,
+			);
+			path = iOSTests;
+			sourceTree = "<group>";
+		};
+		A53546DC19FFD4F0005C629B /* OSX */ = {
+			isa = PBXGroup;
+			children = (
+				A53546DF19FFD4F0005C629B /* AppDelegate.h */,
+				A53546E019FFD4F0005C629B /* AppDelegate.m */,
+				A53546EB19FFD4F0005C629B /* MainMenu.xib */,
+				A53546DD19FFD4F0005C629B /* Supporting Files */,
+			);
+			path = OSX;
+			sourceTree = "<group>";
+		};
+		A53546DD19FFD4F0005C629B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A53546DE19FFD4F0005C629B /* Info-mac.plist */,
+				A53546E219FFD4F0005C629B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A53546F519FFD4F0005C629B /* OSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				A53546F819FFD4F0005C629B /* PathFinding_MacTests.m */,
+				A53546F619FFD4F0005C629B /* Supporting Files */,
+			);
+			path = OSXTests;
+			sourceTree = "<group>";
+		};
+		A53546F619FFD4F0005C629B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A53546F719FFD4F0005C629B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A535470019FFD7B5005C629B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A53546C719FFCC67005C629B /* Info-ios.plist */,
+				A53546C819FFCC67005C629B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A535470319FFDA56005C629B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A535470419FFDAAA005C629B /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A535470719FFDB33005C629B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A535480C19FFF26C005C629B /* PathFinding-Prefix.pch */,
+				A535470819FFDB33005C629B /* Controller */,
+				A535470919FFDB33005C629B /* Layer */,
+				A535470A19FFDB33005C629B /* Scene */,
+				A535470B19FFDB33005C629B /* Sprite */,
+				A535470C19FFDB33005C629B /* Utilities */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A535470819FFDB33005C629B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A535470919FFDB33005C629B /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Layer;
+			sourceTree = "<group>";
+		};
+		A535470A19FFDB33005C629B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				A55319E519FFFCAE00503E11 /* GameScene.h */,
+				A55319E419FFFCAE00503E11 /* GameScene.m */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		A535470B19FFDB33005C629B /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		A535470C19FFDB33005C629B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A55319EE19FFFFB800503E11 /* WBArrowShapeNode */,
+				A55319E819FFFECB00503E11 /* WBGameUtilities.h */,
+				A55319E919FFFECB00503E11 /* WBGameUtilities.m */,
+				A55319F119FFFFB800503E11 /* BFPhysicsShape.h */,
+				A55319F219FFFFB800503E11 /* BFPhysicsShape.m */,
+				A55319F319FFFFB800503E11 /* SKNode+WBKit.h */,
+				A55319F419FFFFB800503E11 /* SKNode+WBKit.m */,
+				A55319F519FFFFB800503E11 /* WBSpriteButton.h */,
+				A55319F619FFFFB800503E11 /* WBSpriteButton.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A535470D19FFDC2A005C629B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A55319E019FFF9CF00503E11 /* libobjc.dylib */,
+				A55319DE19FFF9C300503E11 /* libz.dylib */,
+				A55319D319FFF8F000503E11 /* CoreGraphics.framework */,
+				A55319D119FFF8DD00503E11 /* SpriteKit.framework */,
+				A55319CF19FFF8C900503E11 /* Foundation.framework */,
+				A55319D919FFF91D00503E11 /* OSX */,
+				A55319D819FFF91400503E11 /* iOS */,
+			);
+			name = Frameworks;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A53547DF19FFEEBB005C629B /* PathFindingForObjC */ = {
+			isa = PBXGroup;
+			children = (
+				A53547E019FFEEBB005C629B /* core */,
+				A53547E919FFEEBB005C629B /* finders */,
+				A53547EE19FFEEBB005C629B /* PathFinding.h */,
+				A53547EF19FFEEBB005C629B /* PathFinding.m */,
+			);
+			name = PathFindingForObjC;
+			path = ../PathFindingForObjC;
+			sourceTree = "<group>";
+		};
+		A53547E019FFEEBB005C629B /* core */ = {
+			isa = PBXGroup;
+			children = (
+				A53547E519FFEEBB005C629B /* PFNode.h */,
+				A53547E619FFEEBB005C629B /* PFNode.m */,
+				A53547E319FFEEBB005C629B /* PFGrid.h */,
+				A53547E419FFEEBB005C629B /* PFGrid.m */,
+				A53547E719FFEEBB005C629B /* PFUtil.h */,
+				A53547E819FFEEBB005C629B /* PFUtil.m */,
+				A53547E119FFEEBB005C629B /* Heuristic.h */,
+				A53547E219FFEEBB005C629B /* Heuristic.m */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		A53547E919FFEEBB005C629B /* finders */ = {
+			isa = PBXGroup;
+			children = (
+				A53547EC19FFEEBB005C629B /* BaseFinder.h */,
+				A53547ED19FFEEBB005C629B /* BaseFinder.m */,
+				A53547EA19FFEEBB005C629B /* AStarFinder.h */,
+				A53547EB19FFEEBB005C629B /* AStarFinder.m */,
+			);
+			path = finders;
+			sourceTree = "<group>";
+		};
+		A55319D819FFF91400503E11 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A55319DA19FFF92D00503E11 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		A55319D919FFF91D00503E11 /* OSX */ = {
+			isa = PBXGroup;
+			children = (
+				A55319DC19FFF95200503E11 /* AppKit.framework */,
+			);
+			name = OSX;
+			sourceTree = "<group>";
+		};
+		A55319EE19FFFFB800503E11 /* WBArrowShapeNode */ = {
+			isa = PBXGroup;
+			children = (
+				A55319EF19FFFFB800503E11 /* WBArrowShapeNode.h */,
+				A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */,
+			);
+			path = WBArrowShapeNode;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A535468B19FFC908005C629B /* PathFinding-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A53546B419FFC908005C629B /* Build configuration list for PBXNativeTarget "PathFinding-iOS" */;
+			buildPhases = (
+				A535468819FFC908005C629B /* Sources */,
+				A535468919FFC908005C629B /* Frameworks */,
+				A535468A19FFC908005C629B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PathFinding-iOS";
+			productName = "PathFindingForObjC-Example";
+			productReference = A535468C19FFC908005C629B /* PathFinding-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A53546A919FFC908005C629B /* PathFinding-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A53546B719FFC908005C629B /* Build configuration list for PBXNativeTarget "PathFinding-iOSTests" */;
+			buildPhases = (
+				A53546A619FFC908005C629B /* Sources */,
+				A53546A719FFC908005C629B /* Frameworks */,
+				A53546A819FFC908005C629B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A53546AC19FFC908005C629B /* PBXTargetDependency */,
+			);
+			name = "PathFinding-iOSTests";
+			productName = "PathFindingForObjC-ExampleTests";
+			productReference = A53546AA19FFC908005C629B /* PathFinding-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A53546DA19FFD4F0005C629B /* PathFinding-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A53546FA19FFD4F0005C629B /* Build configuration list for PBXNativeTarget "PathFinding-Mac" */;
+			buildPhases = (
+				A53546D719FFD4F0005C629B /* Sources */,
+				A53546D819FFD4F0005C629B /* Frameworks */,
+				A53546D919FFD4F0005C629B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PathFinding-Mac";
+			productName = "PathFinding-Mac";
+			productReference = A53546DB19FFD4F0005C629B /* PathFinding-Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A53546F119FFD4F0005C629B /* PathFinding-MacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A53546FD19FFD4F0005C629B /* Build configuration list for PBXNativeTarget "PathFinding-MacTests" */;
+			buildPhases = (
+				A53546EE19FFD4F0005C629B /* Sources */,
+				A53546EF19FFD4F0005C629B /* Frameworks */,
+				A53546F019FFD4F0005C629B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A53546F419FFD4F0005C629B /* PBXTargetDependency */,
+			);
+			name = "PathFinding-MacTests";
+			productName = "PathFinding-MacTests";
+			productReference = A53546F219FFD4F0005C629B /* PathFinding-MacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A535468419FFC908005C629B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = JasioWoo;
+				TargetAttributes = {
+					A535468B19FFC908005C629B = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					A53546A919FFC908005C629B = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = A535468B19FFC908005C629B;
+					};
+					A53546DA19FFD4F0005C629B = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					A53546F119FFD4F0005C629B = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = A53546DA19FFD4F0005C629B;
+					};
+				};
+			};
+			buildConfigurationList = A535468719FFC908005C629B /* Build configuration list for PBXProject "PathFindingForObjC-Example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A535468319FFC908005C629B;
+			productRefGroup = A535468D19FFC908005C629B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A535468B19FFC908005C629B /* PathFinding-iOS */,
+				A53546DA19FFD4F0005C629B /* PathFinding-Mac */,
+				A53546A919FFC908005C629B /* PathFinding-iOSTests */,
+				A53546F119FFD4F0005C629B /* PathFinding-MacTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A535468A19FFC908005C629B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A53546CA19FFCC67005C629B /* LaunchScreen.xib in Resources */,
+				A535470519FFDAAA005C629B /* Images.xcassets in Resources */,
+				A53546CB19FFCC67005C629B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53546A819FFC908005C629B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53546D919FFD4F0005C629B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A535470619FFDAAA005C629B /* Images.xcassets in Resources */,
+				A53546ED19FFD4F0005C629B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53546F019FFD4F0005C629B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A535468819FFC908005C629B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A535480019FFEEBB005C629B /* AStarFinder.m in Sources */,
+				A53547F419FFEEBB005C629B /* PFGrid.m in Sources */,
+				A53546CE19FFCC67005C629B /* GameViewController.m in Sources */,
+				A55319F719FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
+				A55319EA19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
+				A535480419FFEEBB005C629B /* BaseFinder.m in Sources */,
+				A55319E619FFFCAE00503E11 /* GameScene.m in Sources */,
+				A5531A0319FFFFB800503E11 /* WBSpriteButton.m in Sources */,
+				A53547F819FFEEBB005C629B /* PFNode.m in Sources */,
+				A53546D119FFCC67005C629B /* main.m in Sources */,
+				A55319FB19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
+				A53547F019FFEEBB005C629B /* Heuristic.m in Sources */,
+				A53546C919FFCC67005C629B /* AppDelegate.m in Sources */,
+				A55319FF19FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
+				A535480819FFEEBB005C629B /* PathFinding.m in Sources */,
+				A53547FC19FFEEBB005C629B /* PFUtil.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53546A619FFC908005C629B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A55319FD19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
+				A55319EC19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
+				A535480619FFEEBB005C629B /* BaseFinder.m in Sources */,
+				A5531A0519FFFFB800503E11 /* WBSpriteButton.m in Sources */,
+				A53547FE19FFEEBB005C629B /* PFUtil.m in Sources */,
+				A53547F219FFEEBB005C629B /* Heuristic.m in Sources */,
+				A53547F619FFEEBB005C629B /* PFGrid.m in Sources */,
+				A55319CD19FFF6F700503E11 /* PathFinding.m in Sources */,
+				A55319F919FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
+				A535480219FFEEBB005C629B /* AStarFinder.m in Sources */,
+				A5531A0119FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
+				A53546D619FFCD68005C629B /* PathFinding_iOSTests.m in Sources */,
+				A53547FA19FFEEBB005C629B /* PFNode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53546D719FFD4F0005C629B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5531A0419FFFFB800503E11 /* WBSpriteButton.m in Sources */,
+				A53546E319FFD4F0005C629B /* main.m in Sources */,
+				A53547F919FFEEBB005C629B /* PFNode.m in Sources */,
+				A53547F519FFEEBB005C629B /* PFGrid.m in Sources */,
+				A535480119FFEEBB005C629B /* AStarFinder.m in Sources */,
+				A55319F819FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
+				A55319E719FFFCAE00503E11 /* GameScene.m in Sources */,
+				A55319CC19FFF6F700503E11 /* PathFinding.m in Sources */,
+				A53547F119FFEEBB005C629B /* Heuristic.m in Sources */,
+				A55319FC19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
+				A55319EB19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
+				A53547FD19FFEEBB005C629B /* PFUtil.m in Sources */,
+				A535480519FFEEBB005C629B /* BaseFinder.m in Sources */,
+				A53546E119FFD4F0005C629B /* AppDelegate.m in Sources */,
+				A5531A0019FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53546EE19FFD4F0005C629B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A55319FE19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
+				A55319ED19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
+				A535480719FFEEBB005C629B /* BaseFinder.m in Sources */,
+				A5531A0619FFFFB800503E11 /* WBSpriteButton.m in Sources */,
+				A53547FF19FFEEBB005C629B /* PFUtil.m in Sources */,
+				A53547F319FFEEBB005C629B /* Heuristic.m in Sources */,
+				A53547F719FFEEBB005C629B /* PFGrid.m in Sources */,
+				A55319CE19FFF6F800503E11 /* PathFinding.m in Sources */,
+				A55319FA19FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
+				A535480319FFEEBB005C629B /* AStarFinder.m in Sources */,
+				A5531A0219FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
+				A53546F919FFD4F0005C629B /* PathFinding_MacTests.m in Sources */,
+				A53547FB19FFEEBB005C629B /* PFNode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A53546AC19FFC908005C629B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A535468B19FFC908005C629B /* PathFinding-iOS */;
+			targetProxy = A53546AB19FFC908005C629B /* PBXContainerItemProxy */;
+		};
+		A53546F419FFD4F0005C629B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A53546DA19FFD4F0005C629B /* PathFinding-Mac */;
+			targetProxy = A53546F319FFD4F0005C629B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A53546BD19FFCC67005C629B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A53546BE19FFCC67005C629B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		A53546BF19FFCC67005C629B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A53546C019FFCC67005C629B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A53546EB19FFD4F0005C629B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A53546EC19FFD4F0005C629B /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A53546B219FFC908005C629B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/PathFinding-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A53546B319FFC908005C629B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/PathFinding-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A53546B519FFC908005C629B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/PathFinding-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info-ios.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A53546B619FFC908005C629B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/PathFinding-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info-ios.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A53546B819FFC908005C629B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = iOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PathFinding-iOS.app/PathFinding-iOS";
+			};
+			name = Debug;
+		};
+		A53546B919FFC908005C629B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = iOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PathFinding-iOS.app/PathFinding-iOS";
+			};
+			name = Release;
+		};
+		A53546FB19FFD4F0005C629B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/PathFinding-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/OSX/Info-mac.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A53546FC19FFD4F0005C629B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/PathFinding-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/OSX/Info-mac.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A53546FE19FFD4F0005C629B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PathFinding-Mac.app/Contents/MacOS/PathFinding-Mac";
+			};
+			name = Debug;
+		};
+		A53546FF19FFD4F0005C629B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PathFinding-Mac.app/Contents/MacOS/PathFinding-Mac";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A535468719FFC908005C629B /* Build configuration list for PBXProject "PathFindingForObjC-Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A53546B219FFC908005C629B /* Debug */,
+				A53546B319FFC908005C629B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A53546B419FFC908005C629B /* Build configuration list for PBXNativeTarget "PathFinding-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A53546B519FFC908005C629B /* Debug */,
+				A53546B619FFC908005C629B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A53546B719FFC908005C629B /* Build configuration list for PBXNativeTarget "PathFinding-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A53546B819FFC908005C629B /* Debug */,
+				A53546B919FFC908005C629B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A53546FA19FFD4F0005C629B /* Build configuration list for PBXNativeTarget "PathFinding-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A53546FB19FFD4F0005C629B /* Debug */,
+				A53546FC19FFD4F0005C629B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A53546FD19FFD4F0005C629B /* Build configuration list for PBXNativeTarget "PathFinding-MacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A53546FE19FFD4F0005C629B /* Debug */,
+				A53546FF19FFD4F0005C629B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A535468419FFC908005C629B /* Project object */;
+}

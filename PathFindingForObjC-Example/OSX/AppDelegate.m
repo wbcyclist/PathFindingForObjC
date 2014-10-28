@@ -16,8 +16,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	CGSize size = CGSizeMake(560*2, 320*2);
 	GameScene *scene = [[GameScene alloc] initWithSize:size];
-	[self.skView presentScene:scene];
-
     /* Set the scale mode to scale to fit the window */
     scene.scaleMode = SKSceneScaleModeAspectFit;
 
@@ -25,8 +23,9 @@
 
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     self.skView.ignoresSiblingOrder = YES;
-    
+	
     self.skView.showsFPS = YES;
+	self.skView.showsDrawCount = YES;
     self.skView.showsNodeCount = YES;
 }
 

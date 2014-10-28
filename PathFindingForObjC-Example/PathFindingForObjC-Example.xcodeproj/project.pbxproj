@@ -44,6 +44,10 @@
 		A535480619FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
 		A535480719FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
 		A535480819FFEEBB005C629B /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
+		A54676591A00280300C62349 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = A54676581A00280300C62349 /* grid.png */; };
+		A546765A1A00280300C62349 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = A54676581A00280300C62349 /* grid.png */; };
+		A546765D1A00371500C62349 /* PFGridNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A546765C1A00371500C62349 /* PFGridNode.m */; };
+		A546765E1A00371500C62349 /* PFGridNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A546765C1A00371500C62349 /* PFGridNode.m */; };
 		A55319CC19FFF6F700503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
 		A55319CD19FFF6F700503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
 		A55319CE19FFF6F800503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
@@ -138,6 +142,9 @@
 		A53547EE19FFEEBB005C629B /* PathFinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathFinding.h; sourceTree = "<group>"; };
 		A53547EF19FFEEBB005C629B /* PathFinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathFinding.m; sourceTree = "<group>"; };
 		A535480C19FFF26C005C629B /* PathFinding-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PathFinding-Prefix.pch"; sourceTree = "<group>"; };
+		A54676581A00280300C62349 /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid.png; sourceTree = "<group>"; };
+		A546765B1A00371500C62349 /* PFGridNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGridNode.h; sourceTree = "<group>"; };
+		A546765C1A00371500C62349 /* PFGridNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGridNode.m; sourceTree = "<group>"; };
 		A55319CF19FFF8C900503E11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A55319D119FFF8DD00503E11 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		A55319D319FFF8F000503E11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -301,6 +308,7 @@
 		A535470319FFDA56005C629B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A54676581A00280300C62349 /* grid.png */,
 				A535470419FFDAAA005C629B /* Images.xcassets */,
 			);
 			path = Resources;
@@ -345,6 +353,8 @@
 		A535470B19FFDB33005C629B /* Sprite */ = {
 			isa = PBXGroup;
 			children = (
+				A546765B1A00371500C62349 /* PFGridNode.h */,
+				A546765C1A00371500C62349 /* PFGridNode.m */,
 			);
 			path = Sprite;
 			sourceTree = "<group>";
@@ -568,6 +578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A53546CA19FFCC67005C629B /* LaunchScreen.xib in Resources */,
+				A54676591A00280300C62349 /* grid.png in Resources */,
 				A535470519FFDAAA005C629B /* Images.xcassets in Resources */,
 				A53546CB19FFCC67005C629B /* Main.storyboard in Resources */,
 			);
@@ -586,6 +597,7 @@
 			files = (
 				A535470619FFDAAA005C629B /* Images.xcassets in Resources */,
 				A53546ED19FFD4F0005C629B /* MainMenu.xib in Resources */,
+				A546765A1A00280300C62349 /* grid.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +618,7 @@
 				A535480019FFEEBB005C629B /* AStarFinder.m in Sources */,
 				A53547F419FFEEBB005C629B /* PFGrid.m in Sources */,
 				A53546CE19FFCC67005C629B /* GameViewController.m in Sources */,
+				A546765D1A00371500C62349 /* PFGridNode.m in Sources */,
 				A55319F719FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
 				A55319EA19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
 				A535480419FFEEBB005C629B /* BaseFinder.m in Sources */,
@@ -655,6 +668,7 @@
 				A55319E719FFFCAE00503E11 /* GameScene.m in Sources */,
 				A55319CC19FFF6F700503E11 /* PathFinding.m in Sources */,
 				A53547F119FFEEBB005C629B /* Heuristic.m in Sources */,
+				A546765E1A00371500C62349 /* PFGridNode.m in Sources */,
 				A55319FC19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
 				A55319EB19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
 				A53547FD19FFEEBB005C629B /* PFUtil.m in Sources */,

@@ -7,10 +7,11 @@
 
 #import "Heuristic.h"
 
-static float F = M_SQRT2 - 1;
+static float F = 1.4-1;//M_SQRT2 - 1;
 
 @implementation Heuristic
 - (float)performAlgorithmWithX:(float)dx andY:(float)dy {
+	// Override
 	return 0;
 }
 @end

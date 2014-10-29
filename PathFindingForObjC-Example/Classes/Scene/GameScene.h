@@ -10,4 +10,7 @@
 
 @interface GameScene : SKScene
 
+@property (nonatomic) CGSize gridSize;
+
+
 @end

@@ -16,11 +16,11 @@
 @class PFNode;
 
 #if TARGET_OS_IPHONE
-	#define PointToNSValue(x, y) [NSValue valueWithCGPoint:CGPointMake(x, y)]
-	#define NSValueToPoint(v) v.CGPointValue
+	#define CGPointToNSValue(p) [NSValue valueWithCGPoint:p]
+	#define NSValueToCGPoint(v) v.CGPointValue
 #else
-	#define PointToNSValue(x, y) [NSValue valueWithPoint:CGPointMake(x, y)]
-	#define NSValueToPoint(v) v.pointValue
+	#define CGPointToNSValue(p) [NSValue valueWithPoint:p]
+	#define NSValueToCGPoint(v) v.pointValue
 #endif
 
 

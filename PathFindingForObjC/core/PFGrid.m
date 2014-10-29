@@ -18,7 +18,7 @@
 	
 }
 
-- (instancetype)initWithColumn:(unsigned int)col andRow:(unsigned int)row {
+- (instancetype)initWithColumn:(unsigned int)col andRow:(unsigned int)row andBlockPoints:(NSArray*)blockPoints{
 	self = [super init];
 	if (self) {
 		if (col==0 || row==0) {
@@ -50,13 +50,25 @@
 		}
 		_nodes = nodeArr;
 		
+		// setup block zone
+		CGPoint blockPoint;
+		for (NSValue *value in blockPoints) {
+			blockPoint = NSValueToCGPoint(value);
+			PFNode *node = [self getNodeAtX:blockPoint.x andY:blockPoint.y];
+			if (node) {
+				node.walkable = NO;
+				_matrix[node.y][node.x] = 1;
+			}
+		}
+		
+		
 //		[self printMatrix];
 	}
 	return self;
 }
 
 - (void)printMatrix {
-	for (int i=0; i<_row; i++) {
+	for (int i=_row-1; i>=0; i--) {
 		for(int j=0; j<_column; j++) {
 			printf("	%d", _matrix[i][j]);
 		}
@@ -65,23 +77,24 @@
 }
 
 - (void)printFoundPath:(NSArray *)path {
-	for (int i=0; i<path.count; i++) {
-		
-		CGPoint point = NSValueToPoint(((NSValue*)path[i]));
+	NSUInteger l = path.count;
+	for (int i=0; i<l; i++) {
+		NSValue *obj = path[i];
+		CGPoint point = NSValueToCGPoint(obj);
 		int x=point.x, y=point.y;
 		if (i==0) {
 			// start
-			_matrix[x][y] = 2;
-		} else if (i==path.count-1) {
+			_matrix[y][x] = 2;
+		} else if (i==l-1) {
 			// end
-			_matrix[x][y] = 4;
+			_matrix[y][x] = 4;
 		} else {
 			// path
-			_matrix[x][y] = 3;
+			_matrix[y][x] = 3;
 		}
 	}
 	
-	for (int i=0; i<_row; i++) {
+	for (int i=_row-1; i>=0; i--) {
 		for(int j=0; j<_column; j++) {
 			if (_matrix[i][j]==1) {
 				// block
@@ -106,6 +119,9 @@
 
 
 - (void)dealloc {
+	debugMethod();
+	[_nodes removeAllObjects];
+	_nodes = nil;
 	
 	// release matrix
 	for(int i=0; i<_row; i++) {

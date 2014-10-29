@@ -18,13 +18,16 @@
 @end
 
 @implementation PFGridNode {
-	SKColor *lastColor;
+	
 }
 
 - (instancetype)initWithTexture:(SKTexture *)texture {
 	self = [super initWithTexture:texture];
 	if (self) {
-		lastColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:0];
+		self.searchState = kGState_None;
+		self.editState = kGState_Walkable;
+		
+		self.walkableColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:0];
 		self.startColor = [SKColor colorWithRed:51/255.0 green:218/255.0 blue:0 alpha:1];
 		self.endColor = [SKColor colorWithRed:226/255.0 green:43/255.0 blue:0 alpha:1];
 		self.blockColor = [SKColor colorWithRed:109/255.0 green:109/255.0 blue:109/255.0 alpha:1];
@@ -88,9 +91,16 @@
 			self.gLab.text = [NSString stringWithFormat:@"%d", (int)(_gValue*10)];
 			self.hLab.text = [NSString stringWithFormat:@"%d", (int)(_hValue*10)];
 		}
-		self.fLab.hidden = !showWeightValue;
-		self.gLab.hidden = !showWeightValue;
-		self.hLab.hidden = !showWeightValue;
+		
+		if (_searchState==kGState_Close || _searchState==kGState_Open) {
+			self.fLab.hidden = !showWeightValue;
+			self.gLab.hidden = !showWeightValue;
+			self.hLab.hidden = !showWeightValue;
+		} else {
+			self.fLab.hidden = YES;
+			self.gLab.hidden = YES;
+			self.hLab.hidden = YES;
+		}
 	}
 }
 
@@ -107,9 +117,80 @@
 	self.hLab.text = [NSString stringWithFormat:@"%d", (int)(_hValue*10)];
 }
 
+- (void)updateGridColor:(GridNodeState)state runAnimate:(BOOL)animate {
+	BOOL showWeightValue = NO;
+	if (_searchState==kGState_Close || _searchState==kGState_Open) {
+		showWeightValue = _showWeightValue;
+	}
+	
+	SKColor *color;
+	if (state==kGState_Walkable) {
+		color = self.walkableColor;
+	} else if (state==kGState_Start) {
+		color = self.startColor;
+	} else if (state==kGState_End) {
+		color = self.endColor;
+	} else if (state==kGState_Block) {
+		color = self.blockColor;
+	} else if (state==kGState_Open) {
+		color = self.openColor;
+	} else if (state==kGState_Close) {
+		color = self.closeColor;
+	} else {
+		color = self.walkableColor;
+	}
+	
+	self.fLab.hidden = !showWeightValue;
+	self.gLab.hidden = !showWeightValue;
+	self.hLab.hidden = !showWeightValue;
+	[self removeAllActions];
+	if (animate) {
+		SKAction *colorAct = [SKAction colorizeWithColor:color colorBlendFactor:self.colorBlendFactor duration:0.1];
+		SKAction *scaleAct = [SKAction sequence:@[[SKAction scaleTo:1.1 duration:0.1], [SKAction scaleTo:1 duration:0.1]]];
+		[self runAction:[SKAction group:@[colorAct, scaleAct]]];
+	} else {
+		self.color = color;
+		[self runAction:[SKAction scaleTo:1 duration:0]];
+	}
+}
+
+- (void)setSearchState:(GridNodeState)searchState{
+	if (_searchState!=searchState) {
+		_searchState = searchState;
+		if (_editState==kGState_Walkable) {
+			[self updateGridColor:searchState runAnimate:YES];
+		}
+	}
+}
 
 
-
+- (BOOL)setupEditGridState:(GridNodeState)editState runAnimate:(BOOL)animate {
+	if (_editState != editState) {
+		if (_editState!=kGState_Walkable) {
+			if (_editState==kGState_Block && editState==kGState_Walkable) {
+				
+			} else {
+				return NO;
+			}
+		}
+		
+		_editState = editState;
+		if (editState==kGState_Walkable) {
+			[self updateGridColor:_searchState runAnimate:animate];
+			
+		} else if (editState==kGState_Start) {
+			[self updateGridColor:editState runAnimate:animate];
+			
+		} else if (editState==kGState_End) {
+			[self updateGridColor:editState runAnimate:animate];
+			
+		} else if (editState==kGState_Block) {
+			[self updateGridColor:editState runAnimate:animate];
+		}
+		return YES;
+	}
+	return NO;
+}
 
 
 

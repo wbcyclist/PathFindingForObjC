@@ -28,10 +28,18 @@ typedef enum {
 @property (nonatomic) BOOL allowDiagonal;
 @property (nonatomic) BOOL dontCrossCorners;
 @property (nonatomic) int weight;
+@property (nonatomic) CGSize mapSize;
+@property (nonatomic) CGSize tileSize;
+@property (nonatomic) CGPoint orginPoint;
+@property (nonatomic) CGPoint startPoint;
+@property (nonatomic) CGPoint endPoint;
 
+- (instancetype)initWithMapSize:(CGSize)mapSize tileSize:(CGSize)tileSize coordsOrgin:(CGPoint)orginPoint;
 
-
-- (instancetype)initWithMap:(CGSize)mapSize tileSize:(CGSize)tileSize systemCoordsOrgin:(CGPoint)orginPoint;
+- (void)addBlockTilePosition:(CGPoint)point;
+/// @param points = @[[NSValue valueWithCGPoint:CGPointMake(x, y)]]
+- (void)addBlockTilePositions:(NSArray*)points;
+- (void)clearBlockTiles;
 
 - (NSArray *)findPathing:(PathfindingAlgorithm)alg;
 

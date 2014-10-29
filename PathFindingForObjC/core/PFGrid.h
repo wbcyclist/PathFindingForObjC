@@ -24,7 +24,7 @@
 @property (nonatomic, retain, readonly) NSArray *nodes;
 
 
-- (instancetype) initWithColumn:(unsigned int)col andRow:(unsigned int)row;
+- (instancetype) initWithColumn:(unsigned int)col andRow:(unsigned int)row andBlockPoints:(NSArray*)blockPoints;
 
 
 - (PFNode *)getNodeAtX:(int)x andY:(int)y;

@@ -13,8 +13,12 @@
 
 @implementation GameScene {
 	BOOL isContentCreated;
+	BOOL isRunSearch;
 	SKNode *gridLayer;
+	PFGridNode *selectGrid;
+	GridNodeState selectState;
 	
+	PathFinding *pathFinding;
 }
 
 - (instancetype)initWithSize:(CGSize)size {
@@ -22,7 +26,7 @@
 	self = [super initWithSize:size];
 	if (self) {
 		self.backgroundColor = [SKColor whiteColor];
-		
+		self.gridSize =  CGSizeMake(64, 64);
 	}
 	return self;
 }
@@ -32,43 +36,36 @@
 	
 	if (!isContentCreated) {
 		isContentCreated = YES;
-//		gridLayer = [SKSpriteNode spriteNodeWithColor:[SKColor purpleColor] size:CGSizeMake(400, 400)];
+		
 		gridLayer = [SKNode node];
-//		gridLayer.position = CGPointMake(10, 10);
 		[self addChild:gridLayer];
+		
 		[self createGridNodes];
 		
-		
 	}
-//	PathFinding *pathFinding = [[PathFinding alloc] initWithMap:CGSizeMake(8, 6)
-//													   tileSize:CGSizeMake(32, 32)
-//											  systemCoordsOrgin:CGPointMake(0, 560)];
-//	pathFinding.heuristicType = HeuristicTypeManhattan;
-//	pathFinding.allowDiagonal = NO;
-//	pathFinding.dontCrossCorners = YES;
-//	NSArray *path = [pathFinding findPathing:PathfindingAlgorithm_AStar];
-	
 }
 
 - (void)createGridNodes {
-	CGSize gridSize = CGSizeMake(64, 64);
-	int column = CGRectGetWidth(self.frame)/gridSize.width;
-	int row = CGRectGetHeight(self.frame)/gridSize.height;
-
+	if (self.gridSize.width<1 || self.gridSize.height<1 || !gridLayer) {
+		return;
+	}
+	[gridLayer removeAllChildren];
+	
+	int column = CGRectGetWidth(self.frame)/self.gridSize.width;
+	int row = CGRectGetHeight(self.frame)/self.gridSize.height;
 	for (int i=0; i<row; i++) {
 		for (int j=0; j<column; j++) {
-			PFGridNode *grid = [PFGridNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"grid"] size:gridSize];
-			grid.anchorPoint = CGPointZero;
+			PFGridNode *grid = [PFGridNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"grid"] size:self.gridSize];
 			grid.colorBlendFactor = 0.7;
-			grid.position = CGPointMake(j*gridSize.width, i*gridSize.height);
+			grid.position = CGPointMake(j*self.gridSize.width + self.gridSize.width/2.0, i*self.gridSize.height + self.gridSize.height/2.0);
+			grid.name = [NSString stringWithFormat:@"%d",i*column + j];
 			grid.x = j;
 			grid.y = i;
-			grid.name = [NSString stringWithFormat:@"%d",i+j];
-			grid.showWeightValue = YES;
-			if (i+j==0) {
-				grid.isStart = YES;
-			} else if (i+j==1) {
-				grid.isEnd = YES;
+			grid.showWeightValue = NO;
+			if (i==0 && j==0) {
+				[grid setupEditGridState:kGState_Start runAnimate:NO];
+			} else if (i==0 && j==1) {
+				[grid setupEditGridState:kGState_End runAnimate:NO];
 			}
 			
 			[gridLayer addChild:grid];
@@ -82,54 +79,154 @@
 //			[gridLayer addChild:grid];
 		}
 	}
-	
-	// test
-	PFGridNode *node = (PFGridNode*)[gridLayer childNodeWithName:@"4"];
-	((SKSpriteNode*)[gridLayer childNodeWithName:@"4"]).color = node.startColor;
-	((SKSpriteNode*)[gridLayer childNodeWithName:@"5"]).color = node.endColor;
-	((SKSpriteNode*)[gridLayer childNodeWithName:@"6"]).color = node.blockColor;
-	((SKSpriteNode*)[gridLayer childNodeWithName:@"7"]).color = node.openColor;
-	((SKSpriteNode*)[gridLayer childNodeWithName:@"8"]).color = node.closeColor;
 }
 
 
+- (void)startFindingPath {
+	if (!pathFinding) {
+		pathFinding = [[PathFinding alloc] initWithMapSize:CGSizeMake(0, 0)
+												  tileSize:CGSizeMake(1, 1)
+											   coordsOrgin:CGPointMake(0, 0)];
+		pathFinding.heuristicType = HeuristicTypeManhattan;
+		pathFinding.allowDiagonal = YES;
+		pathFinding.dontCrossCorners = YES;
+	}
+	int column = CGRectGetWidth(self.frame)/self.gridSize.width;
+	int row = CGRectGetHeight(self.frame)/self.gridSize.height;
+	CGSize mapSize = CGSizeMake(column*self.gridSize.width, row*self.gridSize.height);
+	pathFinding.mapSize = mapSize;
+	pathFinding.tileSize = self.gridSize;
+	pathFinding.orginPoint = CGPointZero;
+	
+	[pathFinding clearBlockTiles];
+	for (PFGridNode *node in gridLayer.children) {
+		if (node.editState==kGState_Block) {
+			[pathFinding addBlockTilePosition:node.position];
+		} else if (node.editState==kGState_Start) {
+			pathFinding.startPoint = node.position;
+		} else if (node.editState==kGState_End) {
+			pathFinding.endPoint = node.position;
+		}
+	}
+	NSArray *path = [pathFinding findPathing:PathfindingAlgorithm_AStar];
+}
+
+
+- (void)clearGrid {
+	for (PFGridNode *grid in gridLayer.children) {
+		grid.searchState = kGState_None;
+		grid.fValue = 0;
+		grid.gValue = 0;
+		grid.hValue = 0;
+		
+		if (grid.editState!=kGState_Start && grid.editState!=kGState_End) {
+			[grid setupEditGridState:kGState_Walkable runAnimate:NO];
+		}
+	}
+}
+
+- (void)clearPath {
+	for (PFGridNode *grid in gridLayer.children) {
+		grid.searchState = kGState_None;
+		grid.fValue = 0;
+		grid.gValue = 0;
+		grid.hValue = 0;
+	}
+}
 
 
 #if TARGET_OS_IPHONE
 #pragma mark - Event Handling - iOS
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//	for (UITouch *touch in touches) {
-//		CGPoint location = [touch locationInNode:self.worldNode];
-//		self.targetLocation = CGPointMake((int)location.x, (int)location.y);
-//	}
+	UITouch *touch = [touches anyObject];
+	CGPoint touchPoint = [touch locationInNode:gridLayer];
+	[self gridTouchIn:touchPoint];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-//	for (UITouch *touch in touches) {
-//		CGPoint location = [touch locationInNode:self.worldNode];
-//		self.targetLocation = CGPointMake((int)location.x, (int)location.y);
-//	}
+	UITouch *touch = [touches anyObject];
+	CGPoint touchPoint = [touch locationInNode:gridLayer];
+	[self gridTouchMoved:touchPoint];
 }
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self gridTouchEnd];
+}
+
+// phone call or back home screen
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self gridTouchEnd];
+}
+
 #else
 
 #pragma mark - Event Handling - OS X
 -(void)mouseDown:(NSEvent *)theEvent {
-	NSLog(@"mouseDown");
-//	CGPoint location = [theEvent locationInNode:self.worldNode];
-//	self.targetLocation = CGPointMake((int)location.x, (int)location.y);
+//	NSLog(@"mouseDown");
+	CGPoint location = [theEvent locationInNode:gridLayer];
+	[self gridTouchIn:location];
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent {
-	NSLog(@"mouseDragged");
-	
+//	NSLog(@"mouseDragged");
+	CGPoint location = [theEvent locationInNode:gridLayer];
+	[self gridTouchMoved:location];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-	NSLog(@"mouseUp");
-	
+//	NSLog(@"mouseUp");
+	[self gridTouchEnd];
 }
 #endif
 
+
+#pragma mark - 
+- (void)gridTouchIn:(CGPoint)point {
+	point = CGPointMake((int)point.x, (int)point.y);
+	SKNode *node = [gridLayer nodeAtPoint:point];
+	PFGridNode *grid;
+	if ([node isKindOfClass:[PFGridNode class]]) {
+		grid = (PFGridNode *)node;
+	} else if ([node isKindOfClass:[SKLabelNode class]] && [node.parent isKindOfClass:[PFGridNode class]]) {
+		grid = (PFGridNode *)node.parent;
+	}
+	if (grid) {
+		GridNodeState state = grid.editState;
+		if (state==kGState_Walkable) {
+			[grid setupEditGridState:kGState_Block runAnimate:YES];
+		} else if (state==kGState_Block) {
+			[grid setupEditGridState:kGState_Walkable runAnimate:YES];
+		}
+		selectState = grid.editState;
+		selectGrid = grid;
+	} else {
+		selectState = kGState_None;
+		selectGrid = nil;
+	}
+}
+
+- (void)gridTouchMoved:(CGPoint)point {
+	point = CGPointMake((int)point.x, (int)point.y);
+	SKNode *node = [gridLayer nodeAtPoint:point];
+	if ([node isKindOfClass:[PFGridNode class]] && selectState!=kGState_None) {
+		PFGridNode *grid = (PFGridNode *)node;
+		BOOL result = [grid setupEditGridState:selectState runAnimate:!(selectState==kGState_Start||selectState==kGState_End)];
+		if (result) {
+			if (selectState==kGState_Start || selectState==kGState_End) {
+				selectGrid.editState = kGState_Block;
+				[selectGrid setupEditGridState:kGState_Walkable runAnimate:NO];
+				selectGrid = grid;
+			}
+		}
+	}
+}
+
+- (void)gridTouchEnd {
+	selectGrid = nil;
+	selectState = kGState_None;
+	
+	[self startFindingPath];
+}
 
 
 #pragma mark - Game update loop

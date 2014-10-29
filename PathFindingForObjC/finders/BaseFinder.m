@@ -62,6 +62,8 @@
 	return [self.heuristic performAlgorithmWithX:dx andY:dy];
 }
 
-
+- (void)dealloc {
+	debugMethod();
+}
 
 @end

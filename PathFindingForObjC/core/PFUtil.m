@@ -12,10 +12,12 @@
 
 + (NSArray *)backtrace:(PFNode *)node {
 	NSMutableArray *path = [NSMutableArray array];
-	[path addObject:CGPointToNSValue(CGPointMake(node.x, node.y))];
+//	[path addObject:CGPointToNSValue(CGPointMake(node.x, node.y))];
+	[path addObject:node];
 	while (node.parent) {
 		node = node.parent;
-		[path addObject:CGPointToNSValue(CGPointMake(node.x, node.y))];
+//		[path addObject:CGPointToNSValue(CGPointMake(node.x, node.y))];
+		[path addObject:node];
 	}
 	
 	return [[path reverseObjectEnumerator] allObjects];

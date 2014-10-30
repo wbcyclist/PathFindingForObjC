@@ -9,16 +9,25 @@
 #import "GameScene.h"
 #import "PathFinding.h"
 #import "PFGridNode.h"
-
+#import "PFNode.h"
 
 @implementation GameScene {
 	BOOL isContentCreated;
 	BOOL isRunSearch;
+	int row, column;
+	
+	SKNode *pathLinesLayer;
+	
 	SKNode *gridLayer;
 	PFGridNode *selectGrid;
 	GridNodeState selectState;
 	
 	PathFinding *pathFinding;
+	NSArray *foundPaths;
+	NSMutableArray *traceArr;
+	NSUInteger currentTraceIndex;
+	BOOL isPlayTrace;
+	NSUInteger traceSpeed;
 }
 
 - (instancetype)initWithSize:(CGSize)size {
@@ -27,6 +36,7 @@
 	if (self) {
 		self.backgroundColor = [SKColor whiteColor];
 		self.gridSize =  CGSizeMake(64, 64);
+		traceSpeed = 2;//(the larger the slow)
 	}
 	return self;
 }
@@ -40,6 +50,10 @@
 		gridLayer = [SKNode node];
 		[self addChild:gridLayer];
 		
+		pathLinesLayer = [SKNode node];
+		pathLinesLayer.zPosition = 1;
+		[self addChild:pathLinesLayer];
+		
 		[self createGridNodes];
 		
 	}
@@ -51,8 +65,8 @@
 	}
 	[gridLayer removeAllChildren];
 	
-	int column = CGRectGetWidth(self.frame)/self.gridSize.width;
-	int row = CGRectGetHeight(self.frame)/self.gridSize.height;
+	column = CGRectGetWidth(self.frame)/self.gridSize.width;
+	row = CGRectGetHeight(self.frame)/self.gridSize.height;
 	for (int i=0; i<row; i++) {
 		for (int j=0; j<column; j++) {
 			PFGridNode *grid = [PFGridNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"grid"] size:self.gridSize];
@@ -61,7 +75,7 @@
 			grid.name = [NSString stringWithFormat:@"%d",i*column + j];
 			grid.x = j;
 			grid.y = i;
-			grid.showWeightValue = NO;
+			grid.showWeightValue = YES;
 			if (i==0 && j==0) {
 				[grid setupEditGridState:kGState_Start runAnimate:NO];
 			} else if (i==0 && j==1) {
@@ -91,8 +105,8 @@
 		pathFinding.allowDiagonal = YES;
 		pathFinding.dontCrossCorners = YES;
 	}
-	int column = CGRectGetWidth(self.frame)/self.gridSize.width;
-	int row = CGRectGetHeight(self.frame)/self.gridSize.height;
+	[self clearPath];
+	
 	CGSize mapSize = CGSizeMake(column*self.gridSize.width, row*self.gridSize.height);
 	pathFinding.mapSize = mapSize;
 	pathFinding.tileSize = self.gridSize;
@@ -108,7 +122,74 @@
 			pathFinding.endPoint = node.position;
 		}
 	}
-	NSArray *path = [pathFinding findPathing:PathfindingAlgorithm_AStar];
+	
+	isPlayTrace = NO;
+	[traceArr removeAllObjects];
+	traceArr = nil;
+	currentTraceIndex = 0;
+	NSMutableArray *traceArrHook = [NSMutableArray array];
+	
+	foundPaths = nil;
+	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_AStar IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+	
+	if ([traceArrHook count]>0) {
+		traceArr = traceArrHook;
+		isPlayTrace = YES;
+	}
+	
+}
+
+- (void)drawPathLines:(NSArray *)pathArr {
+	[pathLinesLayer removeAllActions];
+	[pathLinesLayer removeAllChildren];
+	if ([pathArr count]==0) {
+		return;
+	}
+	
+	CGMutablePathRef pathRef = CGPathCreateMutable();
+	PFNode *firstNode = [pathArr firstObject];
+	CGPathMoveToPoint(pathRef, NULL, firstNode.originPoint.x, firstNode.originPoint.y);
+	for (int i=1; i<pathArr.count; i++) {
+		PFNode *node = pathArr[i];
+		CGPathAddLineToPoint(pathRef, NULL, node.originPoint.x, node.originPoint.y);
+	}
+	SKShapeNode *shapeNode = [SKShapeNode shapeNodeWithPath:pathRef];
+	shapeNode.lineWidth = 5*self.gridSize.width/64.0;
+	shapeNode.strokeColor = [SKColor orangeColor];
+	CGPathRelease(pathRef);
+	[pathLinesLayer addChild:shapeNode];
+	
+//	[SKAction ]
+}
+
+
+- (void)updateGridNodeState:(PFGridNode*)gridNode usePFNode:(PFNode*)node {
+	if (gridNode && node) {
+		gridNode.fValue = node.f;
+		gridNode.gValue = node.g;
+		gridNode.hValue = node.h;
+		if (node.closed) {
+			gridNode.searchState = kGState_Close;
+		} else if (node.opened) {
+			gridNode.searchState = kGState_Open;
+		}
+	}
+}
+- (void)playTraceFinding:(NSObject*)traceObj {
+	if (!traceObj) {
+		return;
+	}
+	if ([traceObj isKindOfClass:[PFNode class]]) {
+		PFNode *node = (PFNode *)traceObj;
+		PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
+		[self updateGridNodeState:gridNode usePFNode:node];
+	} else if ([traceObj isKindOfClass:[NSArray class]]) {
+		NSArray *arr = (NSArray*)traceObj;
+		for (PFNode *node in arr) {
+			PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
+			[self updateGridNodeState:gridNode usePFNode:node];
+		}
+	}
 }
 
 
@@ -132,6 +213,11 @@
 		grid.gValue = 0;
 		grid.hValue = 0;
 	}
+}
+
+- (PFGridNode*)getGridNodeAtIndex:(int)index {
+	NSString *name = [NSString stringWithFormat:@"%d",index];
+	return (PFGridNode*)[gridLayer childNodeWithName:name];
 }
 
 
@@ -230,10 +316,20 @@
 
 
 #pragma mark - Game update loop
+static int timeCount = 0;
 -(void)update:(NSTimeInterval)currentTime {
-	
-	
-	
+	timeCount++;
+	if (timeCount==traceSpeed) {
+		timeCount = 0;
+		if (isPlayTrace) {
+			if (currentTraceIndex>=traceArr.count) {
+				isPlayTrace = NO;
+				[self drawPathLines:foundPaths];
+			} else {
+				[self playTraceFinding:traceArr[currentTraceIndex++]];
+			}
+		}
+	}
 }
 
 

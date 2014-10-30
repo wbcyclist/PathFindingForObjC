@@ -12,7 +12,8 @@
 @implementation AStarFinder
 
 
-- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid {
+- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid traceFinding:(NSMutableArray *__autoreleasing *)traceArrForTest {
+	
 	NSMutableArray *openList = [NSMutableArray array];
 	PFNode *node = nil, *neighbor = nil;
 	NSArray *neighbors = nil;
@@ -28,6 +29,8 @@
 	[openList addObject:startNode];
 	startNode.opened = YES;
 	
+	if (traceArrForTest) {[(*traceArrForTest) addObject:[startNode copy]];}
+	
 	// while the open list is not empty
 	while (openList.count>0) {
 		// pop the position of node which has the minimum `f` value.
@@ -36,10 +39,18 @@
 		[openList removeLastObject];
 		node.closed = YES;
 		
+		NSMutableArray *traceArr = nil;
+		if (traceArrForTest) {
+			[(*traceArrForTest) addObject:[node copy]];
+			traceArr = [NSMutableArray array];
+		}
+		
 		// if reached the end position, construct the path and return it
 		if (node == endNode) {
 			return [PFUtil backtrace:endNode];
 		}
+		
+		
 		
 		// get neigbours of the current node
 		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.dontCrossCorners];
@@ -70,8 +81,12 @@
 					[openList addObject:neighbor];
 					neighbor.opened = YES;
 				}
+				
+				if (traceArrForTest) { [traceArr addObject:[neighbor copy]]; }
 			}
 		} // end for each neighbor
+		
+		if (traceArrForTest && traceArr.count>0) { [(*traceArrForTest) addObject:traceArr]; }
 	} // end while not open list empty
 	
 	// fail to find the path

@@ -30,11 +30,9 @@
 	}
 }
 
-- (NSArray *)findPathInStartNode:(PFNode*)startNode toEndNode:(PFNode*)endNode withGrid:(PFGrid *)grid {
+- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid traceFinding:(NSMutableArray *__autoreleasing *)traceArrForTest {
 	return nil;
 }
-
-
 
 - (Heuristic *)createHeuristicWithType:(HeuristicType)type {
 	Heuristic *result = nil;

@@ -46,7 +46,7 @@
 		lab.fontSize = self.size.width*0.3;
 		lab.hidden = YES;
 		lab.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-		lab.position = CGPointMake(OFFSET, self.size.height-CGRectGetHeight(lab.frame)-OFFSET);
+		lab.position = CGPointMake(OFFSET-self.size.width/2.0, self.size.height-CGRectGetHeight(lab.frame)-OFFSET-self.size.height/2.0);
 		[self addChild:lab];
 		_fLab = lab;
 	}
@@ -61,7 +61,7 @@
 		lab.fontSize = self.size.width*0.3;
 		lab.hidden = YES;
 		lab.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-		lab.position = CGPointMake(OFFSET, CGRectGetHeight(lab.frame)+OFFSET);
+		lab.position = CGPointMake(OFFSET-self.size.width/2.0, CGRectGetHeight(lab.frame)+OFFSET-self.size.height/2.0);
 		[self addChild:lab];
 		_gLab = lab;
 	}
@@ -76,7 +76,7 @@
 		lab.fontSize = self.size.width*0.3;
 		lab.hidden = YES;
 		lab.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-		lab.position = CGPointMake(OFFSET, OFFSET);
+		lab.position = CGPointMake(OFFSET-self.size.width/2.0, OFFSET-self.size.height/2.0);
 		[self addChild:lab];
 		_hLab = lab;
 	}
@@ -126,16 +126,23 @@
 	SKColor *color;
 	if (state==kGState_Walkable) {
 		color = self.walkableColor;
+		
 	} else if (state==kGState_Start) {
 		color = self.startColor;
+		
 	} else if (state==kGState_End) {
 		color = self.endColor;
+		
 	} else if (state==kGState_Block) {
+		showWeightValue = NO;
 		color = self.blockColor;
+		
 	} else if (state==kGState_Open) {
 		color = self.openColor;
+		
 	} else if (state==kGState_Close) {
 		color = self.closeColor;
+		
 	} else {
 		color = self.walkableColor;
 	}

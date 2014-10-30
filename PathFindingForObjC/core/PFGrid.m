@@ -79,9 +79,8 @@
 - (void)printFoundPath:(NSArray *)path {
 	NSUInteger l = path.count;
 	for (int i=0; i<l; i++) {
-		NSValue *obj = path[i];
-		CGPoint point = NSValueToCGPoint(obj);
-		int x=point.x, y=point.y;
+		PFNode *obj = path[i];
+		int x=obj.x, y=obj.y;
 		if (i==0) {
 			// start
 			_matrix[y][x] = 2;

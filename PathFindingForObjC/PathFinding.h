@@ -41,7 +41,9 @@ typedef enum {
 - (void)addBlockTilePositions:(NSArray*)points;
 - (void)clearBlockTiles;
 
-- (NSArray *)findPathing:(PathfindingAlgorithm)alg;
+/// @return An PFNode Array.
+- (NSArray *)findPathing:(PathfindingAlgorithm)alg IsConvertToOriginCoords:(BOOL)isConvert;
+- (NSArray *)findPathing:(PathfindingAlgorithm)alg IsConvertToOriginCoords:(BOOL)isConvert traceFinding:(NSMutableArray**)traceArrForTest;
 
 
 @end

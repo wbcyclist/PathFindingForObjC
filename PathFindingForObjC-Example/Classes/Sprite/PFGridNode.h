@@ -9,7 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 typedef enum {
-	kGState_None,
+	kGState_None = 0,
 	kGState_Walkable,
 	kGState_Start,
 	kGState_End,

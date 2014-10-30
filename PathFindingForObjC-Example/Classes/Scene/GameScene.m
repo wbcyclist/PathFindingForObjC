@@ -106,6 +106,8 @@
 		pathFinding.dontCrossCorners = YES;
 	}
 	[self clearPath];
+	[pathLinesLayer removeAllActions];
+	[pathLinesLayer removeAllChildren];
 	
 	CGSize mapSize = CGSizeMake(column*self.gridSize.width, row*self.gridSize.height);
 	pathFinding.mapSize = mapSize;

@@ -7,8 +7,20 @@
 
 #import "PathFinding.h"
 #import "PFGrid.h"
-#import "AStarFinder.h"
 #import "PFUtil.h"
+
+#import "AStarFinder.h"
+#import "BestFirstFinder.h"
+#import "DijkstraFinder.h"
+#import "BreadthFirstFinder.h"
+#import "JumpPointFinder.h"
+
+#import "BiAStarFinder.h"
+#import "BiBestFirstFinder.h"
+#import "BiDijkstraFinder.h"
+#import "BiBreadthFirstFinder.h"
+
+
 
 
 #define ConvertToMatrixPoint(p, t, o) do{ p.x = (int)((p.x+o.x)/t.width); p.y = (int)((p.y+o.y)/t.height);}while(0)
@@ -146,24 +158,44 @@
 		case PathfindingAlgorithm_AStar:
 			result = [[AStarFinder alloc] init];
 			break;
+		case PathfindingAlgorithm_BestFirstSearch:
+			result = [[BestFirstFinder alloc] init];
+			break;
+		case PathfindingAlgorithm_Dijkstra:
+			result = [[DijkstraFinder alloc] init];
+			break;
+		case PathfindingAlgorithm_BreadthFirstSearch:
+			result = [[BreadthFirstFinder alloc] init];
+			break;
+		case PathfindingAlgorithm_JumpPointSearch:
+			result = [[JumpPointFinder alloc] init];
+			break;
+			
+			
+		case PathfindingAlgorithm_BiAStar:
+			result = [[BiAStarFinder alloc] init];
+			break;
+		case PathfindingAlgorithm_BiBestFirst:
+			result = [[BiBestFirstFinder alloc] init];
+			break;
+		case PathfindingAlgorithm_BiDijkstra:
+			result = [[BiDijkstraFinder alloc] init];
+			break;
+		case PathfindingAlgorithm_BiBreadthFirst:
+			result = [[BiBreadthFirstFinder alloc] init];
+			break;
+			
+			
+			
+			
 		case PathfindingAlgorithm_IDAStar:
 			result = [[AStarFinder alloc] init];
 			break;
-		case PathfindingAlgorithm_BreadthFirstSearch:
-			result = [[AStarFinder alloc] init];
-			break;
+		
 		case PathfindingAlgorithm_DepthFirstSearch:
 			result = [[AStarFinder alloc] init];
 			break;
-		case PathfindingAlgorithm_BestFirstSearch:
-			result = [[AStarFinder alloc] init];
-			break;
-		case PathfindingAlgorithm_Dijkstra:
-			result = [[AStarFinder alloc] init];
-			break;
-		case PathfindingAlgorithm_JumpPointSearch:
-			result = [[AStarFinder alloc] init];
-			break;
+		
 		case PathfindingAlgorithm_OrthogonalJumpPointSearch:
 			result = [[AStarFinder alloc] init];
 			break;

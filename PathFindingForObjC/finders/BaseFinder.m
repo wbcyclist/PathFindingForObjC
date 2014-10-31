@@ -23,6 +23,14 @@
 	return self;
 }
 
+- (void)setWeight:(int)weight {
+	if (weight==0) {
+		_weight = 1;
+	} else {
+		_weight = weight;
+	}
+}
+
 - (void)setHeuristicType:(HeuristicType)heuristicType {
 	if (heuristicType != _heuristicType) {
 		_heuristicType = heuristicType;

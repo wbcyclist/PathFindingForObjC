@@ -24,4 +24,6 @@
 
 - (float)calculateHeuristicValueWithX:(float)dx andY:(float)dy;
 
+- (Heuristic *)createHeuristicWithType:(HeuristicType)type;
+
 @end

@@ -35,8 +35,8 @@
 	self = [super initWithSize:size];
 	if (self) {
 		self.backgroundColor = [SKColor whiteColor];
-		self.gridSize =  CGSizeMake(64, 64);
-		traceSpeed = 2;//(the larger the slow)
+		self.gridSize =  CGSizeMake(32, 32);
+		traceSpeed = 1;//(the larger the slow)
 	}
 	return self;
 }
@@ -75,7 +75,7 @@
 			grid.name = [NSString stringWithFormat:@"%d",i*column + j];
 			grid.x = j;
 			grid.y = i;
-			grid.showWeightValue = YES;
+			grid.showWeightValue = NO;
 			if (i==0 && j==0) {
 				[grid setupEditGridState:kGState_Start runAnimate:NO];
 			} else if (i==0 && j==1) {
@@ -102,8 +102,9 @@
 												  tileSize:CGSizeMake(1, 1)
 											   coordsOrgin:CGPointMake(0, 0)];
 		pathFinding.heuristicType = HeuristicTypeManhattan;
-		pathFinding.allowDiagonal = YES;
+		pathFinding.allowDiagonal = NO;
 		pathFinding.dontCrossCorners = YES;
+		pathFinding.weight = 1;
 	}
 	[self clearPath];
 	[pathLinesLayer removeAllActions];
@@ -132,68 +133,25 @@
 	NSMutableArray *traceArrHook = [NSMutableArray array];
 	
 	foundPaths = nil;
-	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_AStar IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BestFirstSearch IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_AStar IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiAStar IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBestFirst IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_Dijkstra IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiDijkstra IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BreadthFirstSearch IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBreadthFirst IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
+	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_JumpPointSearch IsConvertToOriginCoords:YES traceFinding:nil];
+
 	
 	if ([traceArrHook count]>0) {
 		traceArr = traceArrHook;
 		isPlayTrace = YES;
+	} else {
+		[self drawPathLines:foundPaths];
 	}
 	
 }
-
-- (void)drawPathLines:(NSArray *)pathArr {
-	[pathLinesLayer removeAllActions];
-	[pathLinesLayer removeAllChildren];
-	if ([pathArr count]==0) {
-		return;
-	}
-	
-	CGMutablePathRef pathRef = CGPathCreateMutable();
-	PFNode *firstNode = [pathArr firstObject];
-	CGPathMoveToPoint(pathRef, NULL, firstNode.originPoint.x, firstNode.originPoint.y);
-	for (int i=1; i<pathArr.count; i++) {
-		PFNode *node = pathArr[i];
-		CGPathAddLineToPoint(pathRef, NULL, node.originPoint.x, node.originPoint.y);
-	}
-	SKShapeNode *shapeNode = [SKShapeNode shapeNodeWithPath:pathRef];
-	shapeNode.lineWidth = 5*self.gridSize.width/64.0;
-	shapeNode.strokeColor = [SKColor orangeColor];
-	CGPathRelease(pathRef);
-	[pathLinesLayer addChild:shapeNode];
-	
-//	[SKAction ]
-}
-
-
-- (void)updateGridNodeState:(PFGridNode*)gridNode usePFNode:(PFNode*)node {
-	if (gridNode && node) {
-		gridNode.fValue = node.f;
-		gridNode.gValue = node.g;
-		gridNode.hValue = node.h;
-		if (node.closed) {
-			gridNode.searchState = kGState_Close;
-		} else if (node.opened) {
-			gridNode.searchState = kGState_Open;
-		}
-	}
-}
-- (void)playTraceFinding:(NSObject*)traceObj {
-	if (!traceObj) {
-		return;
-	}
-	if ([traceObj isKindOfClass:[PFNode class]]) {
-		PFNode *node = (PFNode *)traceObj;
-		PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
-		[self updateGridNodeState:gridNode usePFNode:node];
-	} else if ([traceObj isKindOfClass:[NSArray class]]) {
-		NSArray *arr = (NSArray*)traceObj;
-		for (PFNode *node in arr) {
-			PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
-			[self updateGridNodeState:gridNode usePFNode:node];
-		}
-	}
-}
-
 
 - (void)clearGrid {
 	for (PFGridNode *grid in gridLayer.children) {
@@ -334,13 +292,58 @@ static int timeCount = 0;
 	}
 }
 
+- (void)drawPathLines:(NSArray *)pathArr {
+	[pathLinesLayer removeAllActions];
+	[pathLinesLayer removeAllChildren];
+	if ([pathArr count]==0) {
+		return;
+	}
+	
+	CGMutablePathRef pathRef = CGPathCreateMutable();
+	PFNode *firstNode = [pathArr firstObject];
+	CGPathMoveToPoint(pathRef, NULL, firstNode.originPoint.x, firstNode.originPoint.y);
+	for (int i=1; i<pathArr.count; i++) {
+		PFNode *node = pathArr[i];
+		CGPathAddLineToPoint(pathRef, NULL, node.originPoint.x, node.originPoint.y);
+	}
+	SKShapeNode *shapeNode = [SKShapeNode shapeNodeWithPath:pathRef];
+	shapeNode.lineWidth = 5*self.gridSize.width/64.0;
+	shapeNode.strokeColor = [SKColor orangeColor];
+	CGPathRelease(pathRef);
+	[pathLinesLayer addChild:shapeNode];
+	
+	//	[SKAction ]
+}
 
+- (void)playTraceFinding:(NSObject*)traceObj {
+	if (!traceObj) {
+		return;
+	}
+	if ([traceObj isKindOfClass:[PFNode class]]) {
+		PFNode *node = (PFNode *)traceObj;
+		PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
+		[self updateGridNodeState:gridNode usePFNode:node];
+	} else if ([traceObj isKindOfClass:[NSArray class]]) {
+		NSArray *arr = (NSArray*)traceObj;
+		for (PFNode *node in arr) {
+			PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
+			[self updateGridNodeState:gridNode usePFNode:node];
+		}
+	}
+}
 
-
-
-
-
-
+- (void)updateGridNodeState:(PFGridNode*)gridNode usePFNode:(PFNode*)node {
+	if (gridNode && node) {
+		gridNode.fValue = node.f;
+		gridNode.gValue = node.g;
+		gridNode.hValue = node.h;
+		if (node.closed) {
+			gridNode.searchState = kGState_Close;
+		} else if (node.opened!=0) {
+			gridNode.searchState = kGState_Open;
+		}
+	}
+}
 
 
 @end

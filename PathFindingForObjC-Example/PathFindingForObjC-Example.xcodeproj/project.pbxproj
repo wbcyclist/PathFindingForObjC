@@ -85,6 +85,42 @@
 		A5531A0419FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
 		A5531A0519FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
 		A5531A0619FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
+		A59635791A03697300B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
+		A596357A1A03697300B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
+		A596357B1A03698400B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
+		A596357C1A03698400B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
+		A596357F1A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */; };
+		A59635801A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */; };
+		A59635811A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */; };
+		A59635821A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */; };
+		A59635851A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */; };
+		A59635861A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */; };
+		A59635871A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */; };
+		A59635881A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */; };
+		A596358B1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */; };
+		A596358C1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */; };
+		A596358D1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */; };
+		A596358E1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */; };
+		A59635911A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */; };
+		A59635921A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */; };
+		A59635931A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */; };
+		A59635941A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */; };
+		A59635971A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */; };
+		A59635981A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */; };
+		A59635991A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */; };
+		A596359A1A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */; };
+		A596359D1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */; };
+		A596359E1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */; };
+		A596359F1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */; };
+		A59635A01A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */; };
+		A59635A31A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
+		A59635A41A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
+		A59635A51A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
+		A59635A61A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
+		A59635A91A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
+		A59635AA1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
+		A59635AB1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
+		A59635AC1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +200,24 @@
 		A55319F419FFFFB800503E11 /* SKNode+WBKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+WBKit.m"; sourceTree = "<group>"; };
 		A55319F519FFFFB800503E11 /* WBSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSpriteButton.h; sourceTree = "<group>"; };
 		A55319F619FFFFB800503E11 /* WBSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSpriteButton.m; sourceTree = "<group>"; };
+		A59635771A03697300B6D6B5 /* BestFirstFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BestFirstFinder.h; sourceTree = "<group>"; };
+		A59635781A03697300B6D6B5 /* BestFirstFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BestFirstFinder.m; sourceTree = "<group>"; };
+		A596357D1A0379AC00B6D6B5 /* BiAStarFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiAStarFinder.h; sourceTree = "<group>"; };
+		A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiAStarFinder.m; sourceTree = "<group>"; };
+		A59635831A03AB8C00B6D6B5 /* BiBestFirstFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiBestFirstFinder.h; sourceTree = "<group>"; };
+		A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiBestFirstFinder.m; sourceTree = "<group>"; };
+		A59635891A03AE5200B6D6B5 /* DijkstraFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DijkstraFinder.h; sourceTree = "<group>"; };
+		A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DijkstraFinder.m; sourceTree = "<group>"; };
+		A596358F1A03B01400B6D6B5 /* BiDijkstraFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiDijkstraFinder.h; sourceTree = "<group>"; };
+		A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiDijkstraFinder.m; sourceTree = "<group>"; };
+		A59635951A03B26500B6D6B5 /* BreadthFirstFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BreadthFirstFinder.h; sourceTree = "<group>"; };
+		A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BreadthFirstFinder.m; sourceTree = "<group>"; };
+		A596359B1A03E0B900B6D6B5 /* BiBreadthFirstFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiBreadthFirstFinder.h; sourceTree = "<group>"; };
+		A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiBreadthFirstFinder.m; sourceTree = "<group>"; };
+		A59635A11A03E6B100B6D6B5 /* IDAStarFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDAStarFinder.h; sourceTree = "<group>"; };
+		A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDAStarFinder.m; sourceTree = "<group>"; };
+		A59635A71A03EE9500B6D6B5 /* JumpPointFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpPointFinder.h; sourceTree = "<group>"; };
+		A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpPointFinder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -424,6 +478,24 @@
 				A53547ED19FFEEBB005C629B /* BaseFinder.m */,
 				A53547EA19FFEEBB005C629B /* AStarFinder.h */,
 				A53547EB19FFEEBB005C629B /* AStarFinder.m */,
+				A59635771A03697300B6D6B5 /* BestFirstFinder.h */,
+				A59635781A03697300B6D6B5 /* BestFirstFinder.m */,
+				A59635891A03AE5200B6D6B5 /* DijkstraFinder.h */,
+				A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */,
+				A59635951A03B26500B6D6B5 /* BreadthFirstFinder.h */,
+				A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */,
+				A59635A11A03E6B100B6D6B5 /* IDAStarFinder.h */,
+				A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */,
+				A59635A71A03EE9500B6D6B5 /* JumpPointFinder.h */,
+				A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */,
+				A596357D1A0379AC00B6D6B5 /* BiAStarFinder.h */,
+				A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */,
+				A59635831A03AB8C00B6D6B5 /* BiBestFirstFinder.h */,
+				A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */,
+				A596358F1A03B01400B6D6B5 /* BiDijkstraFinder.h */,
+				A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */,
+				A596359B1A03E0B900B6D6B5 /* BiBreadthFirstFinder.h */,
+				A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */,
 			);
 			path = finders;
 			sourceTree = "<group>";
@@ -618,9 +690,14 @@
 				A535480019FFEEBB005C629B /* AStarFinder.m in Sources */,
 				A53547F419FFEEBB005C629B /* PFGrid.m in Sources */,
 				A53546CE19FFCC67005C629B /* GameViewController.m in Sources */,
+				A59635A31A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */,
 				A546765D1A00371500C62349 /* PFGridNode.m in Sources */,
 				A55319F719FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
+				A59635A91A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
 				A55319EA19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
+				A596359D1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
+				A59635791A03697300B6D6B5 /* BestFirstFinder.m in Sources */,
+				A596358B1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */,
 				A535480419FFEEBB005C629B /* BaseFinder.m in Sources */,
 				A55319E619FFFCAE00503E11 /* GameScene.m in Sources */,
 				A5531A0319FFFFB800503E11 /* WBSpriteButton.m in Sources */,
@@ -629,8 +706,12 @@
 				A55319FB19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
 				A53547F019FFEEBB005C629B /* Heuristic.m in Sources */,
 				A53546C919FFCC67005C629B /* AppDelegate.m in Sources */,
+				A59635851A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,
+				A59635971A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
 				A55319FF19FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
 				A535480819FFEEBB005C629B /* PathFinding.m in Sources */,
+				A596357F1A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */,
+				A59635911A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */,
 				A53547FC19FFEEBB005C629B /* PFUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,16 +720,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59635811A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */,
 				A55319FD19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
+				A596358D1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */,
 				A55319EC19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
 				A535480619FFEEBB005C629B /* BaseFinder.m in Sources */,
 				A5531A0519FFFFB800503E11 /* WBSpriteButton.m in Sources */,
+				A596357B1A03698400B6D6B5 /* BestFirstFinder.m in Sources */,
 				A53547FE19FFEEBB005C629B /* PFUtil.m in Sources */,
+				A59635A51A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */,
+				A59635931A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */,
+				A59635871A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,
+				A596359F1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
 				A53547F219FFEEBB005C629B /* Heuristic.m in Sources */,
 				A53547F619FFEEBB005C629B /* PFGrid.m in Sources */,
+				A59635AB1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
 				A55319CD19FFF6F700503E11 /* PathFinding.m in Sources */,
 				A55319F919FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
 				A535480219FFEEBB005C629B /* AStarFinder.m in Sources */,
+				A59635991A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
 				A5531A0119FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
 				A53546D619FFCD68005C629B /* PathFinding_iOSTests.m in Sources */,
 				A53547FA19FFEEBB005C629B /* PFNode.m in Sources */,
@@ -659,7 +749,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59635801A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */,
+				A596357A1A03697300B6D6B5 /* BestFirstFinder.m in Sources */,
+				A59635A41A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */,
 				A5531A0419FFFFB800503E11 /* WBSpriteButton.m in Sources */,
+				A59635981A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
+				A59635861A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,
 				A53546E319FFD4F0005C629B /* main.m in Sources */,
 				A53547F919FFEEBB005C629B /* PFNode.m in Sources */,
 				A53547F519FFEEBB005C629B /* PFGrid.m in Sources */,
@@ -670,11 +765,15 @@
 				A53547F119FFEEBB005C629B /* Heuristic.m in Sources */,
 				A546765E1A00371500C62349 /* PFGridNode.m in Sources */,
 				A55319FC19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
+				A59635AA1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
+				A59635921A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */,
 				A55319EB19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
+				A596358C1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */,
 				A53547FD19FFEEBB005C629B /* PFUtil.m in Sources */,
 				A535480519FFEEBB005C629B /* BaseFinder.m in Sources */,
 				A53546E119FFD4F0005C629B /* AppDelegate.m in Sources */,
 				A5531A0019FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
+				A596359E1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,16 +781,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59635821A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */,
 				A55319FE19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
+				A596358E1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */,
 				A55319ED19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
 				A535480719FFEEBB005C629B /* BaseFinder.m in Sources */,
 				A5531A0619FFFFB800503E11 /* WBSpriteButton.m in Sources */,
+				A596357C1A03698400B6D6B5 /* BestFirstFinder.m in Sources */,
 				A53547FF19FFEEBB005C629B /* PFUtil.m in Sources */,
+				A59635A61A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */,
+				A59635941A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */,
+				A59635881A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,
+				A59635A01A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
 				A53547F319FFEEBB005C629B /* Heuristic.m in Sources */,
 				A53547F719FFEEBB005C629B /* PFGrid.m in Sources */,
+				A59635AC1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
 				A55319CE19FFF6F800503E11 /* PathFinding.m in Sources */,
 				A55319FA19FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
 				A535480319FFEEBB005C629B /* AStarFinder.m in Sources */,
+				A596359A1A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
 				A5531A0219FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
 				A53546F919FFD4F0005C629B /* PathFinding_MacTests.m in Sources */,
 				A53547FB19FFEEBB005C629B /* PFNode.m in Sources */,

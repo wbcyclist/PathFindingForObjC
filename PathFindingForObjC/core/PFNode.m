@@ -15,8 +15,18 @@
 		self.f = 0;
 		self.g = 0;
 		self.h = 0;
-		self.opened = NO;
+		self.walkable = YES;
+		self.opened = 0;
 		self.closed = NO;
+	}
+	return self;
+}
+
+- (instancetype)initWithX:(int)x andY:(int)y {
+	self = [self init];
+	if (self) {
+		self.x = x;
+		self.y = y;
 	}
 	return self;
 }
@@ -51,7 +61,7 @@
 //}
 
 - (NSString *)description {
-	NSString *score = [NSString stringWithFormat:@"F:%.1f G:%.1f H:%.1f Opened:%@ Closed:%@", self.f, self.g, self.h, self.opened?@"YES":@"NO", self.closed?@"YES":@"NO"];
+	NSString *score = [NSString stringWithFormat:@"F:%.1f G:%.1f H:%.1f Opened:%d Closed:%@", self.f, self.g, self.h, self.opened, self.closed?@"YES":@"NO"];
 	return [NSString stringWithFormat:@"{%d, %d} %@", self.x, self.y, score];
 }
 

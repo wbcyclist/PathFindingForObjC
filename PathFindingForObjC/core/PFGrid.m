@@ -133,6 +133,10 @@
 
 
 - (PFNode *)getNodeAtX:(int)x andY:(int)y {
+	if (x<0 || x>self.column-1
+		|| y<0 || y>self.row-1) {
+		return nil;
+	}
 	return self.nodes[y][x];
 }
 

@@ -13,9 +13,6 @@
 #endif
 
 
-
-
-
 /**
  * A node in grid.
  * This class holds some basic information about a node and custom
@@ -36,13 +33,27 @@
 @property (nonatomic) int y;
 /// Whether this node can be walked through.
 @property (nonatomic) BOOL walkable;
-@property (nonatomic) BOOL opened;
+/**
+ * @param 0 is out of the OpenList
+ * @param 1 is in the startOpenList
+ * @param 2 is in the endOpenList
+ */
+@property (nonatomic) int opened;
 @property (nonatomic) BOOL closed;
+
 /// Point In Origin Coords
 @property (nonatomic) CGPoint originPoint;
 
 @property (nonatomic, weak) PFNode *parent;
 
--(NSComparisonResult)descFWeightSort:(PFNode *)anObject;
+- (instancetype)initWithX:(int)x andY:(int)y;
+- (NSComparisonResult)descFWeightSort:(PFNode *)anObject;
+
+
+
+
+
+
+
 
 @end

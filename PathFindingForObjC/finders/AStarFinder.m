@@ -27,8 +27,9 @@
 	
 	// push the start node into the open list
 	[openList addObject:startNode];
-	startNode.opened = YES;
+	startNode.opened = 1;
 	
+	// trace
 	if (traceArrForTest) {[(*traceArrForTest) addObject:[startNode copy]];}
 	
 	// while the open list is not empty
@@ -39,6 +40,7 @@
 		[openList removeLastObject];
 		node.closed = YES;
 		
+		// trace
 		NSMutableArray *traceArr = nil;
 		if (traceArrForTest) {
 			[(*traceArrForTest) addObject:[node copy]];
@@ -49,8 +51,6 @@
 		if (node == endNode) {
 			return [PFUtil backtrace:endNode];
 		}
-		
-		
 		
 		// get neigbours of the current node
 		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.dontCrossCorners];
@@ -71,21 +71,23 @@
 			
 			// check if the neighbor has not been inspected yet, or
 			// can be reached with smaller cost from the current node
-			if (!neighbor.opened || ng < neighbor.g) {
+			if (neighbor.opened==0 || ng < neighbor.g) {
 				neighbor.g = ng;
 				neighbor.h = neighbor.h==0 ? self.weight * [self calculateHeuristicValueWithX:abs(x - endX) andY:abs(y - endY)] : neighbor.h;
 				neighbor.f = neighbor.g + neighbor.h;
 				neighbor.parent = node;
 				
-				if (!neighbor.opened) {
+				if (neighbor.opened==0) {
 					[openList addObject:neighbor];
-					neighbor.opened = YES;
+					neighbor.opened = 1;
 				}
 				
+				// trace
 				if (traceArrForTest) { [traceArr addObject:[neighbor copy]]; }
 			}
 		} // end for each neighbor
 		
+		// trace
 		if (traceArrForTest && traceArr.count>0) { [(*traceArrForTest) addObject:traceArr]; }
 	} // end while not open list empty
 	

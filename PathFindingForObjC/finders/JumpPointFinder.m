@@ -1,0 +1,301 @@
+//
+//  JumpPointFinder.m
+//  PathFindingForObjC-Example
+//
+//  Created by JasioWoo on 14/11/1.
+//  Copyright (c) 2014年 JasioWoo. All rights reserved.
+//
+
+#import "JumpPointFinder.h"
+#import "PFUtil.h"
+#import "PFGrid.h"
+
+
+@implementation JumpPointFinder
+
+
+- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid traceFinding:(NSMutableArray *__autoreleasing *)traceArrForTest {
+	
+	NSMutableArray *openList = [NSMutableArray array];
+	PFNode *node = nil;
+	
+	// set the `g` and `f` value of the start node to be 0
+	startNode.g = 0;
+	startNode.f = 0;
+	
+	// push the start node into the open list
+	[openList addObject:startNode];
+	startNode.opened = 1;
+	
+	// while the open list is not empty
+	while (openList.count>0) {
+		// pop the position of node which has the minimum `f` value.
+		[openList sortUsingSelector:@selector(descFWeightSort:)];
+		node = [openList lastObject];
+		[openList removeLastObject];
+		node.closed = YES;
+		
+		if (node == endNode) {
+			return [PFUtil expandPath:[PFUtil backtrace:endNode]];
+		}
+		[self identifySuccessors:node withEndNode:endNode andGrid:grid andOpenList:openList];
+	}
+	
+	// fail to find the path
+	return nil;
+}
+
+
+/**
+ * Identify successors for the given node. Runs a jump point search in the
+ * direction of each available neighbor, adding any points found to the open
+ * list.
+ * @protected
+ */
+- (void)identifySuccessors:(PFNode*)node withEndNode:(PFNode*)endNode andGrid:(PFGrid *)grid andOpenList:(NSMutableArray *)openList {
+	
+	int x=node.x, y=node.y, endX=endNode.x, endY=endNode.y, jx, jy;
+	float ng = 0;
+	
+	Heuristic *octileHeur = [self createHeuristicWithType:HeuristicTypeOctile];
+	
+	NSArray *neighbors = [self findNeighbors:node withGrid:grid];
+	PFNode *neighbor = nil;
+	PFNode *jumpNode = nil;
+	for(int i = 0; i < neighbors.count; i++) {
+		neighbor = neighbors[i];
+		jumpNode = [self jump:neighbor withNode:node withEndNode:endNode withGrid:grid];
+		
+		if (jumpNode) {
+			jx = jumpNode.x;
+			jy = jumpNode.y;
+			
+			if (jumpNode.closed) {
+				continue;
+			}
+			
+			// include distance, as parent may not be immediately adjacent:
+			int d = [octileHeur performAlgorithmWithX:abs(jx - x) andY:abs(jy - y)];
+			ng = node.g + d; // next `g` value
+			
+			if (jumpNode.opened==0 || ng < jumpNode.g) {
+				jumpNode.g = ng;
+				jumpNode.h = jumpNode.h==0 ? [self calculateHeuristicValueWithX:abs(jx - endX) andY:abs(jy - endY)] : jumpNode.h;
+				jumpNode.f = jumpNode.g + jumpNode.h;
+				jumpNode.parent = node;
+				
+				if (jumpNode.opened==0) {
+					[openList addObject:jumpNode];
+					jumpNode.opened = 1;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+/**
+ * Search recursively in the direction (parent -> child), stopping only when a
+ * jump point is found.
+ * @protected
+ * @return {Array.<[number, number]>} The x, y coordinate of the jump point
+ *     found, or null if not found
+ */
+- (PFNode *)jump:(PFNode*)nodeA withNode:(PFNode*)nodeB withEndNode:(PFNode*)endNode withGrid:(PFGrid *)grid {
+	
+	
+	int dx = nodeA.x - nodeB.x;
+	int dy = nodeA.y - nodeB.y;
+	if (!nodeA.walkable) {
+		return nil;
+	}
+	
+//	if(this.trackJumpRecursion === true) {
+//		grid.getNodeAt(x, y).tested = true;
+//	}
+	
+	if (nodeA == endNode) {
+		return nodeA;
+	}
+	
+	// check for forced neighbors
+	// along the diagonal
+	if (dx != 0 && dy != 0) {
+		PFNode *t1Node = [grid getNodeAtX:(nodeA.x - dx) andY:(nodeA.y + dy)];
+		PFNode *t2Node = [grid getNodeAtX:(nodeA.x - dx) andY:(nodeA.y)];
+		PFNode *t3Node = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y - dy)];
+		PFNode *t4Node = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y - dy)];
+		
+		if ((t1Node.walkable && !t2Node.walkable)
+			|| (t3Node.walkable && !t4Node.walkable)) {
+			return nodeA;
+		}
+	}
+	// horizontally/vertically
+	else {
+		if( dx != 0 ) { // moving along x
+			PFNode *t1Node = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y + 1)];
+			PFNode *t2Node = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y + 1)];
+			PFNode *t3Node = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y - 1)];
+			PFNode *t4Node = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y - 1)];
+			
+			if((t1Node.walkable && !t2Node.walkable)
+			   || (t3Node.walkable && !t4Node.walkable)) {
+				return nodeA;
+			}
+		}
+		else {
+			PFNode *t1Node = [grid getNodeAtX:(nodeA.x + 1) andY:(nodeA.y + dy)];
+			PFNode *t2Node = [grid getNodeAtX:(nodeA.x + 1) andY:(nodeA.y)];
+			PFNode *t3Node = [grid getNodeAtX:(nodeA.x - 1) andY:(nodeA.y + dy)];
+			PFNode *t4Node = [grid getNodeAtX:(nodeA.x - 1) andY:(nodeA.y)];
+			
+			if((t1Node.walkable && !t2Node.walkable)
+			   || (t3Node.walkable && !t4Node.walkable)) {
+				return nodeA;
+			}
+		}
+	}
+	
+	// when moving diagonally, must check for vertical/horizontal jump points
+	if (dx != 0 && dy != 0) {
+		PFNode *reNodeA1 = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y)];
+		PFNode *reNodeA2 = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y + dy)];
+		
+		
+		if ([self jump:reNodeA1 withNode:nodeA withEndNode:endNode withGrid:grid]
+			|| [self jump:reNodeA2 withNode:nodeA withEndNode:endNode withGrid:grid]) {
+			return nodeA;
+		}
+	}
+	
+	// moving diagonally, must make sure one of the vertical/horizontal
+	// neighbors is open to allow the path
+	
+	PFNode *t1Node = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y)];
+	PFNode *t2Node = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y + dy)];
+	if (t1Node.walkable || t2Node.walkable) {
+		PFNode *reNodeA = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y + dy)];
+		return [self jump:reNodeA withNode:nodeA withEndNode:endNode withGrid:grid];
+	} else {
+		return nil;
+	}
+}
+
+
+/**
+ * Find the neighbors for the given node. If the node has a parent,
+ * prune the neighbors based on the jump point search algorithm, otherwise
+ * return all available neighbors.
+ * @return {Array.<[number, number]>} The neighbors found.
+ */
+- (NSArray *)findNeighbors:(PFNode *)node withGrid:(PFGrid *)grid {
+	
+	PFNode *parent = node.parent;
+	NSMutableArray *neighbors = [NSMutableArray array];
+	int x=node.x, y=node.y, dx, dy;
+	
+//	neighbors = [], neighborNodes, neighborNode, i, l;
+	
+	// directed pruning: can ignore most neighbors, unless forced.
+	if (parent) {
+		// get the normalized direction of travel
+		dx = (x - parent.x) / MAX(abs(x - parent.x), 1);
+		dy = (y - parent.y) / MAX(abs(y - parent.y), 1);
+		
+		// search diagonally
+		if (dx != 0 && dy != 0) {
+			PFNode *cNode = nil;
+			
+			PFNode *c1Node = [grid getNodeAtX:x andY:(y + dy)];
+			PFNode *c2Node = [grid getNodeAtX:(x + dx) andY:y];
+			PFNode *c4Node = [grid getNodeAtX:(x - dx) andY:y];
+			PFNode *c5Node = [grid getNodeAtX:x andY:(y - dy)];
+			
+			if (c1Node.walkable) {
+				[neighbors addObject:c1Node];
+			}
+			if (c2Node.walkable) {
+				[neighbors addObject:c2Node];
+			}
+			if (c1Node.walkable || c2Node.walkable) {
+				cNode = [grid getNodeAtX:(x + dx) andY:(y + dy)];
+				[neighbors addObject:cNode];
+			}
+			if (!c4Node.walkable && c1Node.walkable) {
+				cNode = [grid getNodeAtX:(x - dx) andY:(y + dy)];
+				[neighbors addObject:cNode];
+			}
+			if (!c5Node.walkable && c2Node.walkable) {
+				cNode = [grid getNodeAtX:(x + dx) andY:(y - dy)];
+				[neighbors addObject:cNode];
+			}
+		}
+		// search horizontally/vertically
+		else {
+			if(dx == 0) {
+				PFNode *cNode = [grid getNodeAtX:x andY:(y + dy)];
+				if (cNode.walkable) {
+					[neighbors addObject:cNode];
+					
+					cNode = [grid getNodeAtX:(x + 1) andY:y];
+					if (!cNode.walkable) {
+						cNode = [grid getNodeAtX:(x + 1) andY:(y + dy)];
+						[neighbors addObject:cNode];
+					}
+					
+					cNode = [grid getNodeAtX:(x - 1) andY:y];
+					if (!cNode.walkable) {
+						cNode = [grid getNodeAtX:(x - 1) andY:(y + dy)];
+						[neighbors addObject:cNode];
+					}
+				}
+			}
+			else {
+				PFNode *cNode = [grid getNodeAtX:(x + dx) andY:y];
+				if (cNode.walkable) {
+					[neighbors addObject:cNode];
+					
+					cNode = [grid getNodeAtX:(x) andY:(y + 1)];
+					if (!cNode.walkable) {
+						cNode = [grid getNodeAtX:(x + dx) andY:(y + 1)];
+						[neighbors addObject:cNode];
+					}
+					
+					cNode = [grid getNodeAtX:(x) andY:(y - 1)];
+					if (!cNode.walkable) {
+						cNode = [grid getNodeAtX:(x + dx) andY:(y - 1)];
+						[neighbors addObject:cNode];
+					}
+				}
+			}
+		}
+	}
+	// return all neighbors
+	else {
+		
+		NSArray *neighborNodes = [grid getNeighborsWith:node isAllowDiagonal:YES isCrossCorners:NO];
+		PFNode *neighborNode=nil;
+		for (int i=0; i<neighborNodes.count; i++) {
+			neighborNode = neighborNodes[i];
+			[neighbors addObject:neighborNode];
+		}
+	}
+	
+	return neighbors;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@end

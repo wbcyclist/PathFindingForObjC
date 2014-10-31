@@ -11,12 +11,18 @@
  */
 typedef enum {
 	PathfindingAlgorithm_AStar,						// default
-	PathfindingAlgorithm_IDAStar,					//
-	PathfindingAlgorithm_BreadthFirstSearch,		// queue
-	PathfindingAlgorithm_DepthFirstSearch,			// stack
 	PathfindingAlgorithm_BestFirstSearch,			//
 	PathfindingAlgorithm_Dijkstra,					//
 	PathfindingAlgorithm_JumpPointSearch,			//
+	PathfindingAlgorithm_BreadthFirstSearch,		// queue
+	
+	PathfindingAlgorithm_BiAStar,					//
+	PathfindingAlgorithm_BiBestFirst,				//
+	PathfindingAlgorithm_BiDijkstra,				//
+	PathfindingAlgorithm_BiBreadthFirst,			//
+	
+	PathfindingAlgorithm_IDAStar,					//
+	PathfindingAlgorithm_DepthFirstSearch,			// stack
 	PathfindingAlgorithm_OrthogonalJumpPointSearch,	//
 	PathfindingAlgorithm_Trace						//
 } PathfindingAlgorithm;

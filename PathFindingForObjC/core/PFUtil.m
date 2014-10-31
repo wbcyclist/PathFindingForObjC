@@ -35,12 +35,12 @@
 + (float)pathLength:(NSArray*)path {
 	float sum = 0;
 	int i, dx, dy;
-	CGPoint a, b;
+	PFNode *aNode, *bNode;
 	for (i=1; i<path.count; ++i) {
-		a = NSValueToCGPoint(((NSValue*)path[i - 1]));
-		b = NSValueToCGPoint(((NSValue*)path[i]));
-		dx = a.x - b.x;
-		dy = a.y - b.y;
+		aNode = path[i-1];
+		bNode = path[i];
+		dx = aNode.x - bNode.x;
+		dy = aNode.y - bNode.y;
 		sum = sqrtf(dx * dx + dy * dy);
 	}
 	return sum;
@@ -59,7 +59,8 @@
 	err = dx - dy;
 	
 	while (true) {
-		[line addObject:CGPointToNSValue(CGPointMake( x0, y0))];
+//		[line addObject:CGPointToNSValue(CGPointMake( x0, y0))];
+		[line addObject:[[PFNode alloc] initWithX:x0 andY:y0]];
 		
 		if (x0 == x1 && y0 == y1) {
 			break;
@@ -86,17 +87,13 @@
 		return expanded;
 	}
 	
-	int i;
-	NSArray *interpolated;
-	NSUInteger interpolatedLen = 0;
-	CGPoint coord0, coord1;
-	for (i = 0; i < len - 1; ++i) {
-		coord0 = NSValueToCGPoint(((NSValue*)path[i]));
-		coord1 = NSValueToCGPoint(((NSValue*)path[i + 1]));
+	PFNode *aNode, *bNode;
+	for (int i = 0; i < len - 1; ++i) {
+		aNode = path[i];
+		bNode = path[i+1];
 		
-		interpolated = [PFUtil interpolate:coord0.x :coord0.y :coord1.x :coord1.y];
-		interpolatedLen = [interpolated count];
-		if (interpolatedLen>0) {
+		NSArray *interpolated = [PFUtil interpolate:aNode.x :aNode.y :bNode.x :bNode.y];
+		if (interpolated.count >0) {
 			[expanded addObjectsFromArray:interpolated];
 		}
 	}
@@ -107,56 +104,45 @@
 + (NSArray *)smoothenPathWithGrid:(PFGrid*)grid andPath:(NSArray*)path {
 	
 	NSUInteger len = [path count];
-	CGPoint coord = NSValueToCGPoint(((NSValue*)path[0]));
-	int x0 = coord.x;	// path start x
-	int y0 = coord.y;	// path start x
-	coord = NSValueToCGPoint(((NSValue*)path[len - 1]));
-	int x1 = coord.x;	// path end x
-	int y1 = coord.y;	// path end y
-	int sx, sy;			// current start coordinate
-	int ex, ey;			// current end coordinate
-	int lx, ly;			// last valid end coordinate
-	sx = x0;
-	sy = y0;
-	coord = NSValueToCGPoint(((NSValue*)path[1]));
-	lx = coord.x;
-	ly = coord.y;
+	if (len<2) {
+		return path;
+	}
+	
+	PFNode *currentNode	= path[0];
+	PFNode *lastNode	= path[1];
+	PFNode *nextNode	= nil;
 	
 	NSArray *line = nil;
 	NSMutableArray *newPath = [NSMutableArray array];
-	[newPath addObject:CGPointToNSValue(CGPointMake(sx, sy))];
+	[newPath addObject:currentNode];
 	
 	for (int i = 2; i < len; ++i) {
-		coord = NSValueToCGPoint(((NSValue*)path[i]));
-		ex = coord.x;
-		ey = coord.y;
-		line = [PFUtil interpolate:sx :sy :ex :ey];
+		nextNode = path[i];
+		line = [PFUtil interpolate:currentNode.x :currentNode.y :nextNode.x :nextNode.y];
 		
 		BOOL blocked = NO;
 		for (int j = 1; j < [line count]; ++j) {
-			CGPoint testCoord = NSValueToCGPoint(((NSValue*)line[j]));
+			PFNode *testNode = line[j];
 			
-			if (![grid isWalkableAtX:testCoord.x andY:testCoord.y]) {
+			if (![grid isWalkableAtX:testNode.x andY:testNode.y]) {
 				blocked = YES;
-				[newPath addObject:CGPointToNSValue(CGPointMake(lx, ly))];
-				sx = lx;
-				sy = ly;
+				[newPath addObject:lastNode];
+				currentNode = lastNode;
 				break;
 			}
 		}
 		if (!blocked) {
-			lx = ex;
-			ly = ey;
+			lastNode = nextNode;
 		}
 	}
-	[newPath addObject:CGPointToNSValue(CGPointMake(x1, y1))];
+	[newPath addObject:[path lastObject]];
 	
 	return newPath;
 	
 }
 
 + (NSArray *)compressPath:(NSArray*)path {
-
+	/*
 	if([path count] < 3) {
 		return path;
 	}
@@ -214,7 +200,8 @@
 	[compressed addObject:CGPointToNSValue(CGPointMake(px, py))];
 	
 	return compressed;
-
+	 */
+	return nil;
 }
 
 

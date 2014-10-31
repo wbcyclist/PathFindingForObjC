@@ -222,15 +222,15 @@
 			}
 			if (c1Node.walkable || c2Node.walkable) {
 				cNode = [grid getNodeAtX:(x + dx) andY:(y + dy)];
-				[neighbors addObject:cNode];
+				cNode?[neighbors addObject:cNode]:NO;
 			}
 			if (!c4Node.walkable && c1Node.walkable) {
 				cNode = [grid getNodeAtX:(x - dx) andY:(y + dy)];
-				[neighbors addObject:cNode];
+				cNode?[neighbors addObject:cNode]:NO;
 			}
 			if (!c5Node.walkable && c2Node.walkable) {
 				cNode = [grid getNodeAtX:(x + dx) andY:(y - dy)];
-				[neighbors addObject:cNode];
+				cNode?[neighbors addObject:cNode]:NO;
 			}
 		}
 		// search horizontally/vertically
@@ -243,13 +243,13 @@
 					cNode = [grid getNodeAtX:(x + 1) andY:y];
 					if (!cNode.walkable) {
 						cNode = [grid getNodeAtX:(x + 1) andY:(y + dy)];
-						[neighbors addObject:cNode];
+						cNode?[neighbors addObject:cNode]:NO;
 					}
 					
 					cNode = [grid getNodeAtX:(x - 1) andY:y];
 					if (!cNode.walkable) {
 						cNode = [grid getNodeAtX:(x - 1) andY:(y + dy)];
-						[neighbors addObject:cNode];
+						cNode?[neighbors addObject:cNode]:NO;
 					}
 				}
 			}
@@ -261,13 +261,13 @@
 					cNode = [grid getNodeAtX:(x) andY:(y + 1)];
 					if (!cNode.walkable) {
 						cNode = [grid getNodeAtX:(x + dx) andY:(y + 1)];
-						[neighbors addObject:cNode];
+						cNode?[neighbors addObject:cNode]:NO;
 					}
 					
 					cNode = [grid getNodeAtX:(x) andY:(y - 1)];
 					if (!cNode.walkable) {
 						cNode = [grid getNodeAtX:(x + dx) andY:(y - 1)];
-						[neighbors addObject:cNode];
+						cNode?[neighbors addObject:cNode]:NO;
 					}
 				}
 			}

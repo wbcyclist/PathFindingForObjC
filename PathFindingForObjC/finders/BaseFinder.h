@@ -20,7 +20,7 @@
 
 @property (nonatomic, readonly) NSArray *resultPath;
 
-- (NSArray *)findPathInStartNode:(PFNode*)startNode toEndNode:(PFNode*)endNode withGrid:(PFGrid*)grid traceFinding:(NSMutableArray**)traceArrForTest;
+- (NSArray *)findPathInStartNode:(PFNode*)startNode toEndNode:(PFNode*)endNode withGrid:(PFGrid*)grid trackFinding:(NSMutableArray**)trackArrForTest;
 
 - (float)calculateHeuristicValueWithX:(float)dx andY:(float)dy;
 

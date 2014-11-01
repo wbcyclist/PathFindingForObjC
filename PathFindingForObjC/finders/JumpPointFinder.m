@@ -1,6 +1,5 @@
 //
 //  JumpPointFinder.m
-//  PathFindingForObjC-Example
 //
 //  Created by JasioWoo on 14/11/1.
 //  Copyright (c) 2014年 JasioWoo. All rights reserved.
@@ -14,7 +13,7 @@
 @implementation JumpPointFinder
 
 
-- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid traceFinding:(NSMutableArray *__autoreleasing *)traceArrForTest {
+- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid trackFinding:(NSMutableArray *__autoreleasing *)trackArrForTest {
 	
 	NSMutableArray *openList = [NSMutableArray array];
 	PFNode *node = nil;
@@ -105,7 +104,7 @@
  */
 - (PFNode *)jump:(PFNode*)nodeA withNode:(PFNode*)nodeB withEndNode:(PFNode*)endNode withGrid:(PFGrid *)grid {
 	
-	
+	int x=nodeA.x, y=nodeA.y;
 	int dx = nodeA.x - nodeB.x;
 	int dy = nodeA.y - nodeB.y;
 	if (!nodeA.walkable) {
@@ -123,10 +122,10 @@
 	// check for forced neighbors
 	// along the diagonal
 	if (dx != 0 && dy != 0) {
-		PFNode *t1Node = [grid getNodeAtX:(nodeA.x - dx) andY:(nodeA.y + dy)];
-		PFNode *t2Node = [grid getNodeAtX:(nodeA.x - dx) andY:(nodeA.y)];
-		PFNode *t3Node = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y - dy)];
-		PFNode *t4Node = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y - dy)];
+		PFNode *t1Node = [grid getNodeAtX:(x - dx) andY:(y + dy)];
+		PFNode *t2Node = [grid getNodeAtX:(x - dx) andY:(y)];
+		PFNode *t3Node = [grid getNodeAtX:(x + dx) andY:(y - dy)];
+		PFNode *t4Node = [grid getNodeAtX:(x) andY:(y - dy)];
 		
 		if ((t1Node.walkable && !t2Node.walkable)
 			|| (t3Node.walkable && !t4Node.walkable)) {
@@ -136,10 +135,10 @@
 	// horizontally/vertically
 	else {
 		if( dx != 0 ) { // moving along x
-			PFNode *t1Node = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y + 1)];
-			PFNode *t2Node = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y + 1)];
-			PFNode *t3Node = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y - 1)];
-			PFNode *t4Node = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y - 1)];
+			PFNode *t1Node = [grid getNodeAtX:(x + dx) andY:(y + 1)];
+			PFNode *t2Node = [grid getNodeAtX:(x) andY:(y + 1)];
+			PFNode *t3Node = [grid getNodeAtX:(x + dx) andY:(y - 1)];
+			PFNode *t4Node = [grid getNodeAtX:(x) andY:(y - 1)];
 			
 			if((t1Node.walkable && !t2Node.walkable)
 			   || (t3Node.walkable && !t4Node.walkable)) {
@@ -147,10 +146,10 @@
 			}
 		}
 		else {
-			PFNode *t1Node = [grid getNodeAtX:(nodeA.x + 1) andY:(nodeA.y + dy)];
-			PFNode *t2Node = [grid getNodeAtX:(nodeA.x + 1) andY:(nodeA.y)];
-			PFNode *t3Node = [grid getNodeAtX:(nodeA.x - 1) andY:(nodeA.y + dy)];
-			PFNode *t4Node = [grid getNodeAtX:(nodeA.x - 1) andY:(nodeA.y)];
+			PFNode *t1Node = [grid getNodeAtX:(x + 1) andY:(y + dy)];
+			PFNode *t2Node = [grid getNodeAtX:(x + 1) andY:(y)];
+			PFNode *t3Node = [grid getNodeAtX:(x - 1) andY:(y + dy)];
+			PFNode *t4Node = [grid getNodeAtX:(x - 1) andY:(y)];
 			
 			if((t1Node.walkable && !t2Node.walkable)
 			   || (t3Node.walkable && !t4Node.walkable)) {
@@ -161,8 +160,8 @@
 	
 	// when moving diagonally, must check for vertical/horizontal jump points
 	if (dx != 0 && dy != 0) {
-		PFNode *reNodeA1 = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y)];
-		PFNode *reNodeA2 = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y + dy)];
+		PFNode *reNodeA1 = [grid getNodeAtX:(x + dx) andY:(y)];
+		PFNode *reNodeA2 = [grid getNodeAtX:(x) andY:(y + dy)];
 		
 		
 		if ([self jump:reNodeA1 withNode:nodeA withEndNode:endNode withGrid:grid]
@@ -174,10 +173,10 @@
 	// moving diagonally, must make sure one of the vertical/horizontal
 	// neighbors is open to allow the path
 	
-	PFNode *t1Node = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y)];
-	PFNode *t2Node = [grid getNodeAtX:(nodeA.x) andY:(nodeA.y + dy)];
+	PFNode *t1Node = [grid getNodeAtX:(x + dx) andY:(y)];
+	PFNode *t2Node = [grid getNodeAtX:(x) andY:(y + dy)];
 	if (t1Node.walkable || t2Node.walkable) {
-		PFNode *reNodeA = [grid getNodeAtX:(nodeA.x + dx) andY:(nodeA.y + dy)];
+		PFNode *reNodeA = [grid getNodeAtX:(x + dx) andY:(y + dy)];
 		return [self jump:reNodeA withNode:nodeA withEndNode:endNode withGrid:grid];
 	} else {
 		return nil;
@@ -196,8 +195,6 @@
 	PFNode *parent = node.parent;
 	NSMutableArray *neighbors = [NSMutableArray array];
 	int x=node.x, y=node.y, dx, dy;
-	
-//	neighbors = [], neighborNodes, neighborNode, i, l;
 	
 	// directed pruning: can ignore most neighbors, unless forced.
 	if (parent) {

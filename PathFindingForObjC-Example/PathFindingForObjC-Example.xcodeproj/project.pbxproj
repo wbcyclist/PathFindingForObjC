@@ -121,6 +121,10 @@
 		A59635AA1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
 		A59635AB1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
 		A59635AC1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
+		A5A34C2B1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */; };
+		A5A34C2C1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */; };
+		A5A34C2D1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */; };
+		A5A34C2E1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +222,8 @@
 		A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDAStarFinder.m; sourceTree = "<group>"; };
 		A59635A71A03EE9500B6D6B5 /* JumpPointFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpPointFinder.h; sourceTree = "<group>"; };
 		A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpPointFinder.m; sourceTree = "<group>"; };
+		A5A34C291A04D5B9008E4ECD /* OrthogonalJumpPointFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrthogonalJumpPointFinder.h; sourceTree = "<group>"; };
+		A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrthogonalJumpPointFinder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +494,8 @@
 				A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */,
 				A59635A71A03EE9500B6D6B5 /* JumpPointFinder.h */,
 				A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */,
+				A5A34C291A04D5B9008E4ECD /* OrthogonalJumpPointFinder.h */,
+				A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */,
 				A596357D1A0379AC00B6D6B5 /* BiAStarFinder.h */,
 				A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */,
 				A59635831A03AB8C00B6D6B5 /* BiBestFirstFinder.h */,
@@ -703,6 +711,7 @@
 				A5531A0319FFFFB800503E11 /* WBSpriteButton.m in Sources */,
 				A53547F819FFEEBB005C629B /* PFNode.m in Sources */,
 				A53546D119FFCC67005C629B /* main.m in Sources */,
+				A5A34C2B1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */,
 				A55319FB19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
 				A53547F019FFEEBB005C629B /* Heuristic.m in Sources */,
 				A53546C919FFCC67005C629B /* AppDelegate.m in Sources */,
@@ -737,6 +746,7 @@
 				A59635AB1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
 				A55319CD19FFF6F700503E11 /* PathFinding.m in Sources */,
 				A55319F919FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
+				A5A34C2D1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */,
 				A535480219FFEEBB005C629B /* AStarFinder.m in Sources */,
 				A59635991A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
 				A5531A0119FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
@@ -772,6 +782,7 @@
 				A53547FD19FFEEBB005C629B /* PFUtil.m in Sources */,
 				A535480519FFEEBB005C629B /* BaseFinder.m in Sources */,
 				A53546E119FFD4F0005C629B /* AppDelegate.m in Sources */,
+				A5A34C2C1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */,
 				A5531A0019FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
 				A596359E1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
 			);
@@ -798,6 +809,7 @@
 				A59635AC1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
 				A55319CE19FFF6F800503E11 /* PathFinding.m in Sources */,
 				A55319FA19FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
+				A5A34C2E1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */,
 				A535480319FFEEBB005C629B /* AStarFinder.m in Sources */,
 				A596359A1A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
 				A5531A0219FFFFB800503E11 /* SKNode+WBKit.m in Sources */,

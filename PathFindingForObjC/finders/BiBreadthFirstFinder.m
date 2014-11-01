@@ -1,6 +1,5 @@
 //
 //  BiBreadthFirstFinder.m
-//  PathFindingForObjC-Example
 //
 //  Created by JasioWoo on 14/10/31.
 //  Copyright (c) 2014年 JasioWoo. All rights reserved.
@@ -16,7 +15,7 @@
 @implementation BiBreadthFirstFinder
 
 
-- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid traceFinding:(NSMutableArray *__autoreleasing *)traceArrForTest {
+- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid trackFinding:(NSMutableArray *__autoreleasing *)trackArrForTest {
 	
 	NSMutableArray *startOpenList = [NSMutableArray array];
 	NSMutableArray *endOpenList = [NSMutableArray array];
@@ -32,12 +31,12 @@
 	[endOpenList addObject:endNode];
 	endNode.opened = BY_END;
 	
-	// trace
-	if (traceArrForTest) {
-		NSMutableArray *traceArr = [NSMutableArray array];
-		[traceArr addObject:[startNode copy]];
-		[traceArr addObject:[endNode copy]];
-		[(*traceArrForTest) addObject:traceArr];
+	// track
+	if (trackArrForTest) {
+		NSMutableArray *trackArr = [NSMutableArray array];
+		[trackArr addObject:[startNode copy]];
+		[trackArr addObject:[endNode copy]];
+		[(*trackArrForTest) addObject:trackArr];
 	}
 	
 	// while both the queues are not empty
@@ -48,11 +47,11 @@
 		[startOpenList removeObject:node];
 		node.closed = true;
 		
-		// trace
-		NSMutableArray *traceArr = nil;
-		if (traceArrForTest) {
-			[(*traceArrForTest) addObject:[node copy]];
-			traceArr = [NSMutableArray array];
+		// track
+		NSMutableArray *trackArr = nil;
+		if (trackArrForTest) {
+			[(*trackArrForTest) addObject:[node copy]];
+			trackArr = [NSMutableArray array];
 		}
 		
 		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.dontCrossCorners];
@@ -74,21 +73,21 @@
 			neighbor.parent = node;
 			neighbor.opened = BY_START;
 			
-			// trace
-			if (traceArrForTest) { [traceArr addObject:[neighbor copy]]; }
+			// track
+			if (trackArrForTest) { [trackArr addObject:[neighbor copy]]; }
 		}
-		// trace
-		if (traceArrForTest && traceArr.count>0) { [(*traceArrForTest) addObject:traceArr]; }
+		// track
+		if (trackArrForTest && trackArr.count>0) { [(*trackArrForTest) addObject:trackArr]; }
 		
 	// expand end open list
 		node = endOpenList.firstObject;
 		[endOpenList removeObject:node];
 		node.closed = true;
 		
-		// trace
-		if (traceArrForTest) {
-			[(*traceArrForTest) addObject:[node copy]];
-			traceArr = [NSMutableArray array];
+		// track
+		if (trackArrForTest) {
+			[(*trackArrForTest) addObject:[node copy]];
+			trackArr = [NSMutableArray array];
 		}
 		
 		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.dontCrossCorners];
@@ -108,11 +107,11 @@
 			neighbor.parent = node;
 			neighbor.opened = BY_END;
 			
-			// trace
-			if (traceArrForTest) { [traceArr addObject:[neighbor copy]]; }
+			// track
+			if (trackArrForTest) { [trackArr addObject:[neighbor copy]]; }
 		}
-		// trace
-		if (traceArrForTest && traceArr.count>0) { [(*traceArrForTest) addObject:traceArr]; }
+		// track
+		if (trackArrForTest && trackArr.count>0) { [(*trackArrForTest) addObject:trackArr]; }
 		
 	} // end while not open list empty
 	

@@ -15,6 +15,7 @@ typedef enum {
 	PathfindingAlgorithm_Dijkstra,					//
 	PathfindingAlgorithm_JumpPointSearch,			//
 	PathfindingAlgorithm_BreadthFirstSearch,		// queue
+	PathfindingAlgorithm_OrthogonalJumpPointSearch,	//
 	
 	PathfindingAlgorithm_BiAStar,					//
 	PathfindingAlgorithm_BiBestFirst,				//
@@ -23,7 +24,7 @@ typedef enum {
 	
 	PathfindingAlgorithm_IDAStar,					//
 	PathfindingAlgorithm_DepthFirstSearch,			// stack
-	PathfindingAlgorithm_OrthogonalJumpPointSearch,	//
+	
 	PathfindingAlgorithm_Trace						//
 } PathfindingAlgorithm;
 
@@ -49,7 +50,7 @@ typedef enum {
 
 /// @return An PFNode Array.
 - (NSArray *)findPathing:(PathfindingAlgorithm)alg IsConvertToOriginCoords:(BOOL)isConvert;
-- (NSArray *)findPathing:(PathfindingAlgorithm)alg IsConvertToOriginCoords:(BOOL)isConvert traceFinding:(NSMutableArray**)traceArrForTest;
+- (NSArray *)findPathing:(PathfindingAlgorithm)alg IsConvertToOriginCoords:(BOOL)isConvert trackFinding:(NSMutableArray**)trackArrForTest;
 
 
 @end

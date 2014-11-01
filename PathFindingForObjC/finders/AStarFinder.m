@@ -12,7 +12,7 @@
 @implementation AStarFinder
 
 
-- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid traceFinding:(NSMutableArray *__autoreleasing *)traceArrForTest {
+- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid trackFinding:(NSMutableArray *__autoreleasing *)trackArrForTest {
 	
 	NSMutableArray *openList = [NSMutableArray array];
 	PFNode *node = nil, *neighbor = nil;
@@ -29,8 +29,8 @@
 	[openList addObject:startNode];
 	startNode.opened = 1;
 	
-	// trace
-	if (traceArrForTest) {[(*traceArrForTest) addObject:[startNode copy]];}
+	// track
+	if (trackArrForTest) {[(*trackArrForTest) addObject:[startNode copy]];}
 	
 	// while the open list is not empty
 	while (openList.count>0) {
@@ -40,11 +40,11 @@
 		[openList removeLastObject];
 		node.closed = YES;
 		
-		// trace
-		NSMutableArray *traceArr = nil;
-		if (traceArrForTest) {
-			[(*traceArrForTest) addObject:[node copy]];
-			traceArr = [NSMutableArray array];
+		// track
+		NSMutableArray *trackArr = nil;
+		if (trackArrForTest) {
+			[(*trackArrForTest) addObject:[node copy]];
+			trackArr = [NSMutableArray array];
 		}
 		
 		// if reached the end position, construct the path and return it
@@ -82,13 +82,13 @@
 					neighbor.opened = 1;
 				}
 				
-				// trace
-				if (traceArrForTest) { [traceArr addObject:[neighbor copy]]; }
+				// track
+				if (trackArrForTest) { [trackArr addObject:[neighbor copy]]; }
 			}
 		} // end for each neighbor
 		
-		// trace
-		if (traceArrForTest && traceArr.count>0) { [(*traceArrForTest) addObject:traceArr]; }
+		// track
+		if (trackArrForTest && trackArr.count>0) { [(*trackArrForTest) addObject:trackArr]; }
 	} // end while not open list empty
 	
 	// fail to find the path

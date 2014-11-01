@@ -14,6 +14,7 @@
 #import "DijkstraFinder.h"
 #import "BreadthFirstFinder.h"
 #import "JumpPointFinder.h"
+#import "OrthogonalJumpPointFinder.h"
 
 #import "BiAStarFinder.h"
 #import "BiBestFirstFinder.h"
@@ -70,10 +71,10 @@
 
 
 - (NSArray *)findPathing:(PathfindingAlgorithm)alg IsConvertToOriginCoords:(BOOL)isConvert {
-	return [self findPathing:alg IsConvertToOriginCoords:isConvert traceFinding:nil];
+	return [self findPathing:alg IsConvertToOriginCoords:isConvert trackFinding:nil];
 }
 
-- (NSArray *)findPathing:(PathfindingAlgorithm)alg IsConvertToOriginCoords:(BOOL)isConvert traceFinding:(NSMutableArray *__autoreleasing *)traceArrForTest {
+- (NSArray *)findPathing:(PathfindingAlgorithm)alg IsConvertToOriginCoords:(BOOL)isConvert trackFinding:(NSMutableArray *__autoreleasing *)trackArrForTest {
 	unsigned int column = self.mapSize.width/self.tileSize.width;
 	unsigned int row = self.mapSize.height/self.tileSize.height;
 	
@@ -108,13 +109,13 @@
 	finder.allowDiagonal = self.allowDiagonal;
 	finder.dontCrossCorners = self.dontCrossCorners;
 	finder.weight = self.weight;
-	NSMutableArray *traceArr = traceArrForTest?*traceArrForTest:nil;
-	NSArray *result = [finder findPathInStartNode:startNode toEndNode:endNode withGrid:grid traceFinding:&traceArr];
+	NSMutableArray *trackArr = trackArrForTest?*trackArrForTest:nil;
+	NSArray *result = [finder findPathInStartNode:startNode toEndNode:endNode withGrid:grid trackFinding:&trackArr];
 	
 	// convert to origin coords
 	if (isConvert) {
-		// convert trace operation
-		for (NSObject *obj in traceArr) {
+		// convert track operation
+		for (NSObject *obj in trackArr) {
 			if ([obj isKindOfClass:[PFNode class]]) {
 				PFNode *node = (PFNode *)obj;
 				CGPoint originPoint = CGPointMake(node.x, node.y);
@@ -145,7 +146,7 @@
 	}
 	
 //	[grid printFoundPath:result];
-//	NSLog(@"result=%@", traceArr);
+//	NSLog(@"result=%@", trackArr);
 	return result;
 }
 
@@ -170,7 +171,9 @@
 		case PathfindingAlgorithm_JumpPointSearch:
 			result = [[JumpPointFinder alloc] init];
 			break;
-			
+		case PathfindingAlgorithm_OrthogonalJumpPointSearch:
+			result = [[OrthogonalJumpPointFinder alloc] init];
+			break;
 			
 		case PathfindingAlgorithm_BiAStar:
 			result = [[BiAStarFinder alloc] init];
@@ -196,9 +199,7 @@
 			result = [[AStarFinder alloc] init];
 			break;
 		
-		case PathfindingAlgorithm_OrthogonalJumpPointSearch:
-			result = [[AStarFinder alloc] init];
-			break;
+		
 		case PathfindingAlgorithm_Trace:
 			result = [[AStarFinder alloc] init];
 			break;

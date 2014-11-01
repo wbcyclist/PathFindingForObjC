@@ -24,10 +24,10 @@
 	
 	PathFinding *pathFinding;
 	NSArray *foundPaths;
-	NSMutableArray *traceArr;
-	NSUInteger currentTraceIndex;
-	BOOL isPlayTrace;
-	NSUInteger traceSpeed;
+	NSMutableArray *trackArr;
+	NSUInteger currentTrackIndex;
+	BOOL isPlayTrack;
+	NSUInteger trackSpeed;
 }
 
 - (instancetype)initWithSize:(CGSize)size {
@@ -35,8 +35,8 @@
 	self = [super initWithSize:size];
 	if (self) {
 		self.backgroundColor = [SKColor whiteColor];
-		self.gridSize =  CGSizeMake(32, 32);
-		traceSpeed = 1;//(the larger the slow)
+		self.gridSize =  CGSizeMake(64, 64);
+		trackSpeed = 1;//(the larger the slow)
 	}
 	return self;
 }
@@ -126,27 +126,27 @@
 		}
 	}
 	
-	isPlayTrace = NO;
-	[traceArr removeAllObjects];
-	traceArr = nil;
-	currentTraceIndex = 0;
-	NSMutableArray *traceArrHook = [NSMutableArray array];
+	isPlayTrack = NO;
+	[trackArr removeAllObjects];
+	trackArr = nil;
+	currentTrackIndex = 0;
+	NSMutableArray *trackArrHook = [NSMutableArray array];
 	
 	foundPaths = nil;
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BestFirstSearch IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_AStar IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiAStar IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBestFirst IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_Dijkstra IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiDijkstra IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BreadthFirstSearch IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBreadthFirst IsConvertToOriginCoords:YES traceFinding:&traceArrHook];
-	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_JumpPointSearch IsConvertToOriginCoords:YES traceFinding:nil];
-
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BestFirstSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_AStar IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiAStar IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBestFirst IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_Dijkstra IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiDijkstra IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BreadthFirstSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBreadthFirst IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_JumpPointSearch IsConvertToOriginCoords:YES trackFinding:nil];
+	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_OrthogonalJumpPointSearch IsConvertToOriginCoords:YES trackFinding:nil];
 	
-	if ([traceArrHook count]>0) {
-		traceArr = traceArrHook;
-		isPlayTrace = YES;
+	if ([trackArrHook count]>0) {
+		trackArr = trackArrHook;
+		isPlayTrack = YES;
 	} else {
 		[self drawPathLines:foundPaths];
 	}
@@ -279,14 +279,14 @@
 static int timeCount = 0;
 -(void)update:(NSTimeInterval)currentTime {
 	timeCount++;
-	if (timeCount==traceSpeed) {
+	if (timeCount==trackSpeed) {
 		timeCount = 0;
-		if (isPlayTrace) {
-			if (currentTraceIndex>=traceArr.count) {
-				isPlayTrace = NO;
+		if (isPlayTrack) {
+			if (currentTrackIndex>=trackArr.count) {
+				isPlayTrack = NO;
 				[self drawPathLines:foundPaths];
 			} else {
-				[self playTraceFinding:traceArr[currentTraceIndex++]];
+				[self playTrackFinding:trackArr[currentTrackIndex++]];
 			}
 		}
 	}
@@ -315,16 +315,16 @@ static int timeCount = 0;
 	//	[SKAction ]
 }
 
-- (void)playTraceFinding:(NSObject*)traceObj {
-	if (!traceObj) {
+- (void)playTrackFinding:(NSObject*)trackObj {
+	if (!trackObj) {
 		return;
 	}
-	if ([traceObj isKindOfClass:[PFNode class]]) {
-		PFNode *node = (PFNode *)traceObj;
+	if ([trackObj isKindOfClass:[PFNode class]]) {
+		PFNode *node = (PFNode *)trackObj;
 		PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
 		[self updateGridNodeState:gridNode usePFNode:node];
-	} else if ([traceObj isKindOfClass:[NSArray class]]) {
-		NSArray *arr = (NSArray*)traceObj;
+	} else if ([trackObj isKindOfClass:[NSArray class]]) {
+		NSArray *arr = (NSArray*)trackObj;
 		for (PFNode *node in arr) {
 			PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
 			[self updateGridNodeState:gridNode usePFNode:node];

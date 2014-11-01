@@ -152,7 +152,7 @@
 	((PFNode *)self.nodes[y][x]).walkable = walkable;
 }
 
-- (NSArray *)getNeighborsWith:(PFNode *)node isAllowDiagonal:(BOOL)allowDiagonal isCrossCorners:(BOOL)dontCrossCorners {
+- (NSArray *)getNeighborsWith:(PFNode *)node isAllowDiagonal:(BOOL)allowDiagonal isCrossCorners:(BOOL)allowCrossCorners {
 	NSMutableArray *neighbors = [NSMutableArray arrayWithCapacity:4];
 	int x = node.x;
 	int y = node.y;
@@ -190,7 +190,7 @@
 		return neighbors;
 	}
 	
-	if (dontCrossCorners) {
+	if (!allowCrossCorners) {
 		d0 = s3 && s0;
 		d1 = s0 && s1;
 		d2 = s1 && s2;

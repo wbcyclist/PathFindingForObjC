@@ -1,7 +1,8 @@
 //
-//  AStarFinder.h
+//  TraceFinder.h
+//  PathFindingForObjC-Example
 //
-//  Created by JasioWoo on 14/10/28.
+//  Created by JasioWoo on 14/11/1.
 //  Copyright (c) 2014年 JasioWoo. All rights reserved.
 //
 
@@ -19,6 +20,6 @@
  * @param {integer} opt.weight Weight to apply to the heuristic to allow for suboptimal paths,
  *     in order to speed up the search.
  */
-@interface AStarFinder : BaseFinder
+@interface TraceFinder : BaseFinder
 
 @end

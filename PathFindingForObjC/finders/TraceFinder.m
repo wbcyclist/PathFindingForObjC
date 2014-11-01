@@ -1,15 +1,17 @@
 //
-//  AStarFinder.m
+//  TraceFinder.m
+//  PathFindingForObjC-Example
 //
-//  Created by JasioWoo on 14/10/28.
+//  Created by JasioWoo on 14/11/1.
 //  Copyright (c) 2014年 JasioWoo. All rights reserved.
 //
 
-#import "AStarFinder.h"
+#import "TraceFinder.h"
 #import "PFUtil.h"
 #import "PFGrid.h"
 
-@implementation AStarFinder
+
+@implementation TraceFinder
 
 
 - (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid trackFinding:(NSMutableArray *__autoreleasing *)trackArrForTest {
@@ -54,6 +56,7 @@
 		
 		// get neigbours of the current node
 		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.allowCrossCorners];
+		NSUInteger ar = neighbors.count;
 		for (i = 0, l = neighbors.count; i < l; ++i) {
 			neighbor = neighbors[i];
 			
@@ -66,14 +69,14 @@
 			
 			// get the distance between current node and the neighbor
 			// and calculate the next g score
-//			ng = node.g + ((x-node.x == 0 || y-node.y == 0) ? 1 : M_SQRT2);
+			//			ng = node.g + ((x-node.x == 0 || y-node.y == 0) ? 1 : M_SQRT2);
 			ng = node.g + ((x-node.x == 0 || y-node.y == 0) ? 1 : 1.4);
 			
 			// check if the neighbor has not been inspected yet, or
 			// can be reached with smaller cost from the current node
 			if (neighbor.opened==0 || ng < neighbor.g) {
-				neighbor.g = ng;
-				neighbor.h = neighbor.h==0 ? self.weight * [self calculateHeuristicValueWithX:abs(x - endX) andY:abs(y - endY)] : neighbor.h;
+				neighbor.g = ng * ar/9; //the trace magic
+				neighbor.h = neighbor.h==0 ? [self calculateHeuristicValueWithX:abs(x - endX) andY:abs(y - endY)] : neighbor.h;
 				neighbor.f = neighbor.g + neighbor.h;
 				neighbor.parent = node;
 				
@@ -94,9 +97,6 @@
 	// fail to find the path
 	return nil;
 }
-
-
-
 
 
 @end

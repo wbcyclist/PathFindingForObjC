@@ -15,17 +15,16 @@ typedef enum {
 	PathfindingAlgorithm_Dijkstra,					//
 	PathfindingAlgorithm_JumpPointSearch,			//
 	PathfindingAlgorithm_BreadthFirstSearch,		// queue
+//	PathfindingAlgorithm_DepthFirstSearch,			// stack
 	PathfindingAlgorithm_OrthogonalJumpPointSearch,	//
+	PathfindingAlgorithm_Trace,						//
 	
 	PathfindingAlgorithm_BiAStar,					//
 	PathfindingAlgorithm_BiBestFirst,				//
 	PathfindingAlgorithm_BiDijkstra,				//
 	PathfindingAlgorithm_BiBreadthFirst,			//
 	
-	PathfindingAlgorithm_IDAStar,					//
-	PathfindingAlgorithm_DepthFirstSearch,			// stack
-	
-	PathfindingAlgorithm_Trace						//
+	PathfindingAlgorithm_IDAStar					//
 } PathfindingAlgorithm;
 
 
@@ -33,7 +32,7 @@ typedef enum {
 
 @property (nonatomic) HeuristicType heuristicType;
 @property (nonatomic) BOOL allowDiagonal;
-@property (nonatomic) BOOL dontCrossCorners;
+@property (nonatomic) BOOL allowCrossCorners;
 @property (nonatomic) int weight;
 @property (nonatomic) CGSize mapSize;
 @property (nonatomic) CGSize tileSize;

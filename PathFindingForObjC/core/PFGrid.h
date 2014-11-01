@@ -75,9 +75,9 @@
  *  diagonalOffsets[(i + 1) % 4] is valid.
  * @param {Node} node
  * @param {boolean} allowDiagonal
- * @param {boolean} dontCrossCorners
+ * @param {boolean} allowCrossCorners
  */
-- (NSArray *)getNeighborsWith:(PFNode*)node isAllowDiagonal:(BOOL)allowDiagonal isCrossCorners:(BOOL)dontCrossCorners;
+- (NSArray *)getNeighborsWith:(PFNode*)node isAllowDiagonal:(BOOL)allowDiagonal isCrossCorners:(BOOL)allowCrossCorners;
 
 
 // test

@@ -47,7 +47,7 @@
 			return [PFUtil backtrace:endNode];
 		}
 		
-		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.dontCrossCorners];
+		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.allowCrossCorners];
 		for (i = 0, l = neighbors.count; i < l; ++i) {
 			neighbor = neighbors[i];
 			

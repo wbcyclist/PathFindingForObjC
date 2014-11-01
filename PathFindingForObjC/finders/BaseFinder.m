@@ -17,7 +17,7 @@
 		self.heuristicType = HeuristicTypeManhattan;
 		self.heuristic = [self createHeuristicWithType:self.heuristicType];
 		self.allowDiagonal = YES;
-		self.dontCrossCorners = NO;
+		self.allowCrossCorners = YES;
 		self.weight = 1;
 	}
 	return self;

@@ -15,6 +15,7 @@
 #import "BreadthFirstFinder.h"
 #import "JumpPointFinder.h"
 #import "OrthogonalJumpPointFinder.h"
+#import "TraceFinder.h"
 
 #import "BiAStarFinder.h"
 #import "BiBestFirstFinder.h"
@@ -40,7 +41,7 @@
 	if (self) {
 		self.heuristicType = HeuristicTypeManhattan;
 		self.allowDiagonal = YES;
-		self.dontCrossCorners = NO;
+		self.allowCrossCorners = NO;
 		self.weight = 1;
 		self.mapSize = mapSize;
 		self.tileSize = tileSize;
@@ -107,7 +108,7 @@
 	BaseFinder *finder = [self getFinder:alg];
 	finder.heuristicType = self.heuristicType;
 	finder.allowDiagonal = self.allowDiagonal;
-	finder.dontCrossCorners = self.dontCrossCorners;
+	finder.allowCrossCorners = self.allowCrossCorners;
 	finder.weight = self.weight;
 	NSMutableArray *trackArr = trackArrForTest?*trackArrForTest:nil;
 	NSArray *result = [finder findPathInStartNode:startNode toEndNode:endNode withGrid:grid trackFinding:&trackArr];
@@ -174,6 +175,9 @@
 		case PathfindingAlgorithm_OrthogonalJumpPointSearch:
 			result = [[OrthogonalJumpPointFinder alloc] init];
 			break;
+		case PathfindingAlgorithm_Trace:
+			result = [[TraceFinder alloc] init];
+			break;
 			
 		case PathfindingAlgorithm_BiAStar:
 			result = [[BiAStarFinder alloc] init];
@@ -188,21 +192,10 @@
 			result = [[BiBreadthFirstFinder alloc] init];
 			break;
 			
-			
-			
-			
 		case PathfindingAlgorithm_IDAStar:
 			result = [[AStarFinder alloc] init];
 			break;
 		
-		case PathfindingAlgorithm_DepthFirstSearch:
-			result = [[AStarFinder alloc] init];
-			break;
-		
-		
-		case PathfindingAlgorithm_Trace:
-			result = [[AStarFinder alloc] init];
-			break;
 		default:
 			result = [[AStarFinder alloc] init];
 			break;

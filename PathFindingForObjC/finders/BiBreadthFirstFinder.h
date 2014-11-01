@@ -13,7 +13,7 @@
  * @constructor
  * @param {object} opt
  * @param {boolean} opt.allowDiagonal Whether diagonal movement is allowed.
- * @param {boolean} opt.dontCrossCorners Disallow diagonal movement touching block corners.
+ * @param {boolean} opt.allowCrossCorners Disallow diagonal movement touching block corners.
  */
 @interface BiBreadthFirstFinder : BaseFinder
 

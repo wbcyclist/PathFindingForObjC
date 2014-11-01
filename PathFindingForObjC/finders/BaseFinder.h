@@ -15,7 +15,7 @@
 @property (nonatomic) HeuristicType heuristicType;
 @property (nonatomic) Heuristic *heuristic;
 @property (nonatomic) BOOL allowDiagonal;
-@property (nonatomic) BOOL dontCrossCorners;
+@property (nonatomic) BOOL allowCrossCorners;
 @property (nonatomic) int weight;
 
 @property (nonatomic, readonly) NSArray *resultPath;

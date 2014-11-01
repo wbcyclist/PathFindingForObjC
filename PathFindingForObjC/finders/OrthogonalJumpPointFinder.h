@@ -7,6 +7,17 @@
 
 #import "JumpPointFinder.h"
 
+/**
+ * @author imor / https://github.com/imor
+ */
+
+/**
+ * Path finder using the Jump Point Search algorithm allowing only horizontal
+ * or vertical movements.
+ * @param {object} opt
+ * @param {function} opt.heuristic Heuristic function to estimate the distance
+ *     (defaults to manhattan).
+ */
 @interface OrthogonalJumpPointFinder : JumpPointFinder
 
 @end

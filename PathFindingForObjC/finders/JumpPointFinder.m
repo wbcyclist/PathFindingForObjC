@@ -10,7 +10,9 @@
 #import "PFGrid.h"
 
 
-@implementation JumpPointFinder
+@implementation JumpPointFinder {
+	BOOL trackJumpRecursion;
+}
 
 
 - (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid trackFinding:(NSMutableArray *__autoreleasing *)trackArrForTest {
@@ -26,6 +28,10 @@
 	[openList addObject:startNode];
 	startNode.opened = 1;
 	
+	// track
+	trackJumpRecursion = NO;
+	if (trackArrForTest) {[(*trackArrForTest) addObject:[startNode copy]]; trackJumpRecursion = YES;}
+	
 	// while the open list is not empty
 	while (openList.count>0) {
 		// pop the position of node which has the minimum `f` value.
@@ -34,10 +40,14 @@
 		[openList removeLastObject];
 		node.closed = YES;
 		
+		// track
+		if (trackArrForTest) {[(*trackArrForTest) addObject:[node copy]];}
+		
 		if (node == endNode) {
 			return [PFUtil expandPath:[PFUtil backtrace:endNode]];
 		}
-		[self identifySuccessors:node withEndNode:endNode andGrid:grid andOpenList:openList];
+		
+		[self identifySuccessors:node withEndNode:endNode andGrid:grid andOpenList:openList andTrackFinding:trackArrForTest?(*trackArrForTest):nil];
 	}
 	
 	// fail to find the path
@@ -51,7 +61,7 @@
  * list.
  * @protected
  */
-- (void)identifySuccessors:(PFNode*)node withEndNode:(PFNode*)endNode andGrid:(PFGrid *)grid andOpenList:(NSMutableArray *)openList {
+- (void)identifySuccessors:(PFNode*)node withEndNode:(PFNode*)endNode andGrid:(PFGrid *)grid andOpenList:(NSMutableArray *)openList andTrackFinding:(NSMutableArray*)trackArrForTest {
 	
 	int x=node.x, y=node.y, endX=endNode.x, endY=endNode.y, jx, jy;
 	float ng = 0;
@@ -61,9 +71,16 @@
 	NSArray *neighbors = [self findNeighbors:node withGrid:grid];
 	PFNode *neighbor = nil;
 	PFNode *jumpNode = nil;
+	NSMutableArray *trackArr = nil;
 	for(int i = 0; i < neighbors.count; i++) {
 		neighbor = neighbors[i];
-		jumpNode = [self jump:neighbor withNode:node withEndNode:endNode withGrid:grid];
+		
+		// track
+		if (trackArrForTest) {
+			trackArr = [NSMutableArray array];
+		}
+		
+		jumpNode = [self jump:neighbor withNode:node withEndNode:endNode withGrid:grid andTrackArr:trackArr];
 		
 		if (jumpNode) {
 			jx = jumpNode.x;
@@ -87,8 +104,14 @@
 					[openList addObject:jumpNode];
 					jumpNode.opened = 1;
 				}
+				
+				// track
+				if (trackArr) {[trackArr addObject:[jumpNode copy]];}
 			}
 		}
+		
+		// track
+		if (trackArrForTest && trackArr.count>0) { [trackArrForTest addObject:trackArr]; }
 	}
 }
 
@@ -102,7 +125,7 @@
  * @return {Array.<[number, number]>} The x, y coordinate of the jump point
  *     found, or null if not found
  */
-- (PFNode *)jump:(PFNode*)nodeA withNode:(PFNode*)nodeB withEndNode:(PFNode*)endNode withGrid:(PFGrid *)grid {
+- (PFNode *)jump:(PFNode*)nodeA withNode:(PFNode*)nodeB withEndNode:(PFNode*)endNode withGrid:(PFGrid *)grid andTrackArr:(NSMutableArray*)trackArr {
 	
 	int x=nodeA.x, y=nodeA.y;
 	int dx = nodeA.x - nodeB.x;
@@ -111,9 +134,10 @@
 		return nil;
 	}
 	
-//	if(this.trackJumpRecursion === true) {
-//		grid.getNodeAt(x, y).tested = true;
-//	}
+	if(trackArr) {
+		nodeA.tested = YES;
+		[trackArr addObject:[nodeA copy]];
+	}
 	
 	if (nodeA == endNode) {
 		return nodeA;
@@ -164,8 +188,8 @@
 		PFNode *reNodeA2 = [grid getNodeAtX:(x) andY:(y + dy)];
 		
 		
-		if ([self jump:reNodeA1 withNode:nodeA withEndNode:endNode withGrid:grid]
-			|| [self jump:reNodeA2 withNode:nodeA withEndNode:endNode withGrid:grid]) {
+		if ([self jump:reNodeA1 withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr]
+			|| [self jump:reNodeA2 withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr]) {
 			return nodeA;
 		}
 	}
@@ -177,7 +201,7 @@
 	PFNode *t2Node = [grid getNodeAtX:(x) andY:(y + dy)];
 	if (t1Node.walkable || t2Node.walkable) {
 		PFNode *reNodeA = [grid getNodeAtX:(x + dx) andY:(y + dy)];
-		return [self jump:reNodeA withNode:nodeA withEndNode:endNode withGrid:grid];
+		return [self jump:reNodeA withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr];
 	} else {
 		return nil;
 	}
@@ -273,7 +297,7 @@
 	// return all neighbors
 	else {
 		
-		NSArray *neighborNodes = [grid getNeighborsWith:node isAllowDiagonal:YES isCrossCorners:NO];
+		NSArray *neighborNodes = [grid getNeighborsWith:node isAllowDiagonal:YES isCrossCorners:YES];
 		PFNode *neighborNode=nil;
 		for (int i=0; i<neighborNodes.count; i++) {
 			neighborNode = neighborNodes[i];

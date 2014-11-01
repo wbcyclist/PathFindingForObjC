@@ -14,4 +14,10 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet SKView *skView;
 
+
+
+- (IBAction)showHelp:(id)sender;
+
+
+
 @end

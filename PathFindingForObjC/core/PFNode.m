@@ -18,6 +18,7 @@
 		self.walkable = YES;
 		self.opened = 0;
 		self.closed = NO;
+		self.tested = NO;
 	}
 	return self;
 }
@@ -42,6 +43,7 @@
 	copy.walkable = self.walkable;
 	copy.opened = self.opened;
 	copy.closed = self.closed;
+	copy.tested = self.tested;
 	return copy;
 }
 

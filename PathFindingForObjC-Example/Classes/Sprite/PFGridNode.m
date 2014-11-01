@@ -27,12 +27,13 @@
 		self.searchState = kGState_None;
 		self.editState = kGState_Walkable;
 		
-		self.walkableColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:0];
-		self.startColor = [SKColor colorWithRed:51/255.0 green:218/255.0 blue:0 alpha:1];
-		self.endColor = [SKColor colorWithRed:226/255.0 green:43/255.0 blue:0 alpha:1];
-		self.blockColor = [SKColor colorWithRed:109/255.0 green:109/255.0 blue:109/255.0 alpha:1];
-		self.openColor = [SKColor colorWithRed:145/255.0 green:254/255.0 blue:129/255.0 alpha:1];
-		self.closeColor = [SKColor colorWithRed:165/255.0 green:235/255.0 blue:234/255.0 alpha:1];
+		self.walkableColor	= [SKColor colorWithRed:1 green:1 blue:1 alpha:0];
+		self.startColor		= [SKColor colorWithRed:25/255.0 green:117/255.0 blue:248/255.0 alpha:1];
+		self.endColor		= [SKColor colorWithRed:226/255.0 green:43/255.0 blue:0 alpha:1];
+		self.blockColor		= [SKColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
+		self.openColor		= [SKColor colorWithRed:145/255.0 green:254/255.0 blue:129/255.0 alpha:1];
+		self.closeColor		= [SKColor colorWithRed:165/255.0 green:235/255.0 blue:234/255.0 alpha:1];
+		self.testedColor	= [SKColor colorWithRed:190/255.0 green:190/255.0 blue:190/255.0 alpha:1];
 	}
 	return self;
 }
@@ -142,6 +143,9 @@
 		
 	} else if (state==kGState_Close) {
 		color = self.closeColor;
+		
+	} else if (state==kGState_Tested) {
+		color = self.testedColor;
 		
 	} else {
 		color = self.walkableColor;

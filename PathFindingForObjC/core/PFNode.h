@@ -40,6 +40,7 @@
  */
 @property (nonatomic) int opened;
 @property (nonatomic) BOOL closed;
+@property (nonatomic) BOOL tested;
 
 /// Point In Origin Coords
 @property (nonatomic) CGPoint originPoint;

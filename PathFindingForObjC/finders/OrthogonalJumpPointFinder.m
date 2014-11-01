@@ -21,7 +21,7 @@
  * @return {Array.<[number, number]>} The x, y coordinate of the jump point
  *     found, or null if not found
  */
-- (PFNode *)jump:(PFNode*)nodeA withNode:(PFNode*)nodeB withEndNode:(PFNode*)endNode withGrid:(PFGrid *)grid {
+- (PFNode *)jump:(PFNode*)nodeA withNode:(PFNode*)nodeB withEndNode:(PFNode*)endNode withGrid:(PFGrid *)grid andTrackArr:(NSMutableArray*)trackArr {
 	
 	int x=nodeA.x, y=nodeA.y;
 	int dx = nodeA.x - nodeB.x;
@@ -30,9 +30,10 @@
 		return nil;
 	}
 	
-	//	if(this.trackJumpRecursion === true) {
-	//		grid.getNodeAt(x, y).tested = true;
-	//	}
+	if(trackArr) {
+		nodeA.tested = YES;
+		[trackArr addObject:[nodeA copy]];
+	}
 	
 	if (nodeA == endNode) {
 		return nodeA;
@@ -60,8 +61,8 @@
 			return nodeA;
 		}
 		//When moving vertically, must check for horizontal jump points
-		if ([self jump:t3Node withNode:nodeA withEndNode:endNode withGrid:grid]
-			|| [self jump:t1Node withNode:nodeA withEndNode:endNode withGrid:grid]) {
+		if ([self jump:t3Node withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr]
+			|| [self jump:t1Node withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr]) {
 			return nodeA;
 		}
 		
@@ -73,7 +74,7 @@
 	}
 	
 	PFNode *cNode = [grid getNodeAtX:(x + dx) andY:(y + dy)];
-	return [self jump:cNode withNode:nodeA withEndNode:endNode withGrid:grid];
+	return [self jump:cNode withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr];
 }
 
 /**

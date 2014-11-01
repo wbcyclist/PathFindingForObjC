@@ -33,4 +33,11 @@
     return YES;
 }
 
+
+- (IBAction)showHelp:(id)sender {
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/wbcyclist/PathFindingForObjC"]];
+}
+
+
+
 @end

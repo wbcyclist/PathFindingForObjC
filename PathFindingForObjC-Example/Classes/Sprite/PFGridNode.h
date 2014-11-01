@@ -15,14 +15,15 @@ typedef enum {
 	kGState_End,
 	kGState_Block,
 	kGState_Open,
-	kGState_Close
+	kGState_Close,
+	kGState_Tested
 } GridNodeState;
 
 @interface PFGridNode : SKSpriteNode
 
 @property (nonatomic) BOOL showWeightValue;
-@property (nonatomic) GridNodeState editState;		// ( kGState_Walkable \ kGState_Start \ kGState_End \ kGState_Block )
-@property (nonatomic) GridNodeState searchState;	// ( kGState_None \ kGState_Open \ kGState_Close )
+@property (nonatomic) GridNodeState editState;		// ( kGState_Walkable / kGState_Start / kGState_End / kGState_Block )
+@property (nonatomic) GridNodeState searchState;	// ( kGState_None / kGState_Open / kGState_Close / kGState_Tested )
 
 @property (nonatomic) CGFloat fValue;
 @property (nonatomic) CGFloat gValue;
@@ -37,6 +38,7 @@ typedef enum {
 @property (nonatomic, strong) SKColor *blockColor;
 @property (nonatomic, strong) SKColor *openColor;
 @property (nonatomic, strong) SKColor *closeColor;
+@property (nonatomic, strong) SKColor *testedColor;
 
 - (BOOL)setupEditGridState:(GridNodeState)editState runAnimate:(BOOL)animate;
 

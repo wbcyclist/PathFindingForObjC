@@ -45,7 +45,7 @@
 	// expand start open list
 		node = startOpenList.firstObject;
 		[startOpenList removeObject:node];
-		node.closed = true;
+		node.closed = YES;
 		
 		// track
 		NSMutableArray *trackArr = nil;
@@ -82,7 +82,7 @@
 	// expand end open list
 		node = endOpenList.firstObject;
 		[endOpenList removeObject:node];
-		node.closed = true;
+		node.closed = YES;
 		
 		// track
 		if (trackArrForTest) {

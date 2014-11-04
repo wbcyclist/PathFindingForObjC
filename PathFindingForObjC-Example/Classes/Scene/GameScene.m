@@ -10,6 +10,13 @@
 #import "PathFinding.h"
 #import "PFGridNode.h"
 #import "PFNode.h"
+#import "VectorFieldGrid.h"
+
+@interface GameScene ()
+
+@property (nonatomic,strong)VectorFieldGrid *fieldGrid;
+
+@end
 
 @implementation GameScene {
 	BOOL isContentCreated;
@@ -70,12 +77,12 @@
 	for (int i=0; i<row; i++) {
 		for (int j=0; j<column; j++) {
 			PFGridNode *grid = [PFGridNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"grid"] size:self.gridSize];
-			grid.colorBlendFactor = 0.7;
+			grid.colorFactor = 0.7;
 			grid.position = CGPointMake(j*self.gridSize.width + self.gridSize.width/2.0, i*self.gridSize.height + self.gridSize.height/2.0);
 			grid.name = [NSString stringWithFormat:@"%d",i*column + j];
 			grid.x = j;
 			grid.y = i;
-			grid.showWeightValue = NO;
+			grid.showWeightValue = YES;
 			if (i==0 && j==0) {
 				[grid setupEditGridState:kGState_Start runAnimate:NO];
 			} else if (i==0 && j==1) {
@@ -93,6 +100,7 @@
 //			[gridLayer addChild:grid];
 		}
 	}
+	
 }
 
 
@@ -131,6 +139,9 @@
 	trackArr = nil;
 	currentTrackIndex = 0;
 	NSMutableArray *trackArrHook = [NSMutableArray array];
+//	NSMutableArray *trackArrHook = nil;
+	
+	NSDate* tmpStartData = [NSDate date];
 	
 	foundPaths = nil;
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BestFirstSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
@@ -142,8 +153,29 @@
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BreadthFirstSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBreadthFirst IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_JumpPointSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
-	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_OrthogonalJumpPointSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_OrthogonalJumpPointSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_Trace IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+	
+	if (!_fieldGrid) {
+		self.fieldGrid = [[VectorFieldGrid alloc] initWithMapSize:mapSize tileSize:self.gridSize coordsOrgin:CGPointZero];
+	}
+	[self.fieldGrid clearBlockTiles];
+	for (PFGridNode *node in gridLayer.children) {
+		if (node.editState==kGState_Block) {
+			[self.fieldGrid addBlockTilePosition:node.position];
+		}
+	}
+	self.fieldGrid.targetPoint = pathFinding.startPoint;
+	
+	double costTime = [[NSDate date] timeIntervalSinceDate:tmpStartData];
+	NSLog(@"costTime = %fms", costTime*1000);
+	
+	NSArray *result = self.fieldGrid.nodes;
+	for (NSArray *rowArr in result) {
+		for (PFNode *node in rowArr) {
+			[self playTrackFinding:node];
+		}
+	}
 	
 	if ([trackArrHook count]>0) {
 		trackArr = trackArrHook;
@@ -154,12 +186,13 @@
 	
 }
 
-- (void)clearGrid {
+- (void)clearBlockGrid {
 	for (PFGridNode *grid in gridLayer.children) {
 		grid.searchState = kGState_None;
 		grid.fValue = 0;
 		grid.gValue = 0;
 		grid.hValue = 0;
+		grid.direction = 0;
 		
 		if (grid.editState!=kGState_Start && grid.editState!=kGState_End) {
 			[grid setupEditGridState:kGState_Walkable runAnimate:NO];
@@ -173,6 +206,7 @@
 		grid.fValue = 0;
 		grid.gValue = 0;
 		grid.hValue = 0;
+		grid.direction = 0;
 	}
 }
 
@@ -236,6 +270,8 @@
 		grid = (PFGridNode *)node;
 	} else if ([node isKindOfClass:[SKLabelNode class]] && [node.parent isKindOfClass:[PFGridNode class]]) {
 		grid = (PFGridNode *)node.parent;
+	} else if ([node isKindOfClass:[SKSpriteNode class]] && [node.parent isKindOfClass:[PFGridNode class]]) {
+		grid = (PFGridNode *)node.parent;
 	}
 	if (grid) {
 		GridNodeState state = grid.editState;
@@ -254,7 +290,12 @@
 
 - (void)gridTouchMoved:(CGPoint)point {
 	point = CGPointMake((int)point.x, (int)point.y);
-	SKNode *node = [gridLayer nodeAtPoint:point];
+	SKNode *touchNode = [gridLayer nodeAtPoint:point];
+	SKNode *node = nil;
+	if ([touchNode isKindOfClass:[SKLabelNode class]] || [touchNode isKindOfClass:[SKSpriteNode class]]) {
+		node = touchNode.parent;
+	}
+	
 	if ([node isKindOfClass:[PFGridNode class]] && selectState!=kGState_None) {
 		PFGridNode *grid = (PFGridNode *)node;
 		BOOL result = [grid setupEditGridState:selectState runAnimate:!(selectState==kGState_Start||selectState==kGState_End)];
@@ -335,17 +376,21 @@ static int timeCount = 0;
 
 - (void)updateGridNodeState:(PFGridNode*)gridNode usePFNode:(PFNode*)node {
 	if (gridNode && node) {
-		gridNode.fValue = node.f;
-		gridNode.gValue = node.g;
-		gridNode.hValue = node.h;
-		
-		if (node.tested) {
-			gridNode.searchState = kGState_Tested;
-		}
-		if (node.closed) {
-			gridNode.searchState = kGState_Close;
-		} else if (node.opened!=0) {
-			gridNode.searchState = kGState_Open;
+		if (node.cost>0) {
+			gridNode.costValue = node.cost;
+			[gridNode setDirection:node.direction vector:node.vector];
+		} else {
+			gridNode.fValue = node.f;
+			gridNode.gValue = node.g;
+			gridNode.hValue = node.h;
+			if (node.tested) {
+				gridNode.searchState = kGState_Tested;
+			}
+			if (node.closed) {
+				gridNode.searchState = kGState_Close;
+			} else if (node.opened!=0) {
+				gridNode.searchState = kGState_Open;
+			}
 		}
 	}
 }

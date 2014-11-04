@@ -33,7 +33,7 @@
 		// take the front node from the queue
 		node = openList.firstObject;
 		[openList removeObject:node];
-		node.closed = true;
+		node.closed = YES;
 		
 		// track
 		NSMutableArray *trackArr = nil;

@@ -23,7 +23,8 @@
 
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     self.skView.ignoresSiblingOrder = YES;
-	
+//	self.skView.showsFields = YES;
+//	self.skView.showsPhysics = YES;
     self.skView.showsFPS = YES;
 	self.skView.showsDrawCount = YES;
     self.skView.showsNodeCount = YES;

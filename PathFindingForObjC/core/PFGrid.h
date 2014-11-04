@@ -30,17 +30,6 @@
 - (PFNode *)getNodeAtX:(int)x andY:(int)y;
 
 /**
- * Determine whether the position is inside the grid.
- * XXX: `grid.isInside(x, y)` is wierd to read.
- * It should be `(x, y) is inside grid`, but I failed to find a better
- * name for this method.
- * @param {number} x
- * @param {number} y
- * @return {boolean}
- */
-- (BOOL)isInsideX:(int)x andY:(int)y;
-
-/**
  * Determine whether the node at the given position is walkable.
  * (Also returns false if the position is outside the grid.)
  * @param {number} x - The x coordinate of the node.

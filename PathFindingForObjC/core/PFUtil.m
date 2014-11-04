@@ -58,7 +58,7 @@
 	
 	err = dx - dy;
 	
-	while (true) {
+	while (YES) {
 //		[line addObject:CGPointToNSValue(CGPointMake( x0, y0))];
 		[line addObject:[[PFNode alloc] initWithX:x0 andY:y0]];
 		

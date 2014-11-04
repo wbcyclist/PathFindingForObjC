@@ -24,8 +24,8 @@
 @property (nonatomic) float g;
 @property (nonatomic) float h;
 
-/// special weight of pass
-@property (nonatomic) float weight;
+/// special costWeight of pass through.
+@property (nonatomic) float cost;
 
 /// The x coordinate of the node on the grid. (X-axis In Matrix Coords)
 @property (nonatomic) int x;
@@ -38,9 +38,27 @@
  * @param 1 is in the startOpenList
  * @param 2 is in the endOpenList
  */
-@property (nonatomic) int opened;
+@property (nonatomic) uint8_t opened;
 @property (nonatomic) BOOL closed;
 @property (nonatomic) BOOL tested;
+
+/**
+ * direction for vectorFieldGrid
+ *
+ *  +---+---+---+
+ *  | 1 | 2 | 3 |
+ *  +---+---+---+
+ *  | 8 | 0 | 4 |
+ *  +---+---+---+
+ *  | 7 | 6 | 5 |
+ *  +---+---+---+
+ *
+ */
+@property (nonatomic) int direction;
+/**
+ * vector for vectorFieldGrid
+ */
+@property (nonatomic, assign) CGVector vector;
 
 /// Point In Origin Coords
 @property (nonatomic) CGPoint originPoint;

@@ -7,6 +7,7 @@
 
 #import "PFGrid.h"
 #import "PFUtil.h"
+//#import <objc/message.h>
 
 @interface PFGrid ()
 
@@ -30,6 +31,7 @@
 		_matrix = (int**)malloc(sizeof(int*)*_row);
 		NSMutableArray *nodeArr = [NSMutableArray arrayWithCapacity:_row];
 		
+		PFNode *node = nil;;
 		for (int i=0; i<_row; i++) {
 			_matrix[i] = (int*)malloc(sizeof(int)*_column);
 			memset(_matrix[i], 0, sizeof(int)*_column);
@@ -37,7 +39,7 @@
 			nodeArr[i] = [NSMutableArray arrayWithCapacity:_column];
 			
 			for (int j=0; j<_column; j++) {
-				PFNode *node = [[PFNode alloc] init];
+				node = [[PFNode alloc] init];
 				node.x = j;
 				node.y = i;
 				node.f = 0;
@@ -54,14 +56,15 @@
 		CGPoint blockPoint;
 		for (NSValue *value in blockPoints) {
 			blockPoint = NSValueToCGPoint(value);
-			PFNode *node = [self getNodeAtX:blockPoint.x andY:blockPoint.y];
+			node = [self getNodeAtX:blockPoint.x andY:blockPoint.y];
 			if (node) {
 				node.walkable = NO;
 				_matrix[node.y][node.x] = 1;
 			}
 		}
 		
-		
+//		NSLog(@"PFNode size(memory): %zd", class_getInstanceSize([PFNode class]));
+//		NSLog(@"PFGrid size(memory): %zd", class_getInstanceSize([PFGrid class]));
 //		[self printMatrix];
 	}
 	return self;
@@ -140,16 +143,12 @@
 	return self.nodes[y][x];
 }
 
-- (BOOL)isInsideX:(int)x andY:(int)y {
-	return (x >= 0 && x < self.column) && (y >= 0 && y < self.row);
-}
-
 - (BOOL)isWalkableAtX:(int)x andY:(int)y {
-	return [self isInsideX:x andY:y] && ((PFNode *)self.nodes[y][x]).walkable;
+	return [self getNodeAtX:x andY:y].walkable;
 }
 
 - (void)setWalkableAtX:(int)x andY:(int)y andWalkable:(BOOL)walkable {
-	((PFNode *)self.nodes[y][x]).walkable = walkable;
+	[self getNodeAtX:x andY:y].walkable = walkable;
 }
 
 - (NSArray *)getNeighborsWith:(PFNode *)node isAllowDiagonal:(BOOL)allowDiagonal isCrossCorners:(BOOL)allowCrossCorners {

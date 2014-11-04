@@ -24,10 +24,13 @@ typedef enum {
 @property (nonatomic) BOOL showWeightValue;
 @property (nonatomic) GridNodeState editState;		// ( kGState_Walkable / kGState_Start / kGState_End / kGState_Block )
 @property (nonatomic) GridNodeState searchState;	// ( kGState_None / kGState_Open / kGState_Close / kGState_Tested )
+@property (nonatomic) CGFloat colorFactor;
 
 @property (nonatomic) CGFloat fValue;
 @property (nonatomic) CGFloat gValue;
 @property (nonatomic) CGFloat hValue;
+@property (nonatomic) CGFloat costValue;
+@property (nonatomic) int direction;
 
 @property (nonatomic) int x;
 @property (nonatomic) int y;
@@ -41,5 +44,7 @@ typedef enum {
 @property (nonatomic, strong) SKColor *testedColor;
 
 - (BOOL)setupEditGridState:(GridNodeState)editState runAnimate:(BOOL)animate;
+
+- (void)setDirection:(int)direction vector:(CGVector)vec;
 
 @end

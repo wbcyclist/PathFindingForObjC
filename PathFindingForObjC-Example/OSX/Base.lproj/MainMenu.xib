@@ -111,6 +111,7 @@
                     <constraint firstItem="539" firstAttribute="leading" secondItem="372" secondAttribute="leading" id="544"/>
                 </constraints>
             </view>
+            <point key="canvasLocation" x="178" y="388"/>
         </window>
         <customObject id="494" customClass="AppDelegate">
             <connections>
@@ -119,5 +120,29 @@
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
+        <splitView dividerStyle="thin" vertical="YES" id="ITa-z4-e7Y">
+            <rect key="frame" x="0.0" y="0.0" width="664" height="540"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" id="tDC-4a-kxg">
+                    <rect key="frame" x="0.0" y="0.0" width="333.5" height="540"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <subviews>
+                        <stackView orientation="vertical" alignment="centerX" horizontalHuggingPriority="249" verticalHuggingPriority="249" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bHf-bX-Vik">
+                            <rect key="frame" x="30" y="289" width="273" height="251"/>
+                        </stackView>
+                    </subviews>
+                </customView>
+                <customView fixedFrame="YES" id="EOc-KU-cdA">
+                    <rect key="frame" x="334.5" y="0.0" width="329.5" height="540"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </customView>
+            </subviews>
+            <holdingPriorities>
+                <real value="250"/>
+                <real value="250"/>
+            </holdingPriorities>
+            <point key="canvasLocation" x="979.5" y="383"/>
+        </splitView>
     </objects>
 </document>

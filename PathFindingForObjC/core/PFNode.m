@@ -15,10 +15,12 @@
 		self.f = 0;
 		self.g = 0;
 		self.h = 0;
+		self.cost = 0;
 		self.walkable = YES;
 		self.opened = 0;
 		self.closed = NO;
 		self.tested = NO;
+		self.direction = 0;
 	}
 	return self;
 }
@@ -39,11 +41,14 @@
 	copy.h = self.h;
 	copy.x = self.x;
 	copy.y = self.y;
-	copy.weight = self.weight;
+	copy.cost = self.cost;
 	copy.walkable = self.walkable;
 	copy.opened = self.opened;
 	copy.closed = self.closed;
 	copy.tested = self.tested;
+	copy.originPoint = self.originPoint;
+	copy.direction = self.direction;
+	copy.vector = self.vector;
 	return copy;
 }
 

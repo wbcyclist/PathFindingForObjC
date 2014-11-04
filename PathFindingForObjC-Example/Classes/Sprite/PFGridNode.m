@@ -14,6 +14,7 @@
 @property (nonatomic, retain) SKLabelNode *fLab;
 @property (nonatomic, retain) SKLabelNode *gLab;
 @property (nonatomic, retain) SKLabelNode *hLab;
+@property (nonatomic, retain) SKSpriteNode *arrow;
 
 @end
 
@@ -24,6 +25,7 @@
 - (instancetype)initWithTexture:(SKTexture *)texture {
 	self = [super initWithTexture:texture];
 	if (self) {
+		_direction = 0;
 		self.searchState = kGState_None;
 		self.editState = kGState_Walkable;
 		
@@ -36,6 +38,23 @@
 		self.testedColor	= [SKColor colorWithRed:190/255.0 green:190/255.0 blue:190/255.0 alpha:1];
 	}
 	return self;
+}
+
+//static int COLOR_MAX = 222235247;
+//static int COLOR_MIN = 49130189;
+//static int COLOR_DIF = COLOR_MAX-COLOR_MIN;
+//- (SKColor*)getColorBrewerRange:(CGFloat)rate {
+//	
+//	
+//}
+
+- (SKSpriteNode *)arrow {
+	if (!_arrow) {
+		_arrow = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"arrow"] size:self.size];
+		_arrow.userInteractionEnabled = NO;
+		[self addChild:_arrow];
+	}
+	return _arrow;
 }
 
 
@@ -118,6 +137,32 @@
 	self.hLab.text = [NSString stringWithFormat:@"%d", (int)(_hValue*10)];
 }
 
+-(void)setCostValue:(CGFloat)costValue {
+	_costValue = costValue;
+	if (costValue==0) {
+		return;
+	}
+	_searchState = kGState_Close;
+	self.fLab.text = [NSString stringWithFormat:@"%d", (int)costValue];
+	self.fLab.hidden = !_showWeightValue;
+	
+	[self removeAllActions];
+	costValue = MIN(costValue*20, 255);
+	SKColor *color = [SKColor colorWithRed:costValue/255.0 green:117/255.0 blue:248/255.0 alpha:1];;
+	
+	SKAction *colorAct = [SKAction colorizeWithColor:color colorBlendFactor:1 duration:0.1];
+	SKAction *scaleAct = [SKAction sequence:@[[SKAction scaleTo:1.1 duration:0.1], [SKAction scaleTo:1 duration:0.1]]];
+	[self runAction:[SKAction group:@[colorAct, scaleAct]]];
+	
+	
+}
+
+- (void)setColorFactor:(CGFloat)colorFactor {
+	_colorFactor = colorFactor;
+	self.colorBlendFactor = colorFactor;
+}
+
+
 - (void)updateGridColor:(GridNodeState)state runAnimate:(BOOL)animate {
 	BOOL showWeightValue = NO;
 	if (_searchState==kGState_Close || _searchState==kGState_Open) {
@@ -156,11 +201,12 @@
 	self.hLab.hidden = !showWeightValue;
 	[self removeAllActions];
 	if (animate) {
-		SKAction *colorAct = [SKAction colorizeWithColor:color colorBlendFactor:self.colorBlendFactor duration:0.1];
+		SKAction *colorAct = [SKAction colorizeWithColor:color colorBlendFactor:self.colorFactor duration:0.1];
 		SKAction *scaleAct = [SKAction sequence:@[[SKAction scaleTo:1.1 duration:0.1], [SKAction scaleTo:1 duration:0.1]]];
 		[self runAction:[SKAction group:@[colorAct, scaleAct]]];
 	} else {
 		self.color = color;
+		self.colorBlendFactor = self.colorFactor;
 		[self runAction:[SKAction scaleTo:1 duration:0]];
 	}
 }
@@ -205,7 +251,42 @@
 
 
 
-
+- (void)setDirection:(int)direction vector:(CGVector)vec {
+	
+	
+	if (vec.dx==0 && vec.dy==0) {
+		self.arrow.hidden = YES;
+	} else {
+		CGFloat ang = WB_POLAR_ADJUST(WB_RadiansBetweenPoints(CGPointMake(vec.dx, vec.dy), CGPointMake(0, 0)));
+		self.arrow.hidden = NO;
+		self.arrow.zRotation = ang;
+	}
+	self.gLab.text = [NSString stringWithFormat:@"%d", (int)vec.dx];
+	self.gLab.hidden = !_showWeightValue;
+	self.hLab.text = [NSString stringWithFormat:@"%d", (int)vec.dy];
+	self.hLab.hidden = !_showWeightValue;
+	
+	
+//	_direction = direction;
+//	if (direction==0) {
+//		self.arrow.hidden = YES;
+//	} else if (direction==2) {
+//		self.arrow.hidden = NO;
+//		self.arrow.zRotation = M_PI;
+//	} else if (direction==4) {
+//		self.arrow.hidden = NO;
+//		self.arrow.zRotation = M_PI/2;
+//	} else if (direction==6) {
+//		self.arrow.hidden = NO;
+//		self.arrow.zRotation = 0;
+//	} else if (direction==8) {
+//		self.arrow.hidden = NO;
+//		self.arrow.zRotation = -M_PI/2;
+//	}
+	
+	
+	
+}
 
 
 

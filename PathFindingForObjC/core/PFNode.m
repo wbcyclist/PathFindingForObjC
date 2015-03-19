@@ -34,6 +34,7 @@
 	return self;
 }
 
+// 用于寻路时跟踪节点的状态
 - (id)copyWithZone:(NSZone *)zone {
 	PFNode *copy = [[PFNode alloc] init];
 	copy.f = self.f;

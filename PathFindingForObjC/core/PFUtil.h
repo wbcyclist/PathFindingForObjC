@@ -6,22 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#if TARGET_OS_IPHONE
-#import <UIKit/UIKit.h>
-#else
 
-#endif
 
 @class PFGrid;
 @class PFNode;
-
-#if TARGET_OS_IPHONE
-	#define CGPointToNSValue(p) [NSValue valueWithCGPoint:p]
-	#define NSValueToCGPoint(v) v.CGPointValue
-#else
-	#define CGPointToNSValue(p) [NSValue valueWithPoint:p]
-	#define NSValueToCGPoint(v) v.pointValue
-#endif
 
 
 @interface PFUtil : NSObject

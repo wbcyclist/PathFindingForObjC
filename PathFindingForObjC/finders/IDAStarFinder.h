@@ -8,6 +8,8 @@
 #import "BaseFinder.h"
 
 /**
+ * Not Implemented Yet!!!
+ *
  * Iterative Deeping A Star (IDA*) path-finder.
  *
  * Recursion based on:
@@ -22,8 +24,9 @@
  *
  * @constructor
  * @param {object} opt
- * @param {boolean} opt.allowDiagonal Whether diagonal movement is allowed.
- * @param {boolean} opt.allowCrossCorners Disallow diagonal movement touching block corners.
+ * @param {boolean} opt.allowDiagonal Whether diagonal movement is allowed. Deprecated, use diagonalMovement instead.
+ * @param {boolean} opt.dontCrossCorners Disallow diagonal movement touching block corners. Deprecated, use diagonalMovement instead.
+ * @param {DiagonalMovement} opt.diagonalMovement Allowed diagonal movement.
  * @param {function} opt.heuristic Heuristic function to estimate the distance
  *     (defaults to manhattan).
  * @param {integer} opt.weight Weight to apply to the heuristic to allow for suboptimal paths,

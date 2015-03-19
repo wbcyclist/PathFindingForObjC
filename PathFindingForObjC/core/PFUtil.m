@@ -6,17 +6,16 @@
 //
 
 #import "PFUtil.h"
+#import "PFNode.h"
 #import "PFGrid.h"
 
 @implementation PFUtil
 
 + (NSArray *)backtrace:(PFNode *)node {
 	NSMutableArray *path = [NSMutableArray array];
-//	[path addObject:CGPointToNSValue(CGPointMake(node.x, node.y))];
 	[path addObject:node];
 	while (node.parent) {
 		node = node.parent;
-//		[path addObject:CGPointToNSValue(CGPointMake(node.x, node.y))];
 		[path addObject:node];
 	}
 	
@@ -59,7 +58,6 @@
 	err = dx - dy;
 	
 	while (YES) {
-//		[line addObject:CGPointToNSValue(CGPointMake( x0, y0))];
 		[line addObject:[[PFNode alloc] initWithX:x0 andY:y0]];
 		
 		if (x0 == x1 && y0 == y1) {
@@ -109,8 +107,8 @@
 	}
 	
 	PFNode *currentNode	= path[0];
-	PFNode *lastNode	= path[1];
 	PFNode *nextNode	= nil;
+	PFNode *lastNode	= nil;
 	
 	NSArray *line = nil;
 	NSMutableArray *newPath = [NSMutableArray array];
@@ -126,13 +124,15 @@
 			
 			if (![grid isWalkableAtX:testNode.x andY:testNode.y]) {
 				blocked = YES;
-				[newPath addObject:lastNode];
-				currentNode = lastNode;
 				break;
 			}
 		}
-		if (!blocked) {
-			lastNode = nextNode;
+		
+		if (blocked) {
+			lastNode = path[i - 1];
+			[newPath addObject:lastNode];
+			
+			currentNode = lastNode;
 		}
 	}
 	[newPath addObject:[path lastObject]];
@@ -142,48 +142,41 @@
 }
 
 + (NSArray *)compressPath:(NSArray*)path {
-	/*
+	
+	// nothing to compress
 	if([path count] < 3) {
 		return path;
 	}
 	NSMutableArray *compressed = [NSMutableArray array];
 	
-	CGPoint coord = NSValueToCGPoint(((NSValue*)path[0]));
-	int sx = coord.x;	// start x
-	int sy = coord.y;	// start x
-	coord = NSValueToCGPoint(((NSValue*)path[1]));
-	int px = coord.x;	// second point x
-	int py = coord.y;	// second point y
-	int dx = px - sx;	// direction between the two points
-	int dy = py - sy;	// direction between the two points
-	int lx, ly, ldx, ldy;
+	PFNode *lastNode = path[0];
+	PFNode *nextNode = path[1];
+	
+	int dx = nextNode.x - lastNode.x;	// direction between the two points
+	int dy = nextNode.y - lastNode.y;	// direction between the two points
+	int ldx, ldy;
 	// normalize the direction
 	int sq = sqrt(dx*dx + dy*dy);
 	dx /= sq;
 	dy /= sq;
 	
 	// start the new path
-	
-	[compressed addObject:CGPointToNSValue(CGPointMake(sx, sy))];
+	[compressed addObject:lastNode];
 	
 	for(int i = 2; i < [path count]; i++) {
-		
 		// store the last point
-		lx = px;
-		ly = py;
+		lastNode = nextNode;
 		
 		// store the last direction
 		ldx = dx;
 		ldy = dy;
 		
 		// next point
-		coord = NSValueToCGPoint(((NSValue*)path[i]));
-		px = coord.x;
-		py = coord.y;
+		nextNode = path[i];
 		
 		// next direction
-		dx = px - lx;
-		dy = py - ly;
+		dx = nextNode.x - lastNode.x;
+		dy = nextNode.y - lastNode.y;
 		
 		// normalize
 		sq = sqrt(dx*dx + dy*dy);
@@ -192,16 +185,14 @@
 		
 		// if the direction has changed, store the point
 		if ( dx != ldx || dy != ldy ) {
-			[compressed addObject:CGPointToNSValue(CGPointMake(lx, ly))];
+			[compressed addObject:lastNode];
 		}
 	}
 	
 	// store the last point
-	[compressed addObject:CGPointToNSValue(CGPointMake(px, py))];
+	[compressed addObject:nextNode];
 	
 	return compressed;
-	 */
-	return nil;
 }
 
 

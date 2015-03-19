@@ -1,121 +1,13 @@
 //
-//  JumpPointFinder.m
+//  JPFMoveDiagonallyIfAtMostOneObstacle.m
 //
-//  Created by JasioWoo on 14/11/1.
-//  Copyright (c) 2014年 JasioWoo. All rights reserved.
+//  Created by JasioWoo on 15/3/19.
+//  Copyright (c) 2015年 JasioWoo. All rights reserved.
 //
 
-#import "JumpPointFinder.h"
-#import "PFUtil.h"
-#import "PFGrid.h"
+#import "JPFMoveDiagonallyIfAtMostOneObstacle.h"
 
-
-@implementation JumpPointFinder {
-	BOOL trackJumpRecursion;
-}
-
-
-- (NSArray *)findPathInStartNode:(PFNode *)startNode toEndNode:(PFNode *)endNode withGrid:(PFGrid *)grid trackFinding:(NSMutableArray *__autoreleasing *)trackArrForTest {
-	
-	NSMutableArray *openList = [NSMutableArray array];
-	PFNode *node = nil;
-	
-	// set the `g` and `f` value of the start node to be 0
-	startNode.g = 0;
-	startNode.f = 0;
-	
-	// push the start node into the open list
-	[openList addObject:startNode];
-	startNode.opened = 1;
-	
-	// track
-	trackJumpRecursion = NO;
-	if (trackArrForTest) {[(*trackArrForTest) addObject:[startNode copy]]; trackJumpRecursion = YES;}
-	
-	// while the open list is not empty
-	while (openList.count>0) {
-		// pop the position of node which has the minimum `f` value.
-		[openList sortUsingSelector:@selector(descFWeightSort:)];
-		node = [openList lastObject];
-		[openList removeLastObject];
-		node.closed = YES;
-		
-		// track
-		if (trackArrForTest) {[(*trackArrForTest) addObject:[node copy]];}
-		
-		if (node == endNode) {
-			return [PFUtil expandPath:[PFUtil backtrace:endNode]];
-		}
-		
-		[self identifySuccessors:node withEndNode:endNode andGrid:grid andOpenList:openList andTrackFinding:trackArrForTest?(*trackArrForTest):nil];
-	}
-	
-	// fail to find the path
-	return nil;
-}
-
-
-/**
- * Identify successors for the given node. Runs a jump point search in the
- * direction of each available neighbor, adding any points found to the open
- * list.
- * @protected
- */
-- (void)identifySuccessors:(PFNode*)node withEndNode:(PFNode*)endNode andGrid:(PFGrid *)grid andOpenList:(NSMutableArray *)openList andTrackFinding:(NSMutableArray*)trackArrForTest {
-	
-	int x=node.x, y=node.y, endX=endNode.x, endY=endNode.y, jx, jy;
-	float ng = 0;
-	
-	Heuristic *octileHeur = [self createHeuristicWithType:HeuristicTypeOctile];
-	
-	NSArray *neighbors = [self findNeighbors:node withGrid:grid];
-	PFNode *neighbor = nil;
-	PFNode *jumpNode = nil;
-	NSMutableArray *trackArr = nil;
-	for(int i = 0; i < neighbors.count; i++) {
-		neighbor = neighbors[i];
-		
-		// track
-		if (trackArrForTest) {
-			trackArr = [NSMutableArray array];
-		}
-		
-		jumpNode = [self jump:neighbor withNode:node withEndNode:endNode withGrid:grid andTrackArr:trackArr];
-		
-		if (jumpNode) {
-			jx = jumpNode.x;
-			jy = jumpNode.y;
-			
-			if (jumpNode.closed) {
-				continue;
-			}
-			
-			// include distance, as parent may not be immediately adjacent:
-			int d = [octileHeur performAlgorithmWithX:abs(jx - x) andY:abs(jy - y)];
-			ng = node.g + d; // next `g` value
-			
-			if (jumpNode.opened==0 || ng < jumpNode.g) {
-				jumpNode.g = ng;
-				jumpNode.h = jumpNode.h==0 ? [self calculateHeuristicValueWithX:abs(jx - endX) andY:abs(jy - endY)] : jumpNode.h;
-				jumpNode.f = jumpNode.g + jumpNode.h;
-				jumpNode.parent = node;
-				
-				if (jumpNode.opened==0) {
-					[openList addObject:jumpNode];
-					jumpNode.opened = 1;
-				}
-				
-				// track
-				if (trackArr) {[trackArr addObject:[jumpNode copy]];}
-			}
-		}
-		
-		// track
-		if (trackArrForTest && trackArr.count>0) { [trackArrForTest addObject:trackArr]; }
-	}
-}
-
-
+@implementation JPFMoveDiagonallyIfAtMostOneObstacle
 
 
 /**
@@ -155,6 +47,14 @@
 			|| (t3Node.walkable && !t4Node.walkable)) {
 			return nodeA;
 		}
+		
+		// when moving diagonally, must check for vertical/horizontal jump points
+		t1Node = [grid getNodeAtX:(x + dx) andY:(y)];
+		t2Node = [grid getNodeAtX:(x) andY:(y + dy)];
+		if ([self jump:t1Node withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr]
+			|| [self jump:t2Node withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr]) {
+			return nodeA;
+		}
 	}
 	// horizontally/vertically
 	else {
@@ -179,18 +79,6 @@
 			   || (t3Node.walkable && !t4Node.walkable)) {
 				return nodeA;
 			}
-		}
-	}
-	
-	// when moving diagonally, must check for vertical/horizontal jump points
-	if (dx != 0 && dy != 0) {
-		PFNode *reNodeA1 = [grid getNodeAtX:(x + dx) andY:(y)];
-		PFNode *reNodeA2 = [grid getNodeAtX:(x) andY:(y + dy)];
-		
-		
-		if ([self jump:reNodeA1 withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr]
-			|| [self jump:reNodeA2 withNode:nodeA withEndNode:endNode withGrid:grid andTrackArr:trackArr]) {
-			return nodeA;
 		}
 	}
 	
@@ -297,7 +185,7 @@
 	// return all neighbors
 	else {
 		
-		NSArray *neighborNodes = [grid getNeighborsWith:node isAllowDiagonal:YES isCrossCorners:YES];
+		NSArray *neighborNodes = [grid getNeighborsWith:node diagonalMovement:DiagonalMovement_IfAtMostOneObstacle];
 		PFNode *neighborNode=nil;
 		for (int i=0; i<neighborNodes.count; i++) {
 			neighborNode = neighborNodes[i];
@@ -307,16 +195,6 @@
 	
 	return neighbors;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 @end

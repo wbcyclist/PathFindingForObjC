@@ -7,7 +7,6 @@
 
 #import "BreadthFirstFinder.h"
 #import "PFUtil.h"
-#import "PFGrid.h"
 
 
 @implementation BreadthFirstFinder
@@ -47,7 +46,7 @@
 			return [PFUtil backtrace:endNode];
 		}
 		
-		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.allowCrossCorners];
+		neighbors = [grid getNeighborsWith:node diagonalMovement:self.movementType];
 		for (i = 0, l = neighbors.count; i < l; ++i) {
 			neighbor = neighbors[i];
 			

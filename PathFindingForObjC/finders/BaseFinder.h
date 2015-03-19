@@ -4,18 +4,19 @@
 //  Created by JasioWoo on 14/10/28.
 //  Copyright (c) 2014年 JasioWoo. All rights reserved.
 //
-#import "Heuristic.h"
 
-@class PFGrid;
-@class PFNode;
+#import "PFTypes.h"
+
+#import "PFNode.h"
+#import "PFGrid.h"
+#import "Heuristic.h"
 
 
 @interface BaseFinder : NSObject
 
 @property (nonatomic) HeuristicType heuristicType;
+@property (nonatomic) DiagonalMovement movementType;
 @property (nonatomic) Heuristic *heuristic;
-@property (nonatomic) BOOL allowDiagonal;
-@property (nonatomic) BOOL allowCrossCorners;
 @property (nonatomic) int weight;
 
 @property (nonatomic, readonly) NSArray *resultPath;

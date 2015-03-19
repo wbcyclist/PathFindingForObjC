@@ -7,7 +7,6 @@
 
 #import "BiAStarFinder.h"
 #import "PFUtil.h"
-#import "PFGrid.h"
 
 #define BY_START	1
 #define BY_END		2
@@ -64,7 +63,7 @@
 		}
 		
 		// get neigbours of the current node
-		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.allowCrossCorners];
+		neighbors = [grid getNeighborsWith:node diagonalMovement:self.movementType];
 		for (i = 0, l = neighbors.count; i < l; ++i) {
 			neighbor = neighbors[i];
 			
@@ -118,7 +117,7 @@
 		}
 		
 		// get neigbours of the current node
-		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.allowCrossCorners];
+		neighbors = [grid getNeighborsWith:node diagonalMovement:self.movementType];
 		for (i = 0, l = neighbors.count; i < l; ++i) {
 			neighbor = neighbors[i];
 			

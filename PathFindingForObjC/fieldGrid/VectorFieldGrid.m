@@ -123,7 +123,7 @@ typedef enum {
 }
 
 - (void)dealloc {
-	debugMethod();
+//	debugMethod();
 	[_nodes removeAllObjects];
 	_nodes = nil;
 }
@@ -162,9 +162,85 @@ typedef enum {
 
 - (void)setTargetPoint:(CGPoint)targetPoint {
 	ConvertToMatrixPoint(targetPoint, self.tileSize, self.orginPoint);
+	if (targetPoint.x==_targetPoint.x && targetPoint.y==_targetPoint.y) {
+		return;
+	}
 	_targetPoint = targetPoint;
+	// add DynamicBlock
+	[self addDynamicBlockTile]; // custom
 	[self fieldGridGeneration];
+	[self clearDynamicBlockTile]; // custom
 }
+
+// custom method
+- (void)addDynamicBlockTile {
+	PFNode *node = nil;
+	for (int i=1; i<4; i++) {
+		for (int j=0; j<5; j++) {
+			node = [self getNodeAtX:_targetPoint.x-i andY:_targetPoint.y-j];
+			if (node && node.walkable) {
+				node.walkable = NO;
+				node.tested = YES;
+				node.direction = 8;
+				if (j==0) {
+					node.vector = CGVectorMake(-1, 0);
+				} else {
+					node.vector = CGVectorMake(-1, 1);
+				}
+			}
+			
+			node = [self getNodeAtX:_targetPoint.x+i andY:_targetPoint.y-j];
+			if (node && node.walkable) {
+				node.walkable = NO;
+				node.tested = YES;
+				node.direction = 4;
+				if (j==0) {
+					node.vector = CGVectorMake(1, 0);
+				} else {
+					node.vector = CGVectorMake(1, 1);
+				}
+			}
+		}
+	}
+	
+	for (int i=1; i<5; i++) {
+		node = [self getNodeAtX:_targetPoint.x andY:_targetPoint.y-i];
+		if (node && node.walkable) {
+			node.walkable = NO;
+			node.tested = YES;
+			node.direction = 6;
+			node.vector = CGVectorMake(0, -1);
+		}
+	}
+}
+
+- (void)clearDynamicBlockTile {
+	PFNode *node = nil;
+	for (int i=1; i<4; i++) {
+		for (int j=0; j<5; j++) {
+			node = [self getNodeAtX:_targetPoint.x-i andY:_targetPoint.y-j];
+			if (node && node.tested) {
+				node.walkable = YES;
+				node.tested = NO;
+			}
+			
+			node = [self getNodeAtX:_targetPoint.x+i andY:_targetPoint.y-j];
+			if (node && node.tested) {
+				node.walkable = YES;
+				node.tested = NO;
+			}
+		}
+	}
+	
+	for (int i=1; i<5; i++) {
+		node = [self getNodeAtX:_targetPoint.x andY:_targetPoint.y-i];
+		if (node && node.tested) {
+			node.walkable = YES;
+			node.tested = NO;
+		}
+	}
+}
+
 
 - (void)clearFieldNode {
 	for (NSArray *rowArr in self.nodes) {
@@ -181,6 +257,7 @@ typedef enum {
 }
 
 - (void)fieldGridGeneration {
+//	NSLog(@"fieldGridGeneration");
 	[self clearFieldNode];
 	
 	NSMutableArray *openList = [NSMutableArray array];
@@ -188,7 +265,9 @@ typedef enum {
 	int x, y;
 	
 	PFNode *startNode = [self getNodeAtX:_targetPoint.x andY:_targetPoint.y];
-	
+	if (!startNode) {
+		return;
+	}
 	// push the start node into the open list
 	[openList addObject:startNode];
 	startNode.opened = 1;

@@ -4,35 +4,14 @@
 //  Created by JasioWoo on 14/10/26.
 //  Copyright (c) 2014年 JasioWoo. All rights reserved.
 //
-#import "BaseFinder.h"
 
-/**
- *  http://qiao.github.io/PathFinding.js/visual/
- */
-typedef enum {
-	PathfindingAlgorithm_AStar,						// default
-	PathfindingAlgorithm_BestFirstSearch,			//
-	PathfindingAlgorithm_Dijkstra,					//
-	PathfindingAlgorithm_JumpPointSearch,			//
-	PathfindingAlgorithm_BreadthFirstSearch,		// queue
-//	PathfindingAlgorithm_DepthFirstSearch,			// stack
-	PathfindingAlgorithm_OrthogonalJumpPointSearch,	//
-	PathfindingAlgorithm_Trace,						//
-	
-	PathfindingAlgorithm_BiAStar,					//
-	PathfindingAlgorithm_BiBestFirst,				//
-	PathfindingAlgorithm_BiDijkstra,				//
-	PathfindingAlgorithm_BiBreadthFirst,			//
-	
-	PathfindingAlgorithm_IDAStar					//
-} PathfindingAlgorithm;
-
+#import "PFTypes.h"
 
 @interface PathFinding : NSObject
 
 @property (nonatomic) HeuristicType heuristicType;
-@property (nonatomic) BOOL allowDiagonal;
-@property (nonatomic) BOOL allowCrossCorners;
+@property (nonatomic) DiagonalMovement movementType;
+
 @property (nonatomic) int weight;
 @property (nonatomic) CGSize mapSize;
 @property (nonatomic) CGSize tileSize;
@@ -43,6 +22,7 @@ typedef enum {
 - (instancetype)initWithMapSize:(CGSize)mapSize tileSize:(CGSize)tileSize coordsOrgin:(CGPoint)orginPoint;
 
 - (void)addBlockTilePosition:(CGPoint)point;
+- (void)addDynamicBlockTilePosition:(CGPoint)point;
 /// @param points = @[[NSValue valueWithCGPoint:CGPointMake(x, y)]]
 - (void)addBlockTilePositions:(NSArray*)points;
 - (void)clearBlockTiles;

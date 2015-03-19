@@ -7,7 +7,6 @@
 
 #import "IDAStarFinder.h"
 #import "PFUtil.h"
-#import "PFGrid.h"
 
 @implementation IDAStarFinder
 

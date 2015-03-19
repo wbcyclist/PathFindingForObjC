@@ -6,7 +6,8 @@
 //
 
 #import "PFGrid.h"
-#import "PFUtil.h"
+
+#import "PFNode.h"
 //#import <objc/message.h>
 
 @interface PFGrid ()
@@ -23,18 +24,18 @@
 	self = [super init];
 	if (self) {
 		if (col==0 || row==0) {
-			NSLog(@"Grid Size Must Be > 0. (col=%d, row=%d)", col, row);
+//			NSLog(@"Grid Size Must Be > 0. (col=%d, row=%d)", col, row);
 			return nil;
 		}
 		_column = col;
 		_row = row;
-		_matrix = (int**)malloc(sizeof(int*)*_row);
+		_matrix = (int**)malloc(_row * sizeof(int*));
 		NSMutableArray *nodeArr = [NSMutableArray arrayWithCapacity:_row];
 		
 		PFNode *node = nil;;
 		for (int i=0; i<_row; i++) {
-			_matrix[i] = (int*)malloc(sizeof(int)*_column);
-			memset(_matrix[i], 0, sizeof(int)*_column);
+			_matrix[i] = (int*)malloc(_column * sizeof(int));
+			memset(_matrix[i], 0, _column * sizeof(int));
 			
 			nodeArr[i] = [NSMutableArray arrayWithCapacity:_column];
 			
@@ -121,7 +122,7 @@
 
 
 - (void)dealloc {
-	debugMethod();
+//	debugMethod();
 	[_nodes removeAllObjects];
 	_nodes = nil;
 	
@@ -151,7 +152,7 @@
 	[self getNodeAtX:x andY:y].walkable = walkable;
 }
 
-- (NSArray *)getNeighborsWith:(PFNode *)node isAllowDiagonal:(BOOL)allowDiagonal isCrossCorners:(BOOL)allowCrossCorners {
+- (NSArray *)getNeighborsWith:(PFNode*)node diagonalMovement:(DiagonalMovement)movementType {
 	NSMutableArray *neighbors = [NSMutableArray arrayWithCapacity:4];
 	int x = node.x;
 	int y = node.y;
@@ -185,20 +186,31 @@
 		s3 = YES;
 	}
 	
-	if (!allowDiagonal) {
-		return neighbors;
-	}
-	
-	if (!allowCrossCorners) {
-		d0 = s3 && s0;
-		d1 = s0 && s1;
-		d2 = s1 && s2;
-		d3 = s2 && s3;
-	} else {
-		d0 = s3 || s0;
-		d1 = s0 || s1;
-		d2 = s1 || s2;
-		d3 = s2 || s3;
+	switch (movementType) {
+		case DiagonalMovement_Always:
+			d0 = d1 = d2 = d3 = YES;
+			break;
+			
+		case DiagonalMovement_Never:
+			return neighbors;
+			
+		case DiagonalMovement_OnlyWhenNoObstacles:
+			d0 = s3 && s0;
+			d1 = s0 && s1;
+			d2 = s1 && s2;
+			d3 = s2 && s3;
+			break;
+			
+		case DiagonalMovement_IfAtMostOneObstacle:
+			d0 = s3 || s0;
+			d1 = s0 || s1;
+			d2 = s1 || s2;
+			d3 = s2 || s3;
+			break;
+			
+		default:
+			NSAssert(NO, @"Incorrect value of diagonalMovement");
+			break;
 	}
 	
 	// ↖
@@ -220,16 +232,6 @@
 	
 	return neighbors;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

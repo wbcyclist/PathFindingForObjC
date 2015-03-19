@@ -110,8 +110,8 @@
 												  tileSize:CGSizeMake(1, 1)
 											   coordsOrgin:CGPointMake(0, 0)];
 		pathFinding.heuristicType = HeuristicTypeManhattan;
-		pathFinding.allowDiagonal = YES;
-		pathFinding.allowCrossCorners = YES;
+		pathFinding.movementType = DiagonalMovement_Always;
+		
 		pathFinding.weight = 1;
 	}
 	[self clearPath];
@@ -145,7 +145,7 @@
 	
 	foundPaths = nil;
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BestFirstSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_AStar IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_AStar IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiAStar IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBestFirst IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_Dijkstra IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
@@ -153,9 +153,8 @@
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BreadthFirstSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBreadthFirst IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_JumpPointSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_OrthogonalJumpPointSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
-//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_Trace IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 	
+	/*
 	if (!_fieldGrid) {
 		self.fieldGrid = [[VectorFieldGrid alloc] initWithMapSize:mapSize tileSize:self.gridSize coordsOrgin:CGPointZero];
 	}
@@ -176,6 +175,7 @@
 			[self playTrackFinding:node];
 		}
 	}
+	 */
 	
 	if ([trackArrHook count]>0) {
 		trackArr = trackArrHook;

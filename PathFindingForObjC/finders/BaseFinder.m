@@ -6,18 +6,17 @@
 //
 
 #import "BaseFinder.h"
-#import "PFUtil.h"
-#import "PFGrid.h"
+
 
 @implementation BaseFinder
 
 - (instancetype)init {
 	self = [super init];
 	if (self) {
+		self.movementType = DiagonalMovement_Never;
 		self.heuristicType = HeuristicTypeManhattan;
 		self.heuristic = [self createHeuristicWithType:self.heuristicType];
-		self.allowDiagonal = YES;
-		self.allowCrossCorners = YES;
+		
 		self.weight = 1;
 	}
 	return self;
@@ -68,8 +67,8 @@
 	return [self.heuristic performAlgorithmWithX:dx andY:dy];
 }
 
-- (void)dealloc {
-	debugMethod();
-}
+//- (void)dealloc {
+//	debugMethod();
+//}
 
 @end

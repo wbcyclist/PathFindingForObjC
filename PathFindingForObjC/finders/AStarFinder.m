@@ -6,8 +6,9 @@
 //
 
 #import "AStarFinder.h"
+
 #import "PFUtil.h"
-#import "PFGrid.h"
+
 
 @implementation AStarFinder
 
@@ -53,7 +54,7 @@
 		}
 		
 		// get neigbours of the current node
-		neighbors = [grid getNeighborsWith:node isAllowDiagonal:self.allowDiagonal isCrossCorners:self.allowCrossCorners];
+		neighbors = [grid getNeighborsWith:node diagonalMovement:self.movementType];
 		for (i = 0, l = neighbors.count; i < l; ++i) {
 			neighbor = neighbors[i];
 			

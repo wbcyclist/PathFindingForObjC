@@ -6,16 +6,14 @@
 //
 
 #import "PathFinding.h"
+#import "PFNode.h"
 #import "PFGrid.h"
-#import "PFUtil.h"
 
 #import "AStarFinder.h"
 #import "BestFirstFinder.h"
 #import "DijkstraFinder.h"
 #import "BreadthFirstFinder.h"
-#import "JumpPointFinder.h"
-#import "OrthogonalJumpPointFinder.h"
-#import "TraceFinder.h"
+#import "JumpPointFinderBase.h"
 
 #import "BiAStarFinder.h"
 #import "BiBestFirstFinder.h"
@@ -24,24 +22,23 @@
 
 
 
-
-#define ConvertToMatrixPoint(p, t, o) do{ p.x = (int)((p.x+o.x)/t.width); p.y = (int)((p.y+o.y)/t.height);}while(0)
-#define ConvertToOriginPoint(p, t, o) do{ p.x = p.x*t.width - o.x + t.width/2.0; p.y = p.y*t.height - o.y + t.height/2.0;}while(0)
-
 @interface PathFinding ()
-@property (nonatomic, retain) NSMutableArray *blockTiles;
+@property (nonatomic, strong) NSMutableArray *blockTiles;
+@property (nonatomic, strong) NSMutableArray *dynamicBlockTiles;
 @end
 
 @implementation PathFinding {
 	
 }
 
+#pragma mark - 
+
 - (instancetype)initWithMapSize:(CGSize)mapSize tileSize:(CGSize)tileSize coordsOrgin:(CGPoint)orginPoint {
 	self = [super init];
 	if (self) {
+		self.movementType = DiagonalMovement_Never;
 		self.heuristicType = HeuristicTypeManhattan;
-		self.allowDiagonal = YES;
-		self.allowCrossCorners = NO;
+		
 		self.weight = 1;
 		self.mapSize = mapSize;
 		self.tileSize = tileSize;
@@ -51,15 +48,30 @@
 	return self;
 }
 
+- (void)dealloc {
+//	debugMethod();
+}
+
+
+#pragma mark -
 - (NSMutableArray *)blockTiles {
 	if (!_blockTiles) {
 		_blockTiles = [NSMutableArray array];
 	}
 	return _blockTiles;
 }
+- (NSMutableArray *)dynamicBlockTiles {
+	if (!_dynamicBlockTiles) {
+		_dynamicBlockTiles = [NSMutableArray array];
+	}
+	return _dynamicBlockTiles;
+}
 
 - (void)addBlockTilePosition:(CGPoint)point {
 	[self.blockTiles addObject:CGPointToNSValue(point)];
+}
+- (void)addDynamicBlockTilePosition:(CGPoint)point {
+	[self.dynamicBlockTiles addObject:CGPointToNSValue(point)];
 }
 
 - (void)addBlockTilePositions:(NSArray *)points {
@@ -67,7 +79,12 @@
 }
 
 - (void)clearBlockTiles {
-	[self.blockTiles removeAllObjects];
+	if (_blockTiles) {
+		[_blockTiles removeAllObjects];
+	}
+	if (_dynamicBlockTiles) {
+		[_dynamicBlockTiles removeAllObjects];
+	}
 }
 
 
@@ -85,6 +102,14 @@
 		ConvertToMatrixPoint(point, self.tileSize, self.orginPoint);
 		[blockPoints addObject:CGPointToNSValue(point)];
 	}
+	NSArray *dyArr = self.dynamicBlockTiles;
+	self.dynamicBlockTiles = nil;
+	for (NSValue *value in dyArr) {
+		CGPoint point = NSValueToCGPoint(value);
+		ConvertToMatrixPoint(point, self.tileSize, self.orginPoint);
+		[blockPoints addObject:CGPointToNSValue(point)];
+	}
+	
 	
 	CGPoint sPoint = self.startPoint;
 	//	sPoint.x = (int)((sPoint.x+self.orginPoint.x)/self.tileSize.width);
@@ -98,8 +123,8 @@
 	PFNode *startNode = [grid getNodeAtX:sPoint.x andY:sPoint.y];
 	PFNode *endNode = [grid getNodeAtX:ePoint.x andY:ePoint.y];
 	if (!startNode || !endNode) {
-		NSLog(@"not found startPoint(%@) or endPoint(%@)", NSStringFromCGPoint(self.startPoint), NSStringFromCGPoint(self.endPoint));
-		NSLog(@"mapSize=%@, tileSize=%@, orginPoint=%@", NSStringFromCGSize(self.mapSize), NSStringFromCGSize(self.tileSize), NSStringFromCGPoint(self.orginPoint));
+//		NSLog(@"not found startPoint(%@) or endPoint(%@)", NSStringFromCGPoint(self.startPoint), NSStringFromCGPoint(self.endPoint));
+//		NSLog(@"mapSize=%@, tileSize=%@, orginPoint=%@", NSStringFromCGSize(self.mapSize), NSStringFromCGSize(self.tileSize), NSStringFromCGPoint(self.orginPoint));
 		return nil;
 	} else if (startNode.x==endNode.x && startNode.y==endNode.y) {
 		return @[CGPointToNSValue(self.startPoint), CGPointToNSValue(self.endPoint)];
@@ -107,8 +132,8 @@
 	
 	BaseFinder *finder = [self getFinder:alg];
 	finder.heuristicType = self.heuristicType;
-	finder.allowDiagonal = self.allowDiagonal;
-	finder.allowCrossCorners = self.allowCrossCorners;
+	finder.movementType = self.movementType;
+	
 	finder.weight = self.weight;
 	NSMutableArray *trackArr = trackArrForTest?*trackArrForTest:nil;
 	NSArray *result = [finder findPathInStartNode:startNode toEndNode:endNode withGrid:grid trackFinding:&trackArr];
@@ -170,13 +195,7 @@
 			result = [[BreadthFirstFinder alloc] init];
 			break;
 		case PathfindingAlgorithm_JumpPointSearch:
-			result = [[JumpPointFinder alloc] init];
-			break;
-		case PathfindingAlgorithm_OrthogonalJumpPointSearch:
-			result = [[OrthogonalJumpPointFinder alloc] init];
-			break;
-		case PathfindingAlgorithm_Trace:
-			result = [[TraceFinder alloc] init];
+			result = [[JumpPointFinderBase alloc] initWithMovementType:self.movementType];
 			break;
 			
 		case PathfindingAlgorithm_BiAStar:

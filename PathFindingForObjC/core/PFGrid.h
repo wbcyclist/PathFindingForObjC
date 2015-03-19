@@ -5,7 +5,9 @@
 //  Copyright (c) 2014年 JasioWoo. All rights reserved.
 //
 
-#import "PFNode.h"
+#import "PFTypes.h"
+
+@class PFNode;
 
 
 /**
@@ -63,13 +65,12 @@
  *  diagonalOffsets[i] and
  *  diagonalOffsets[(i + 1) % 4] is valid.
  * @param {Node} node
- * @param {boolean} allowDiagonal
- * @param {boolean} allowCrossCorners
+ * @param {DiagonalMovement} diagonalMovement
  */
-- (NSArray *)getNeighborsWith:(PFNode*)node isAllowDiagonal:(BOOL)allowDiagonal isCrossCorners:(BOOL)allowCrossCorners;
+- (NSArray *)getNeighborsWith:(PFNode*)node diagonalMovement:(DiagonalMovement)movementType;
 
 
-// test
+/// test
 - (void)printFoundPath:(NSArray *)path;
 
 

@@ -56,10 +56,6 @@
 		A546765A1A00280300C62349 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = A54676581A00280300C62349 /* grid.png */; };
 		A546765D1A00371500C62349 /* PFGridNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A546765C1A00371500C62349 /* PFGridNode.m */; };
 		A546765E1A00371500C62349 /* PFGridNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A546765C1A00371500C62349 /* PFGridNode.m */; };
-		A551BA901A04ED5800B6B7B3 /* TraceFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A551BA8F1A04ED5800B6B7B3 /* TraceFinder.m */; };
-		A551BA911A04ED5800B6B7B3 /* TraceFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A551BA8F1A04ED5800B6B7B3 /* TraceFinder.m */; };
-		A551BA921A04ED5800B6B7B3 /* TraceFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A551BA8F1A04ED5800B6B7B3 /* TraceFinder.m */; };
-		A551BA931A04ED5800B6B7B3 /* TraceFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A551BA8F1A04ED5800B6B7B3 /* TraceFinder.m */; };
 		A55319CC19FFF6F700503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
 		A55319CD19FFF6F700503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
 		A55319CE19FFF6F800503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
@@ -129,14 +125,16 @@
 		A59635A41A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
 		A59635A51A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
 		A59635A61A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
-		A59635A91A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
-		A59635AA1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
-		A59635AB1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
-		A59635AC1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */; };
-		A5A34C2B1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */; };
-		A5A34C2C1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */; };
-		A5A34C2D1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */; };
-		A5A34C2E1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */; };
+		A5A8D90A1ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D9091ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m */; };
+		A5A8D90B1ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D9091ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m */; };
+		A5A8D90E1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */; };
+		A5A8D90F1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */; };
+		A5DEB1651AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */; };
+		A5DEB1661AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */; };
+		A5DEB1691AB7E17D00CEA5A0 /* JumpPointFinderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1681AB7E17D00CEA5A0 /* JumpPointFinderBase.m */; };
+		A5DEB16A1AB7E17D00CEA5A0 /* JumpPointFinderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1681AB7E17D00CEA5A0 /* JumpPointFinderBase.m */; };
+		A5DEB16D1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB16C1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m */; };
+		A5DEB16E1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB16C1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,8 +198,6 @@
 		A54676581A00280300C62349 /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid.png; sourceTree = "<group>"; };
 		A546765B1A00371500C62349 /* PFGridNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFGridNode.h; sourceTree = "<group>"; };
 		A546765C1A00371500C62349 /* PFGridNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFGridNode.m; sourceTree = "<group>"; };
-		A551BA8E1A04ED5800B6B7B3 /* TraceFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceFinder.h; sourceTree = "<group>"; };
-		A551BA8F1A04ED5800B6B7B3 /* TraceFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceFinder.m; sourceTree = "<group>"; };
 		A55319CF19FFF8C900503E11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A55319D119FFF8DD00503E11 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		A55319D319FFF8F000503E11 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -221,6 +217,7 @@
 		A55319F419FFFFB800503E11 /* SKNode+WBKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+WBKit.m"; sourceTree = "<group>"; };
 		A55319F519FFFFB800503E11 /* WBSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSpriteButton.h; sourceTree = "<group>"; };
 		A55319F619FFFFB800503E11 /* WBSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSpriteButton.m; sourceTree = "<group>"; };
+		A55804221AB2D2D700DA4930 /* PFTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTypes.h; sourceTree = "<group>"; };
 		A59635771A03697300B6D6B5 /* BestFirstFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BestFirstFinder.h; sourceTree = "<group>"; };
 		A59635781A03697300B6D6B5 /* BestFirstFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BestFirstFinder.m; sourceTree = "<group>"; };
 		A596357D1A0379AC00B6D6B5 /* BiAStarFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiAStarFinder.h; sourceTree = "<group>"; };
@@ -237,10 +234,16 @@
 		A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiBreadthFirstFinder.m; sourceTree = "<group>"; };
 		A59635A11A03E6B100B6D6B5 /* IDAStarFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDAStarFinder.h; sourceTree = "<group>"; };
 		A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDAStarFinder.m; sourceTree = "<group>"; };
-		A59635A71A03EE9500B6D6B5 /* JumpPointFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpPointFinder.h; sourceTree = "<group>"; };
-		A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpPointFinder.m; sourceTree = "<group>"; };
-		A5A34C291A04D5B9008E4ECD /* OrthogonalJumpPointFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrthogonalJumpPointFinder.h; sourceTree = "<group>"; };
-		A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrthogonalJumpPointFinder.m; sourceTree = "<group>"; };
+		A5A8D9081ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFMoveDiagonallyIfAtMostOneObstacle.h; sourceTree = "<group>"; };
+		A5A8D9091ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFMoveDiagonallyIfAtMostOneObstacle.m; sourceTree = "<group>"; };
+		A5A8D90C1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFMoveDiagonallyIfNoObstacles.h; sourceTree = "<group>"; };
+		A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFMoveDiagonallyIfNoObstacles.m; sourceTree = "<group>"; };
+		A5DEB1631AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFNeverMoveDiagonally.h; sourceTree = "<group>"; };
+		A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFNeverMoveDiagonally.m; sourceTree = "<group>"; };
+		A5DEB1671AB7E17D00CEA5A0 /* JumpPointFinderBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpPointFinderBase.h; sourceTree = "<group>"; };
+		A5DEB1681AB7E17D00CEA5A0 /* JumpPointFinderBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpPointFinderBase.m; sourceTree = "<group>"; };
+		A5DEB16B1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFAlwaysMoveDiagonally.h; sourceTree = "<group>"; };
+		A5DEB16C1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFAlwaysMoveDiagonally.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,11 +483,12 @@
 		A53547DF19FFEEBB005C629B /* PathFindingForObjC */ = {
 			isa = PBXGroup;
 			children = (
+				A55804221AB2D2D700DA4930 /* PFTypes.h */,
+				A53547EE19FFEEBB005C629B /* PathFinding.h */,
+				A53547EF19FFEEBB005C629B /* PathFinding.m */,
 				A52499291A083154002A37E0 /* fieldGrid */,
 				A53547E019FFEEBB005C629B /* core */,
 				A53547E919FFEEBB005C629B /* finders */,
-				A53547EE19FFEEBB005C629B /* PathFinding.h */,
-				A53547EF19FFEEBB005C629B /* PathFinding.m */,
 			);
 			name = PathFindingForObjC;
 			path = ../PathFindingForObjC;
@@ -520,12 +524,16 @@
 				A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */,
 				A59635A11A03E6B100B6D6B5 /* IDAStarFinder.h */,
 				A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */,
-				A59635A71A03EE9500B6D6B5 /* JumpPointFinder.h */,
-				A59635A81A03EE9500B6D6B5 /* JumpPointFinder.m */,
-				A5A34C291A04D5B9008E4ECD /* OrthogonalJumpPointFinder.h */,
-				A5A34C2A1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m */,
-				A551BA8E1A04ED5800B6B7B3 /* TraceFinder.h */,
-				A551BA8F1A04ED5800B6B7B3 /* TraceFinder.m */,
+				A5DEB1671AB7E17D00CEA5A0 /* JumpPointFinderBase.h */,
+				A5DEB1681AB7E17D00CEA5A0 /* JumpPointFinderBase.m */,
+				A5DEB16B1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.h */,
+				A5DEB16C1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m */,
+				A5A8D9081ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.h */,
+				A5A8D9091ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m */,
+				A5A8D90C1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.h */,
+				A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */,
+				A5DEB1631AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.h */,
+				A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */,
 				A596357D1A0379AC00B6D6B5 /* BiAStarFinder.h */,
 				A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */,
 				A59635831A03AB8C00B6D6B5 /* BiBestFirstFinder.h */,
@@ -731,14 +739,16 @@
 			files = (
 				A535480019FFEEBB005C629B /* AStarFinder.m in Sources */,
 				A53547F419FFEEBB005C629B /* PFGrid.m in Sources */,
+				A5DEB1691AB7E17D00CEA5A0 /* JumpPointFinderBase.m in Sources */,
 				A524992C1A083195002A37E0 /* VectorFieldGrid.m in Sources */,
+				A5A8D90E1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m in Sources */,
 				A53546CE19FFCC67005C629B /* GameViewController.m in Sources */,
 				A59635A31A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */,
 				A546765D1A00371500C62349 /* PFGridNode.m in Sources */,
 				A55319F719FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
-				A59635A91A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
 				A55319EA19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
 				A596359D1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
+				A5DEB1651AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m in Sources */,
 				A59635791A03697300B6D6B5 /* BestFirstFinder.m in Sources */,
 				A596358B1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */,
 				A535480419FFEEBB005C629B /* BaseFinder.m in Sources */,
@@ -746,15 +756,15 @@
 				A5531A0319FFFFB800503E11 /* WBSpriteButton.m in Sources */,
 				A53547F819FFEEBB005C629B /* PFNode.m in Sources */,
 				A53546D119FFCC67005C629B /* main.m in Sources */,
-				A5A34C2B1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */,
 				A55319FB19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
 				A53547F019FFEEBB005C629B /* Heuristic.m in Sources */,
 				A53546C919FFCC67005C629B /* AppDelegate.m in Sources */,
+				A5A8D90A1ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m in Sources */,
 				A59635851A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,
 				A59635971A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
 				A55319FF19FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
-				A551BA901A04ED5800B6B7B3 /* TraceFinder.m in Sources */,
 				A535480819FFEEBB005C629B /* PathFinding.m in Sources */,
+				A5DEB16D1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m in Sources */,
 				A596357F1A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */,
 				A59635911A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */,
 				A53547FC19FFEEBB005C629B /* PFUtil.m in Sources */,
@@ -779,11 +789,8 @@
 				A596359F1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
 				A53547F219FFEEBB005C629B /* Heuristic.m in Sources */,
 				A53547F619FFEEBB005C629B /* PFGrid.m in Sources */,
-				A59635AB1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
-				A551BA921A04ED5800B6B7B3 /* TraceFinder.m in Sources */,
 				A55319CD19FFF6F700503E11 /* PathFinding.m in Sources */,
 				A55319F919FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
-				A5A34C2D1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */,
 				A535480219FFEEBB005C629B /* AStarFinder.m in Sources */,
 				A59635991A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
 				A5531A0119FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
@@ -802,6 +809,7 @@
 				A59635A41A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */,
 				A5531A0419FFFFB800503E11 /* WBSpriteButton.m in Sources */,
 				A59635981A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
+				A5A8D90F1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m in Sources */,
 				A59635861A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,
 				A53546E319FFD4F0005C629B /* main.m in Sources */,
 				A53547F919FFEEBB005C629B /* PFNode.m in Sources */,
@@ -812,17 +820,18 @@
 				A55319CC19FFF6F700503E11 /* PathFinding.m in Sources */,
 				A524992D1A083195002A37E0 /* VectorFieldGrid.m in Sources */,
 				A53547F119FFEEBB005C629B /* Heuristic.m in Sources */,
+				A5DEB16E1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m in Sources */,
 				A546765E1A00371500C62349 /* PFGridNode.m in Sources */,
-				A551BA911A04ED5800B6B7B3 /* TraceFinder.m in Sources */,
 				A55319FC19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
-				A59635AA1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
 				A59635921A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */,
 				A55319EB19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
 				A596358C1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */,
+				A5DEB16A1AB7E17D00CEA5A0 /* JumpPointFinderBase.m in Sources */,
 				A53547FD19FFEEBB005C629B /* PFUtil.m in Sources */,
+				A5A8D90B1ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m in Sources */,
+				A5DEB1661AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m in Sources */,
 				A535480519FFEEBB005C629B /* BaseFinder.m in Sources */,
 				A53546E119FFD4F0005C629B /* AppDelegate.m in Sources */,
-				A5A34C2C1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */,
 				A5531A0019FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
 				A596359E1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
 			);
@@ -846,11 +855,8 @@
 				A59635A01A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
 				A53547F319FFEEBB005C629B /* Heuristic.m in Sources */,
 				A53547F719FFEEBB005C629B /* PFGrid.m in Sources */,
-				A59635AC1A03EE9500B6D6B5 /* JumpPointFinder.m in Sources */,
-				A551BA931A04ED5800B6B7B3 /* TraceFinder.m in Sources */,
 				A55319CE19FFF6F800503E11 /* PathFinding.m in Sources */,
 				A55319FA19FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
-				A5A34C2E1A04D5B9008E4ECD /* OrthogonalJumpPointFinder.m in Sources */,
 				A535480319FFEEBB005C629B /* AStarFinder.m in Sources */,
 				A596359A1A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
 				A5531A0219FFFFB800503E11 /* SKNode+WBKit.m in Sources */,

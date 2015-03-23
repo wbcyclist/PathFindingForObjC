@@ -129,12 +129,15 @@
 		A5A8D90B1ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D9091ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m */; };
 		A5A8D90E1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */; };
 		A5A8D90F1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */; };
+		A5A8D9121ABB2A9400BEA593 /* SplitWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D9111ABB2A9400BEA593 /* SplitWindow.m */; };
 		A5DEB1651AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */; };
 		A5DEB1661AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */; };
 		A5DEB1691AB7E17D00CEA5A0 /* JumpPointFinderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1681AB7E17D00CEA5A0 /* JumpPointFinderBase.m */; };
 		A5DEB16A1AB7E17D00CEA5A0 /* JumpPointFinderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1681AB7E17D00CEA5A0 /* JumpPointFinderBase.m */; };
 		A5DEB16D1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB16C1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m */; };
 		A5DEB16E1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB16C1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m */; };
+		A5F58E431ABDCF99005FE014 /* StackCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F58E411ABDCF99005FE014 /* StackCellViewController.m */; };
+		A5F58E441ABDCF99005FE014 /* StackCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F58E421ABDCF99005FE014 /* StackCellViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,12 +241,17 @@
 		A5A8D9091ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFMoveDiagonallyIfAtMostOneObstacle.m; sourceTree = "<group>"; };
 		A5A8D90C1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFMoveDiagonallyIfNoObstacles.h; sourceTree = "<group>"; };
 		A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFMoveDiagonallyIfNoObstacles.m; sourceTree = "<group>"; };
+		A5A8D9101ABB2A9400BEA593 /* SplitWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitWindow.h; sourceTree = "<group>"; };
+		A5A8D9111ABB2A9400BEA593 /* SplitWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitWindow.m; sourceTree = "<group>"; };
 		A5DEB1631AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFNeverMoveDiagonally.h; sourceTree = "<group>"; };
 		A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFNeverMoveDiagonally.m; sourceTree = "<group>"; };
 		A5DEB1671AB7E17D00CEA5A0 /* JumpPointFinderBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpPointFinderBase.h; sourceTree = "<group>"; };
 		A5DEB1681AB7E17D00CEA5A0 /* JumpPointFinderBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpPointFinderBase.m; sourceTree = "<group>"; };
 		A5DEB16B1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFAlwaysMoveDiagonally.h; sourceTree = "<group>"; };
 		A5DEB16C1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFAlwaysMoveDiagonally.m; sourceTree = "<group>"; };
+		A5F58E401ABDCF99005FE014 /* StackCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackCellViewController.h; sourceTree = "<group>"; };
+		A5F58E411ABDCF99005FE014 /* StackCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackCellViewController.m; sourceTree = "<group>"; };
+		A5F58E421ABDCF99005FE014 /* StackCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StackCellViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +361,11 @@
 			children = (
 				A53546DF19FFD4F0005C629B /* AppDelegate.h */,
 				A53546E019FFD4F0005C629B /* AppDelegate.m */,
+				A5A8D9101ABB2A9400BEA593 /* SplitWindow.h */,
+				A5A8D9111ABB2A9400BEA593 /* SplitWindow.m */,
+				A5F58E401ABDCF99005FE014 /* StackCellViewController.h */,
+				A5F58E411ABDCF99005FE014 /* StackCellViewController.m */,
+				A5F58E421ABDCF99005FE014 /* StackCellViewController.xib */,
 				A53546EB19FFD4F0005C629B /* MainMenu.xib */,
 				A53546DD19FFD4F0005C629B /* Supporting Files */,
 			);
@@ -715,6 +728,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5F58E441ABDCF99005FE014 /* StackCellViewController.xib in Resources */,
 				A535470619FFDAAA005C629B /* Images.xcassets in Resources */,
 				A53546ED19FFD4F0005C629B /* MainMenu.xib in Resources */,
 				A546765A1A00280300C62349 /* grid.png in Resources */,
@@ -804,10 +818,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A8D9121ABB2A9400BEA593 /* SplitWindow.m in Sources */,
 				A59635801A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */,
 				A596357A1A03697300B6D6B5 /* BestFirstFinder.m in Sources */,
 				A59635A41A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */,
 				A5531A0419FFFFB800503E11 /* WBSpriteButton.m in Sources */,
+				A5F58E431ABDCF99005FE014 /* StackCellViewController.m in Sources */,
 				A59635981A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
 				A5A8D90F1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m in Sources */,
 				A59635861A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,

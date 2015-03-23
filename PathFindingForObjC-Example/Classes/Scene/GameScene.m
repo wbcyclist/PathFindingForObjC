@@ -16,6 +16,9 @@
 
 @property (nonatomic,strong)VectorFieldGrid *fieldGrid;
 
+
+@property (nonatomic, strong)NSMutableDictionary *gridsDic;
+
 @end
 
 @implementation GameScene {
@@ -42,10 +45,25 @@
 	self = [super initWithSize:size];
 	if (self) {
 		self.backgroundColor = [SKColor whiteColor];
+		#if TARGET_OS_IPHONE
 		self.gridSize =  CGSizeMake(64, 64);
+		#else
+		self.gridSize =  CGSizeMake(32, 32);
+		#endif
+		
 		trackSpeed = 1;//(the larger the slow)
 	}
 	return self;
+}
+
+- (void)didChangeSize:(CGSize)oldSize {
+	if (CGSizeEqualToSize(oldSize, self.size)) {
+		return;
+	}
+	if (isContentCreated) {
+		[self clearFindingAction];
+		[self updateGridNodes];
+	}
 }
 
 
@@ -53,7 +71,7 @@
 	
 	if (!isContentCreated) {
 		isContentCreated = YES;
-		
+		self.gridsDic = [NSMutableDictionary dictionary];
 		gridLayer = [SKNode node];
 		[self addChild:gridLayer];
 		
@@ -61,46 +79,105 @@
 		pathLinesLayer.zPosition = 1;
 		[self addChild:pathLinesLayer];
 		
-		[self createGridNodes];
+		[self updateGridNodes];
 		
 	}
 }
 
-- (void)createGridNodes {
-	if (self.gridSize.width<1 || self.gridSize.height<1 || !gridLayer) {
+
+- (void)updateGridNodes {
+	if (!gridLayer) {
 		return;
 	}
-	[gridLayer removeAllChildren];
-	
 	column = CGRectGetWidth(self.frame)/self.gridSize.width;
 	row = CGRectGetHeight(self.frame)/self.gridSize.height;
+	
+	SKTexture *tex = [SKTexture textureWithImageNamed:@"grid"];
+	tex.filteringMode = SKTextureFilteringNearest;
 	for (int i=0; i<row; i++) {
 		for (int j=0; j<column; j++) {
-			PFGridNode *grid = [PFGridNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"grid"] size:self.gridSize];
+			NSString *dicKey = [NSString stringWithFormat:@"%d,%d", j, i];
+			if ([self.gridsDic objectForKey:dicKey]) {
+				continue;
+			}
+			PFGridNode *grid = [PFGridNode spriteNodeWithTexture:tex size:self.gridSize];
 			grid.colorFactor = 0.7;
 			grid.position = CGPointMake(j*self.gridSize.width + self.gridSize.width/2.0, i*self.gridSize.height + self.gridSize.height/2.0);
-			grid.name = [NSString stringWithFormat:@"%d",i*column + j];
+			grid.name = dicKey;
 			grid.x = j;
 			grid.y = i;
 			grid.showWeightValue = YES;
-			if (i==0 && j==0) {
-				[grid setupEditGridState:kGState_Start runAnimate:NO];
-			} else if (i==0 && j==1) {
-				[grid setupEditGridState:kGState_End runAnimate:NO];
-			}
-			
 			[gridLayer addChild:grid];
-			
-			// SKShapeNode Class it looks awful (1 instance 2 node 2 draws)
-//			CGRect gridRect = (CGRect){0,0, .size=gridSize};
-//			SKShapeNode *grid = [SKShapeNode shapeNodeWithRect:gridRect];
-//			grid.fillColor = [SKColor lightGrayColor];
-//			grid.strokeColor = [SKColor blackColor];
-//			grid.position = CGPointMake(j*gridSize.width, i*gridSize.height);
-//			[gridLayer addChild:grid];
+			[self.gridsDic setObject:grid forKey:dicKey];
 		}
 	}
 	
+	PFGridNode *startNode, *endNode;
+	// remove outside grid
+	NSArray *allkeys = self.gridsDic.allKeys;
+	for (NSString *dicKey in allkeys) {
+		PFGridNode *grid = [self.gridsDic objectForKey:dicKey];
+		grid.editState==kGState_Start ? startNode=grid : NO;
+		grid.editState==kGState_End ? endNode=grid : NO;
+		
+		if (grid.x >= column || grid.y >= row) {
+			[grid removeFromParent];
+			[self.gridsDic removeObjectForKey:dicKey];
+		}
+	}
+	
+	// setup startNode
+	if (startNode == nil) {
+		// init startNode
+		startNode = [self.gridsDic objectForKey:@"0,0"];
+		[startNode setupEditGridState:kGState_Start runAnimate:YES];
+	} else {
+		if (startNode.x >= column || startNode.y >= row) {
+			// new startNode
+			NSString *dicKey = [NSString stringWithFormat:@"%d,%d", startNode.x>=column?(column-1):startNode.x, startNode.y>=row?(row-1):startNode.y];
+			startNode = [self.gridsDic objectForKey:dicKey];
+			if (startNode.editState == kGState_End) {
+				dicKey = [NSString stringWithFormat:@"%d,%d", startNode.x-1, startNode.y];
+				startNode = [self.gridsDic objectForKey:dicKey];
+			}
+			if (startNode.editState == kGState_Block) {
+				[startNode setupEditGridState:kGState_Walkable runAnimate:NO];
+			}
+			[startNode setupEditGridState:kGState_Start runAnimate:YES];
+		}
+	}
+	
+	// setup endNode
+	if (endNode == nil) {
+		// init endNode
+		endNode = [self.gridsDic objectForKey:@"1,0"];
+		[endNode setupEditGridState:kGState_End runAnimate:YES];
+	} else {
+		if (endNode.x >= column || endNode.y >= row) {
+			// new endNode
+			NSString *dicKey = [NSString stringWithFormat:@"%d,%d", endNode.x>=column?(column-1):endNode.x, endNode.y>=row?(row-1):endNode.y];
+			endNode = [self.gridsDic objectForKey:dicKey];
+			if (endNode.editState == kGState_Start) {
+				dicKey = [NSString stringWithFormat:@"%d,%d", endNode.x-1, endNode.y];
+				endNode = [self.gridsDic objectForKey:dicKey];
+			}
+			if (endNode.editState == kGState_Block) {
+				[endNode setupEditGridState:kGState_Walkable runAnimate:NO];
+			}
+			[endNode setupEditGridState:kGState_End runAnimate:YES];
+		}
+	}
+}
+
+- (void)clearFindingAction {
+	[self clearPath];
+	[pathLinesLayer removeAllActions];
+	[pathLinesLayer removeAllChildren];
+	
+	isPlayTrack = NO;
+	[trackArr removeAllObjects];
+	trackArr = nil;
+	currentTrackIndex = 0;
 }
 
 
@@ -110,13 +187,12 @@
 												  tileSize:CGSizeMake(1, 1)
 											   coordsOrgin:CGPointMake(0, 0)];
 		pathFinding.heuristicType = HeuristicTypeManhattan;
-		pathFinding.movementType = DiagonalMovement_Always;
+		pathFinding.movementType = DiagonalMovement_OnlyWhenNoObstacles;
 		
 		pathFinding.weight = 1;
 	}
-	[self clearPath];
-	[pathLinesLayer removeAllActions];
-	[pathLinesLayer removeAllChildren];
+	
+	[self clearFindingAction];
 	
 	CGSize mapSize = CGSizeMake(column*self.gridSize.width, row*self.gridSize.height);
 	pathFinding.mapSize = mapSize;
@@ -134,10 +210,6 @@
 		}
 	}
 	
-	isPlayTrack = NO;
-	[trackArr removeAllObjects];
-	trackArr = nil;
-	currentTrackIndex = 0;
 	NSMutableArray *trackArrHook = [NSMutableArray array];
 //	NSMutableArray *trackArrHook = nil;
 	
@@ -210,8 +282,7 @@
 	}
 }
 
-- (PFGridNode*)getGridNodeAtIndex:(int)index {
-	NSString *name = [NSString stringWithFormat:@"%d",index];
+- (PFGridNode*)getGridNodeWithName:(NSString *)name {
 	return (PFGridNode*)[gridLayer childNodeWithName:name];
 }
 
@@ -292,11 +363,14 @@
 	point = CGPointMake((int)point.x, (int)point.y);
 	SKNode *touchNode = [gridLayer nodeAtPoint:point];
 	SKNode *node = nil;
-	if ([touchNode isKindOfClass:[SKLabelNode class]] || [touchNode isKindOfClass:[SKSpriteNode class]]) {
+//	NSLog(@"%@", touchNode);
+	if ([touchNode isKindOfClass:[PFGridNode class]]) {
+		node = touchNode;
+	} else if ([touchNode isKindOfClass:[SKLabelNode class]] || [touchNode isKindOfClass:[SKSpriteNode class]]) {
 		node = touchNode.parent;
 	}
 	
-	if ([node isKindOfClass:[PFGridNode class]] && selectState!=kGState_None) {
+	if ([node isKindOfClass:[PFGridNode class]]) {
 		PFGridNode *grid = (PFGridNode *)node;
 		BOOL result = [grid setupEditGridState:selectState runAnimate:!(selectState==kGState_Start||selectState==kGState_End)];
 		if (result) {
@@ -363,12 +437,12 @@ static int timeCount = 0;
 	}
 	if ([trackObj isKindOfClass:[PFNode class]]) {
 		PFNode *node = (PFNode *)trackObj;
-		PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
+		PFGridNode *gridNode = [self getGridNodeWithName:[NSString stringWithFormat:@"%d,%d", node.x, node.y]];
 		[self updateGridNodeState:gridNode usePFNode:node];
 	} else if ([trackObj isKindOfClass:[NSArray class]]) {
 		NSArray *arr = (NSArray*)trackObj;
 		for (PFNode *node in arr) {
-			PFGridNode *gridNode = [self getGridNodeAtIndex:node.y*column+node.x];
+			PFGridNode *gridNode = [self getGridNodeWithName:[NSString stringWithFormat:@"%d,%d", node.x, node.y]];
 			[self updateGridNodeState:gridNode usePFNode:node];
 		}
 	}

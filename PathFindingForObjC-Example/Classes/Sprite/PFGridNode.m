@@ -51,6 +51,7 @@
 - (SKSpriteNode *)arrow {
 	if (!_arrow) {
 		_arrow = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"arrow"] size:self.size];
+		_arrow.texture.filteringMode = SKTextureFilteringNearest;
 		_arrow.userInteractionEnabled = NO;
 		[self addChild:_arrow];
 	}

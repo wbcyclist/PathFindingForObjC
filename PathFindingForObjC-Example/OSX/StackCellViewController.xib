@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7525" systemVersion="14D105g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7525"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="StackCellViewController">
+            <connections>
+                <outlet property="headerView" destination="1WF-j0-VxP" id="Qr5-pE-ruN"/>
+                <outlet property="titleView" destination="pZb-I2-51L" id="4rN-xL-EY0"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY" userLabel="ContentView">
+            <rect key="frame" x="0.0" y="5" width="442" height="40"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="1WF-j0-VxP" userLabel="headerView">
+                    <rect key="frame" x="0.0" y="0.0" width="442" height="40"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-I2-51L">
+                            <rect key="frame" x="18" y="11" width="104" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="UHZ-Nj-s2u"/>
+                            </constraints>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="title" id="zes-tn-O7y">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ByD-tt-Ati">
+                            <rect key="frame" x="409" y="13" width="13" height="13"/>
+                            <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="above" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hnn-0J-pkw">
+                                <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="toggleDisclosure:" target="-2" id="Bvs-MX-177"/>
+                            </connections>
+                        </button>
+                        <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cfW-k4-otx">
+                            <rect key="frame" x="-3" y="-4" width="448" height="46"/>
+                            <view key="contentView">
+                                <rect key="frame" x="1" y="1" width="446" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </box>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="pZb-I2-51L" firstAttribute="leading" secondItem="1WF-j0-VxP" secondAttribute="leading" constant="20" id="9fi-Dl-7Le"/>
+                        <constraint firstItem="cfW-k4-otx" firstAttribute="top" secondItem="1WF-j0-VxP" secondAttribute="top" id="CYu-Pk-g6r"/>
+                        <constraint firstAttribute="centerY" secondItem="ByD-tt-Ati" secondAttribute="centerY" id="GJX-3q-wNQ"/>
+                        <constraint firstAttribute="trailing" secondItem="ByD-tt-Ati" secondAttribute="trailing" constant="20" id="Xat-QZ-w5s"/>
+                        <constraint firstAttribute="centerY" secondItem="pZb-I2-51L" secondAttribute="centerY" id="aVP-tk-hCk"/>
+                        <constraint firstAttribute="height" constant="40" id="b1m-ds-ZgR"/>
+                        <constraint firstAttribute="bottom" secondItem="cfW-k4-otx" secondAttribute="bottom" id="dnq-p5-pf0"/>
+                        <constraint firstAttribute="trailing" secondItem="cfW-k4-otx" secondAttribute="trailing" id="m6H-A9-HrG"/>
+                        <constraint firstItem="cfW-k4-otx" firstAttribute="leading" secondItem="1WF-j0-VxP" secondAttribute="leading" id="zVG-ko-0CW"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="1WF-j0-VxP" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3aU-Sr-6V9"/>
+                <constraint firstItem="1WF-j0-VxP" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="JdP-gc-ZsX"/>
+                <constraint firstAttribute="bottom" secondItem="1WF-j0-VxP" secondAttribute="bottom" priority="250" id="VYl-d9-hae"/>
+                <constraint firstAttribute="trailing" secondItem="1WF-j0-VxP" secondAttribute="trailing" id="Zpr-wH-VKZ"/>
+            </constraints>
+            <point key="canvasLocation" x="316" y="236"/>
+        </customView>
+    </objects>
+</document>

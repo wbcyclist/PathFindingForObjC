@@ -12,5 +12,7 @@
 
 @property (nonatomic) CGSize gridSize;
 
+- (void)startFindingPath;
+
 
 @end

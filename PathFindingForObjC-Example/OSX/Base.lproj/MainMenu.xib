@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7525" systemVersion="14D105g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7525"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -81,7 +81,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="491">
                         <items>
-                            <menuItem title="Help" keyEquivalent="?" id="492">
+                            <menuItem title="View on GitHub" keyEquivalent="?" id="492">
                                 <connections>
                                     <action selector="showHelp:" target="494" id="0iN-IZ-5t5"/>
                                 </connections>
@@ -91,58 +91,113 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="PathFinding-Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
-            <rect key="contentRect" x="0.0" y="0.0" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="539" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                    </customView>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="539" firstAttribute="bottom" secondItem="372" secondAttribute="bottom" id="541"/>
-                    <constraint firstItem="539" firstAttribute="top" secondItem="372" secondAttribute="top" id="542"/>
-                    <constraint firstItem="539" firstAttribute="trailing" secondItem="372" secondAttribute="trailing" id="543"/>
-                    <constraint firstItem="539" firstAttribute="leading" secondItem="372" secondAttribute="leading" id="544"/>
-                </constraints>
-            </view>
-            <point key="canvasLocation" x="178" y="388"/>
-        </window>
         <customObject id="494" customClass="AppDelegate">
             <connections>
-                <outlet property="skView" destination="539" id="540"/>
-                <outlet property="window" destination="371" id="532"/>
+                <outlet property="headerView" destination="aY3-Hn-W9C" id="pge-m5-xhu"/>
+                <outlet property="skView" destination="ZPk-fj-Loq" id="lk8-Bh-K37"/>
+                <outlet property="stackView" destination="6R6-Pa-HVb" id="kj8-Xg-PHq"/>
+                <outlet property="window" destination="kZf-jx-LcB" id="g93-Bh-bHX"/>
             </connections>
         </customObject>
-        <customObject id="420" customClass="NSFontManager"/>
-        <splitView dividerStyle="thin" vertical="YES" id="ITa-z4-e7Y">
-            <rect key="frame" x="0.0" y="0.0" width="664" height="540"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customObject id="420" userLabel="Object" customClass="NSFontManager"/>
+        <window title="PathFindingForObjc" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="kZf-jx-LcB" userLabel="SplitWindow" customClass="SplitWindow">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="0.0" y="277" width="1000" height="600"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="800" height="400"/>
+            <view key="contentView" id="4P3-An-1gZ">
+                <rect key="frame" x="0.0" y="0.0" width="1000" height="600"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SoL-8y-3tv">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="600"/>
+                        <subviews>
+                            <customView id="fNi-Iq-5Bx" userLabel="LeftView">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="600"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <stackView orientation="vertical" alignment="centerX" spacing="0.0" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="6R6-Pa-HVb">
+                                        <rect key="frame" x="0.0" y="600" width="250" height="0.0"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="6R6-Pa-HVb" secondAttribute="trailing" id="ViL-Hw-Oih"/>
+                                    <constraint firstAttribute="bottom" secondItem="6R6-Pa-HVb" secondAttribute="bottom" priority="1" id="acM-cq-o6y"/>
+                                    <constraint firstItem="6R6-Pa-HVb" firstAttribute="top" secondItem="fNi-Iq-5Bx" secondAttribute="top" id="gau-Bf-HbH"/>
+                                    <constraint firstItem="6R6-Pa-HVb" firstAttribute="leading" secondItem="fNi-Iq-5Bx" secondAttribute="leading" id="y4r-cd-cUn"/>
+                                </constraints>
+                            </customView>
+                            <customView id="a1l-J5-W1c" userLabel="RightView">
+                                <rect key="frame" x="251" y="0.0" width="749" height="600"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ZPk-fj-Loq" userLabel="skView" customClass="SKView">
+                                        <rect key="frame" x="0.0" y="0.0" width="749" height="600"/>
+                                    </customView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xby-Jc-o3w">
+                                        <rect key="frame" x="356" y="291" width="37" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Right" id="oLf-hq-jrL">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ZPk-fj-Loq" secondAttribute="bottom" id="5cd-EW-YLM"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZPk-fj-Loq" secondAttribute="trailing" id="7uO-kX-lqh"/>
+                                    <constraint firstItem="ZPk-fj-Loq" firstAttribute="top" secondItem="a1l-J5-W1c" secondAttribute="top" id="AwP-4e-6KZ"/>
+                                    <constraint firstAttribute="centerY" secondItem="xby-Jc-o3w" secondAttribute="centerY" id="eIE-1g-Fpf"/>
+                                    <constraint firstItem="ZPk-fj-Loq" firstAttribute="leading" secondItem="a1l-J5-W1c" secondAttribute="leading" id="ixC-G3-Ps9"/>
+                                    <constraint firstAttribute="centerX" secondItem="xby-Jc-o3w" secondAttribute="centerX" id="oBb-XS-fQh"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <holdingPriorities>
+                            <real value="250"/>
+                            <real value="250"/>
+                        </holdingPriorities>
+                        <connections>
+                            <outlet property="delegate" destination="kZf-jx-LcB" id="8oB-us-Dxp"/>
+                        </connections>
+                    </splitView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="SoL-8y-3tv" firstAttribute="leading" secondItem="4P3-An-1gZ" secondAttribute="leading" id="62c-0J-Shg"/>
+                    <constraint firstAttribute="bottom" secondItem="SoL-8y-3tv" secondAttribute="bottom" id="EJw-mH-xL1"/>
+                    <constraint firstItem="SoL-8y-3tv" firstAttribute="top" secondItem="4P3-An-1gZ" secondAttribute="top" id="kbG-uj-Mlg"/>
+                    <constraint firstAttribute="trailing" secondItem="SoL-8y-3tv" secondAttribute="trailing" id="z93-hE-QxW"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="leftView" destination="fNi-Iq-5Bx" id="CeG-k3-tdS"/>
+                <outlet property="rightView" destination="a1l-J5-W1c" id="7ed-Z0-FIa"/>
+                <outlet property="splitView" destination="SoL-8y-3tv" id="uZ6-Ex-nBX"/>
+            </connections>
+            <point key="canvasLocation" x="421" y="235"/>
+        </window>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="aY3-Hn-W9C" userLabel="HeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="290" height="62"/>
             <subviews>
-                <customView fixedFrame="YES" id="tDC-4a-kxg">
-                    <rect key="frame" x="0.0" y="0.0" width="333.5" height="540"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <subviews>
-                        <stackView orientation="vertical" alignment="centerX" horizontalHuggingPriority="249" verticalHuggingPriority="249" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bHf-bX-Vik">
-                            <rect key="frame" x="30" y="289" width="273" height="251"/>
-                        </stackView>
-                    </subviews>
-                </customView>
-                <customView fixedFrame="YES" id="EOc-KU-cdA">
-                    <rect key="frame" x="334.5" y="0.0" width="329.5" height="540"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JWS-JM-Oo9">
+                    <rect key="frame" x="18" y="20" width="254" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="TBB-G9-bJq"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Select Algorithm" id="ARG-Lu-VU4">
+                        <font key="font" metaFont="systemBold" size="18"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <holdingPriorities>
-                <real value="250"/>
-                <real value="250"/>
-            </holdingPriorities>
-            <point key="canvasLocation" x="979.5" y="383"/>
-        </splitView>
+            <constraints>
+                <constraint firstItem="JWS-JM-Oo9" firstAttribute="top" secondItem="aY3-Hn-W9C" secondAttribute="top" constant="20" id="29C-91-zex"/>
+                <constraint firstAttribute="bottom" secondItem="JWS-JM-Oo9" secondAttribute="bottom" constant="20" id="Le2-yA-dNL"/>
+                <constraint firstItem="JWS-JM-Oo9" firstAttribute="leading" secondItem="aY3-Hn-W9C" secondAttribute="leading" constant="20" id="MT3-Sq-7zl"/>
+            </constraints>
+            <point key="canvasLocation" x="66" y="652.5"/>
+        </customView>
     </objects>
 </document>

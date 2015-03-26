@@ -11,24 +11,6 @@
 @implementation SplitWindow
 
 
-//- (void)setLeftView:(NSView *)leftView {
-//	if (_leftView != leftView) {
-//		_leftView = leftView;
-//		_leftView.wantsLayer = YES;
-//		_leftView.layer.backgroundColor = [NSColor redColor].CGColor;
-//	}
-//}
-//
-//- (void)setRightView:(NSView *)rightView {
-//	if (_rightView != rightView) {
-//		_rightView = rightView;
-//		_rightView.wantsLayer = YES;
-//		_rightView.layer.backgroundColor = [NSColor blueColor].CGColor;
-//	}
-//}
-
-
-
 #define LEFT_VIEW_MIN_WIDTH 250.0
 #define LEFT_VIEW_MAX_WIDTH 350.0
 
@@ -53,28 +35,28 @@
 //	return proposedPosition;
 //}
 
-- (void)splitView:(NSSplitView *)splitView resizeSubviewsWithOldSize:(NSSize)oldSize {
-	if (NSEqualSizes(splitView.frame.size, oldSize)) {
-		return;
-	}
-	NSSize newSize = splitView.frame.size;
-	NSPoint rightOrigin = NSMakePoint(splitView.dividerThickness, 0);
-	
-	if (![splitView isSubviewCollapsed:self.leftView]) {
-		rightOrigin = NSMakePoint(self.leftView.frame.size.width + splitView.dividerThickness, 0);
-		
-		if (newSize.height != oldSize.height) {
-			[self.leftView setFrameSize:NSMakeSize(self.leftView.frame.size.width, newSize.height)];
-		}
-	}
-	
-	NSRect rightFrame = {
-		rightOrigin,
-		newSize.width - rightOrigin.x,
-		newSize.height
-	};
-	[self.rightView setFrame:rightFrame];
-}
+//- (void)splitView:(NSSplitView *)splitView resizeSubviewsWithOldSize:(NSSize)oldSize {
+//	if (NSEqualSizes(splitView.frame.size, oldSize)) {
+//		return;
+//	}
+//	NSSize newSize = splitView.frame.size;
+//	NSPoint rightOrigin = NSMakePoint(splitView.dividerThickness, 0);
+//	
+//	if (![splitView isSubviewCollapsed:self.leftView]) {
+//		rightOrigin = NSMakePoint(self.leftView.frame.size.width + splitView.dividerThickness, 0);
+//		
+//		if (newSize.height != oldSize.height) {
+//			[self.leftView setFrameSize:NSMakeSize(self.leftView.frame.size.width, newSize.height)];
+//		}
+//	}
+//	
+//	NSRect rightFrame = {
+//		rightOrigin,
+//		newSize.width - rightOrigin.x,
+//		newSize.height
+//	};
+//	[self.rightView setFrame:rightFrame];
+//}
 
 //- (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)view {
 //	return YES;
@@ -99,5 +81,38 @@
 //- (void)splitViewDidResizeSubviews:(NSNotification *)notification {
 ////	debugMethod();
 //}
+
+
+static NSString *TIME_LAB_PREFIX = @"Time: ";
+static NSString *LENGTH_LAB_PREFIX = @"Length: ";
+
+
+- (IBAction)startBtnAction:(NSButton *)sender {
+	
+}
+- (IBAction)pauseBtnAction:(NSButton *)sender {
+	
+}
+- (IBAction)clearBtnAction:(NSButton *)sender {
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

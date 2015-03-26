@@ -9,38 +9,37 @@
 
 #import "StackCellViewController.h"
 
-#define DISCLOSED_HEIGHT 350
+
+#define DISCLOSED_HEIGHT 320
 
 
+
+#pragma mark - OnlyIntegerValueFormatter
 @interface OnlyIntegerValueFormatter : NSNumberFormatter
-
 @end
-
 @implementation OnlyIntegerValueFormatter
-
-- (BOOL)isPartialStringValid:(NSString*)partialString newEditingString:(NSString**)newString errorDescription:(NSString**)error
-{
+- (BOOL)isPartialStringValid:(NSString*)partialString newEditingString:(NSString**)newString errorDescription:(NSString**)error{
 	if([partialString length] == 0) {
 		return YES;
 	}
-	
 	NSScanner* scanner = [NSScanner scannerWithString:partialString];
-	
 	if(!([scanner scanInt:0] && [scanner isAtEnd])) {
 		NSBeep();
 		return NO;
 	}
-	
 	return YES;
 }
-
 @end
 
 
-@interface StackCellViewController ()
+
+
+#pragma mark - StackCellViewController
+@interface StackCellViewController () <NSTextFieldDelegate>
 @property (nonatomic, copy)NSString *headerTitle;
 @property (nonatomic, weak)IBOutlet NSTextField *titleView;
 
+@property (nonatomic, weak)IBOutlet NSButton *disclosedBtn;
 @property (nonatomic, strong)NSView *disclosedView;
 @property (nonatomic, strong) NSLayoutConstraint *closingConstraint;
 
@@ -48,11 +47,14 @@
 @end
 
 @implementation StackCellViewController {
-	 BOOL m_disclosureIsClosed;
+	
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	_headerTitle = @"";
+	_disclosureIsClosed = YES;
+	_weight = 1;
     // Do view setup here.
 }
 
@@ -65,11 +67,24 @@
 	}
 }
 
+
 - (void)setTitleView:(NSTextField *)titleView {
 	if (_titleView != titleView) {
 		_titleView = titleView;
 		_titleView.stringValue = _headerTitle;
 	}
+}
+
+- (void)setDisclosedBtn:(NSButton *)disclosedBtn {
+	if (_disclosedBtn != disclosedBtn) {
+		_disclosedBtn = disclosedBtn;
+		[_disclosedBtn setState:_disclosureIsClosed];
+	}
+}
+
+- (void)setDisclosureIsClosed:(BOOL)disclosureIsClosed {
+	_disclosureIsClosed = disclosureIsClosed;
+	[_disclosedBtn setState:!_disclosureIsClosed];
 }
 
 
@@ -110,10 +125,12 @@
 	if (!data) {
 		return;
 	}
-	self.headerTitle = data[@"Algorithm"];
+	self.cellData = data;
+	self.headerTitle = self.cellData[@"Algorithm"];
 	
+	[self.disclosedView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	// Heuristic
-	NSArray *heuristicArr = data[@"Heuristic"];
+	NSArray *heuristicArr = self.cellData[@"Heuristic"];
 	if (heuristicArr) {
 		NSTextField *lab1 = [[NSTextField alloc] initWithFrame:CGRectMake(10, 0, 100, 17)];
 		lab1.stringValue = @"Heuristic";
@@ -143,7 +160,9 @@
 												   numberOfRows:heuristicArr.count
 												numberOfColumns:1];
 		radioMatrix.cellSize = CGSizeMake(200, 20);
-		
+		radioMatrix.tag = 0;
+		[radioMatrix setTarget:self];
+		[radioMatrix setAction:@selector(btnSelected:)];
 		for (int i=0; i < heuristicArr.count; i++) {
 			NSString *cellTitle = heuristicArr[i];
 			[radioMatrix.cells[i] setTag:i];
@@ -166,7 +185,7 @@
 	}
 	
 	// DiagonalMovement
-	NSArray *movementArr = data[@"DiagonalMovement"];
+	NSArray *movementArr = self.cellData[@"DiagonalMovement"];
 	if (movementArr) {
 		NSView *lastView = self.disclosedView.subviews.lastObject;
 		
@@ -204,6 +223,9 @@
 												   numberOfRows:movementArr.count
 												numberOfColumns:1];
 		radioMatrix.cellSize = CGSizeMake(200, 20);
+		radioMatrix.tag = 1;
+		[radioMatrix setTarget:self];
+		[radioMatrix setAction:@selector(btnSelected:)];
 		
 		for (int i=0; i < movementArr.count; i++) {
 			NSString *cellTitle = movementArr[i];
@@ -224,7 +246,7 @@
 																					 views:NSDictionaryOfVariableBindings(lab1, radioMatrix)]];
 	}
 	
-	NSDictionary *options = data[@"Options"];
+	NSDictionary *options = self.cellData[@"Options"];
 	BOOL hasBI = [options[@"Bi-directional"] boolValue];
 	BOOL hasWeight = [options[@"Weight"] boolValue];
 	
@@ -259,9 +281,12 @@
 		
 		if (hasBI) {
 			NSButton *checkBtn = [[NSButton alloc] init];
+			checkBtn.tag = 2;
 			[checkBtn setButtonType:NSSwitchButton];
 			[checkBtn setState:NO];
 			checkBtn.title = @"Bi-directional";
+			checkBtn.target = self;
+			checkBtn.action = @selector(btnSelected:);
 			
 			[checkBtn setTranslatesAutoresizingMaskIntoConstraints:NO];
 			[self.disclosedView addSubview:checkBtn];
@@ -285,6 +310,8 @@
 			[weightField setFormatter:formatter];
 			[weightField setTranslatesAutoresizingMaskIntoConstraints:NO];
 			weightField.stringValue = @"1";
+			weightField.tag = 3;
+			weightField.delegate = self;
 			
 			NSTextField *lab1 = [[NSTextField alloc] init];
 			lab1.stringValue = @"Weight";
@@ -312,48 +339,87 @@
 																					   metrics:nil
 																						 views:NSDictionaryOfVariableBindings(lastView, lab1)]];
 		}
-		
 	}
 	
+	if (self.disclosureIsClosed) {
+		self.closingConstraint.constant = 0;
+	} else {
+		self.closingConstraint.constant = DISCLOSED_HEIGHT;
+	}
 }
 
 
 
 
-- (void)heuristicSelectedButton:(id)sender {
-	NSButtonCell *selCell = [sender selectedCell];
-	NSLog(@"Selected cell is %d", (int)selCell.tag);
+- (void)btnSelected:(id)sender {
+//	NSLog(@"sender.tag=%d", (int)[sender tag]);
+	if ([sender tag]==0) {
+		NSButtonCell *selCell = [sender selectedCell];
+		self.heuristicType = (int)selCell.tag;
+	} else if ([sender tag]==1) {
+		NSButtonCell *selCell = [sender selectedCell];
+		self.movementType = (int)selCell.tag;
+	} else if ([sender tag]==2) {
+		self.isBidirectional = [sender state];
+	}
 }
 
 
 - (void)toggleDisclosure:(id)sender {
-	debugMethod();
+//	debugMethod();
+	self.disclosureIsClosed = NO;
 	if (self.closingConstraint.constant==0) {
 		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
 			context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 			self.closingConstraint.animator.constant = DISCLOSED_HEIGHT;
 		} completionHandler:^{
-			m_disclosureIsClosed = NO;
 		}];
+		
+		//
+		if (self.delegate) {
+			[self.delegate stackCellVC:self disclosureDidChange:self.disclosureIsClosed];
+		}
 	} else {
+		
+//		self.disclosureIsClosed = YES;
+//		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+//			context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//			self.closingConstraint.animator.constant = 0;
+//		} completionHandler:^{
+//		}];
+	}
+}
+
+- (void)changeDisclosureViewState:(BOOL)disclosureIsClosed {
+	if (self.disclosureIsClosed == disclosureIsClosed) {
+		return;
+	}
+	self.disclosureIsClosed = disclosureIsClosed;
+	
+	if (self.disclosureIsClosed) {
 		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
 			context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 			self.closingConstraint.animator.constant = 0;
 		} completionHandler:^{
-			m_disclosureIsClosed = YES;
+		}];
+	} else {
+		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+			context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+			self.closingConstraint.animator.constant = DISCLOSED_HEIGHT;
+		} completionHandler:^{
 		}];
 	}
-	
-	
-//	CGFloat headerHeight = CGRectGetHeight(self.headerView.frame);
-//	
-//	if (m_disclosureIsClosed) {
-//		
-//	} else {
-//		
-//	}
-	
-	
 }
 
+
+#pragma mark - NSTextFieldDelegate
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+//	NSLog(@"text tag=%d %@", (int)control.tag, fieldEditor.string);
+	self.weight = fieldEditor.string.intValue;
+	return YES;
+}
+
+
 @end
+
+

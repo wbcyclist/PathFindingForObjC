@@ -59,7 +59,7 @@ typedef enum {
 
 
 typedef enum {
-	DiagonalMovement_Always = 1,
+	DiagonalMovement_Always = 0,
 	DiagonalMovement_Never,
 	DiagonalMovement_IfAtMostOneObstacle,
 	DiagonalMovement_OnlyWhenNoObstacles

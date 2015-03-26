@@ -93,6 +93,7 @@
 		A5531A0419FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
 		A5531A0519FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
 		A5531A0619FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
+		A57AA4E71AC4A3CF002D9D2B /* NoHitLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A57AA4E61AC4A3CF002D9D2B /* NoHitLabel.m */; };
 		A59635791A03697300B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
 		A596357A1A03697300B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
 		A596357B1A03698400B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
@@ -221,6 +222,8 @@
 		A55319F519FFFFB800503E11 /* WBSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSpriteButton.h; sourceTree = "<group>"; };
 		A55319F619FFFFB800503E11 /* WBSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSpriteButton.m; sourceTree = "<group>"; };
 		A55804221AB2D2D700DA4930 /* PFTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTypes.h; sourceTree = "<group>"; };
+		A57AA4E51AC4A3CF002D9D2B /* NoHitLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoHitLabel.h; sourceTree = "<group>"; };
+		A57AA4E61AC4A3CF002D9D2B /* NoHitLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoHitLabel.m; sourceTree = "<group>"; };
 		A59635771A03697300B6D6B5 /* BestFirstFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BestFirstFinder.h; sourceTree = "<group>"; };
 		A59635781A03697300B6D6B5 /* BestFirstFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BestFirstFinder.m; sourceTree = "<group>"; };
 		A596357D1A0379AC00B6D6B5 /* BiAStarFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiAStarFinder.h; sourceTree = "<group>"; };
@@ -365,6 +368,8 @@
 				A5A8D9111ABB2A9400BEA593 /* SplitWindow.m */,
 				A5F58E401ABDCF99005FE014 /* StackCellViewController.h */,
 				A5F58E411ABDCF99005FE014 /* StackCellViewController.m */,
+				A57AA4E51AC4A3CF002D9D2B /* NoHitLabel.h */,
+				A57AA4E61AC4A3CF002D9D2B /* NoHitLabel.m */,
 				A5F58E421ABDCF99005FE014 /* StackCellViewController.xib */,
 				A53546EB19FFD4F0005C629B /* MainMenu.xib */,
 				A53546DD19FFD4F0005C629B /* Supporting Files */,
@@ -850,6 +855,7 @@
 				A53546E119FFD4F0005C629B /* AppDelegate.m in Sources */,
 				A5531A0019FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
 				A596359E1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
+				A57AA4E71AC4A3CF002D9D2B /* NoHitLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

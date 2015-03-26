@@ -13,7 +13,7 @@
 - (instancetype)init {
 	self = [super init];
 	if (self) {
-		self.movementType = DiagonalMovement_Never;
+		self.movementType = DiagonalMovement_Always;
 		self.heuristicType = HeuristicTypeManhattan;
 		self.heuristic = [self createHeuristicWithType:self.heuristicType];
 		

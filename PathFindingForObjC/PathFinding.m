@@ -36,7 +36,7 @@
 - (instancetype)initWithMapSize:(CGSize)mapSize tileSize:(CGSize)tileSize coordsOrgin:(CGPoint)orginPoint {
 	self = [super init];
 	if (self) {
-		self.movementType = DiagonalMovement_Never;
+		self.movementType = DiagonalMovement_Always;
 		self.heuristicType = HeuristicTypeManhattan;
 		
 		self.weight = 1;

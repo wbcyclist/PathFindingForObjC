@@ -10,7 +10,7 @@
 #import "GameScene.h"
 #import "StackCellViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <StackCellViewDelegate>
 
 @property (weak)IBOutlet NSView *headerView;
 
@@ -37,6 +37,10 @@
 	self.skView.showsDrawCount = YES;
 	self.skView.showsNodeCount = YES;
 	
+	[self.window.rightView setWantsLayer:YES];
+	
+	
+	// config data
 	
 	NSString *aStar = @"[{\"Algorithm\": \"AStar\", "
 						"\"Heuristic\": [\"Manhattan\", \"Euclidean\", \"Octile\", \"Chebyshev\"], "
@@ -65,14 +69,19 @@
 	
 	NSArray *pfDic = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
 	
-//	NSLog(@"%@", pfDic);
 	[self.stackView addView:self.headerView inGravity:NSStackViewGravityLeading];
 	self.stackCells = [NSMutableArray array];
+	int i = 0;
 	for (NSDictionary *data in pfDic) {
 		StackCellViewController *cellVC = [[StackCellViewController alloc] initWithNibName:@"StackCellViewController" bundle:nil];
+		cellVC.delegate = self;
 		[cellVC loadingData:data];
 		[self.stackView addView:cellVC.view inGravity:NSStackViewGravityLeading];
 		[self.stackCells addObject:cellVC];
+		if (i==0) {
+			[cellVC changeDisclosureViewState:NO];
+		}
+		i++;
 	}
 	
 }
@@ -91,17 +100,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+#pragma mark - StackCellViewDelegate
+- (void)stackCellVC:(StackCellViewController *)stackCellVC disclosureDidChange:(BOOL)disclosureIsClosed {
+	for (StackCellViewController *cellVC in self.stackCells) {
+		if (stackCellVC != cellVC) {
+			[cellVC changeDisclosureViewState:YES];
+		}
+	}
+}
 
 
 

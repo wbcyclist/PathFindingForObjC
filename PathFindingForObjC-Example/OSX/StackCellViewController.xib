@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7525" systemVersion="14D105g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7525" systemVersion="14D113c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7525"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="StackCellViewController">
             <connections>
+                <outlet property="disclosedBtn" destination="ByD-tt-Ati" id="a1Q-3i-L3d"/>
                 <outlet property="headerView" destination="1WF-j0-VxP" id="Qr5-pE-ruN"/>
                 <outlet property="titleView" destination="pZb-I2-51L" id="4rN-xL-EY0"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -20,9 +21,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="442" height="40"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pZb-I2-51L">
-                            <rect key="frame" x="18" y="11" width="104" height="17"/>
+                            <rect key="frame" x="18" y="11" width="154" height="17"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="UHZ-Nj-s2u"/>
+                                <constraint firstAttribute="width" constant="150" id="UHZ-Nj-s2u"/>
                             </constraints>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="title" id="zes-tn-O7y">
                                 <font key="font" metaFont="system"/>
@@ -32,13 +33,10 @@
                         </textField>
                         <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ByD-tt-Ati">
                             <rect key="frame" x="409" y="13" width="13" height="13"/>
-                            <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="above" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hnn-0J-pkw">
+                            <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="above" alignment="left" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hnn-0J-pkw">
                                 <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <connections>
-                                <action selector="toggleDisclosure:" target="-2" id="Bvs-MX-177"/>
-                            </connections>
                         </button>
                         <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cfW-k4-otx">
                             <rect key="frame" x="-3" y="-4" width="448" height="46"/>
@@ -46,6 +44,13 @@
                                 <rect key="frame" x="1" y="1" width="446" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
+                            <gestureRecognizers>
+                                <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="2" id="dtU-D5-eKw">
+                                    <connections>
+                                        <action selector="toggleDisclosure:" target="-2" id="ubu-sR-3qv"/>
+                                    </connections>
+                                </clickGestureRecognizer>
+                            </gestureRecognizers>
                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </box>

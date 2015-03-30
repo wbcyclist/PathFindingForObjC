@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7525" systemVersion="14D113c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14D113c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7525"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7528.3"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -142,7 +142,7 @@
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Time:" id="vOF-hF-X34">
                                             <font key="font" metaFont="systemBold"/>
-                                            <color key="textColor" red="0.21568627450980393" green="0.86274509803921573" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.21568627450980393" green="0.56669246646026838" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
@@ -153,46 +153,52 @@
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Length:" id="6s7-dD-evh">
                                             <font key="font" metaFont="systemBold"/>
-                                            <color key="textColor" red="0.20000000000000001" green="0.86274509803921584" blue="0.82236842105263153" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.56862745098039214" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AiE-MK-3v9">
-                                        <rect key="frame" x="14" y="538" width="97" height="46"/>
+                                    <button verticalHuggingPriority="750" alphaValue="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="AiE-MK-3v9">
+                                        <rect key="frame" x="14" y="523" width="97" height="61"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="qjJ-AJ-ZTd"/>
+                                            <constraint firstAttribute="height" constant="50" id="qjJ-AJ-ZTd"/>
                                             <constraint firstAttribute="width" constant="85" id="zPK-O8-YLI"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zmb-iz-iHd">
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zmb-iz-iHd">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <string key="title">Start
+Search</string>
                                             <font key="font" metaFont="systemBold" size="16"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="startBtnAction:" target="kZf-jx-LcB" id="lto-ot-FTU"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NVi-I6-0HK">
-                                        <rect key="frame" x="104" y="538" width="97" height="46"/>
+                                    <button verticalHuggingPriority="750" alphaValue="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="NVi-I6-0HK">
+                                        <rect key="frame" x="104" y="523" width="97" height="61"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="85" id="g8f-aF-oPr"/>
-                                            <constraint firstAttribute="height" constant="35" id="wnn-Ge-y4S"/>
+                                            <constraint firstAttribute="height" constant="50" id="wnn-Ge-y4S"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="push" title="Pause" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="szv-uv-04K">
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="szv-uv-04K">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <string key="title">Pause
+Search</string>
                                             <font key="font" metaFont="systemBold" size="16"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="pauseBtnAction:" target="kZf-jx-LcB" id="MaN-Cg-Ynf"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="buM-i9-05m">
-                                        <rect key="frame" x="194" y="538" width="97" height="46"/>
+                                    <button verticalHuggingPriority="750" alphaValue="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="buM-i9-05m">
+                                        <rect key="frame" x="194" y="523" width="97" height="61"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="8gy-5Q-P2Z"/>
+                                            <constraint firstAttribute="height" constant="50" id="8gy-5Q-P2Z"/>
                                             <constraint firstAttribute="width" constant="85" id="qrb-Px-1JJ"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dus-hE-kVA">
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dus-hE-kVA">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <string key="title">Clear
+Walls</string>
                                             <font key="font" metaFont="systemBold" size="16"/>
                                         </buttonCell>
                                         <connections>
@@ -240,17 +246,19 @@
                 <outlet property="lengthLab" destination="e2i-6V-XTr" id="CYD-KS-VOz"/>
                 <outlet property="pauseBtn" destination="NVi-I6-0HK" id="iqu-3j-FC2"/>
                 <outlet property="rightView" destination="a1l-J5-W1c" id="7ed-Z0-FIa"/>
+                <outlet property="speedSlider" destination="F8B-5U-7Uh" id="AMz-VK-TRi"/>
                 <outlet property="splitView" destination="SoL-8y-3tv" id="uZ6-Ex-nBX"/>
                 <outlet property="startBtn" destination="AiE-MK-3v9" id="i8p-Rn-iZS"/>
                 <outlet property="timeLab" destination="Zkd-pH-SSp" id="bUq-o4-GfL"/>
+                <outlet property="weightCheckBtn" destination="gSs-r7-mio" id="SpY-lr-NzK"/>
             </connections>
             <point key="canvasLocation" x="421" y="235"/>
         </window>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="aY3-Hn-W9C" userLabel="HeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="290" height="62"/>
+            <rect key="frame" x="0.0" y="0.0" width="290" height="87"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JWS-JM-Oo9">
-                    <rect key="frame" x="18" y="20" width="254" height="22"/>
+                    <rect key="frame" x="18" y="60" width="254" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="TBB-G9-bJq"/>
                     </constraints>
@@ -260,11 +268,38 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="gSs-r7-mio">
+                    <rect key="frame" x="18" y="8" width="104" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="vLB-BT-Gcc"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" title="Show Weight" bezelStyle="regularSquare" imagePosition="left" inset="2" id="k4F-Sz-h3d">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2bo-Lk-kPV">
+                    <rect key="frame" x="20" y="31" width="75" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="trackSpeed" id="hHX-aD-Tx6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F8B-5U-7Uh">
+                    <rect key="frame" x="99" y="27" width="96" height="21"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="10" doubleValue="10" tickMarkPosition="above" sliderType="linear" id="HmZ-g8-IpH"/>
+                    <connections>
+                        <action selector="adjustTrackSpeed:" target="kZf-jx-LcB" id="rN4-1a-u8N"/>
+                    </connections>
+                </slider>
             </subviews>
             <constraints>
-                <constraint firstItem="JWS-JM-Oo9" firstAttribute="top" secondItem="aY3-Hn-W9C" secondAttribute="top" constant="20" id="29C-91-zex"/>
-                <constraint firstAttribute="bottom" secondItem="JWS-JM-Oo9" secondAttribute="bottom" constant="20" id="Le2-yA-dNL"/>
+                <constraint firstItem="JWS-JM-Oo9" firstAttribute="top" secondItem="aY3-Hn-W9C" secondAttribute="top" constant="5" id="29C-91-zex"/>
+                <constraint firstAttribute="bottom" secondItem="JWS-JM-Oo9" secondAttribute="bottom" constant="60" id="Le2-yA-dNL"/>
                 <constraint firstItem="JWS-JM-Oo9" firstAttribute="leading" secondItem="aY3-Hn-W9C" secondAttribute="leading" constant="20" id="MT3-Sq-7zl"/>
+                <constraint firstItem="gSs-r7-mio" firstAttribute="leading" secondItem="aY3-Hn-W9C" secondAttribute="leading" constant="20" id="sfB-Lg-pye"/>
+                <constraint firstAttribute="bottom" secondItem="gSs-r7-mio" secondAttribute="bottom" constant="10" id="tFh-HB-Odh"/>
             </constraints>
             <point key="canvasLocation" x="66" y="652.5"/>
         </customView>

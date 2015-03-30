@@ -14,7 +14,6 @@
 
 @property (weak)IBOutlet NSView *headerView;
 
-@property (nonatomic, strong)NSMutableArray *stackCells;
 
 @end
 
@@ -38,29 +37,28 @@
 	self.skView.showsNodeCount = YES;
 	
 	[self.window.rightView setWantsLayer:YES];
-	
+	self.window.pf_delegate = scene;
 	
 	// config data
-	
-	NSString *aStar = @"[{\"Algorithm\": \"AStar\", "
+	NSString *aStar = @"[{\"Algorithm\": \"AStar\", \"algType\": 0, "
 						"\"Heuristic\": [\"Manhattan\", \"Euclidean\", \"Octile\", \"Chebyshev\"], "
 						"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"], "
 						"\"Options\": {\"Bi-directional\": \"true\", \"Weight\": \"true\"}},";
 	
-	NSString *bestFirstSearch = @"{\"Algorithm\": \"BestFirstSearch\", "
+	NSString *bestFirstSearch = @"{\"Algorithm\": \"BestFirstSearch\", \"algType\": 1, "
 									"\"Heuristic\": [\"Manhattan\", \"Euclidean\", \"Octile\", \"Chebyshev\"], "
 									"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"], "
 									"\"Options\": {\"Bi-directional\": \"true\"}},";
 	
-	NSString *breadthFirstSearch = @"{\"Algorithm\": \"BreadthFirstSearch\", "
+	NSString *breadthFirstSearch = @"{\"Algorithm\": \"BreadthFirstSearch\", \"algType\": 4, "
 									"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"], "
 									"\"Options\": {\"Bi-directional\": \"true\"}},";
 	
-	NSString *dijkstra = @"{\"Algorithm\": \"Dijkstra\", "
+	NSString *dijkstra = @"{\"Algorithm\": \"Dijkstra\", \"algType\": 2, "
 							"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"], "
 							"\"Options\": {\"Bi-directional\": \"true\"}},";
 	
-	NSString *jumpPointSearch = @"{\"Algorithm\": \"JumpPointSearch\", "
+	NSString *jumpPointSearch = @"{\"Algorithm\": \"JumpPointSearch\", \"algType\": 3, "
 								"\"Heuristic\": [\"Manhattan\", \"Euclidean\", \"Octile\", \"Chebyshev\"], "
 								"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"]}]";
 	
@@ -70,14 +68,14 @@
 	NSArray *pfDic = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
 	
 	[self.stackView addView:self.headerView inGravity:NSStackViewGravityLeading];
-	self.stackCells = [NSMutableArray array];
+	self.window.stackCells = [NSMutableArray array];
 	int i = 0;
 	for (NSDictionary *data in pfDic) {
 		StackCellViewController *cellVC = [[StackCellViewController alloc] initWithNibName:@"StackCellViewController" bundle:nil];
 		cellVC.delegate = self;
 		[cellVC loadingData:data];
 		[self.stackView addView:cellVC.view inGravity:NSStackViewGravityLeading];
-		[self.stackCells addObject:cellVC];
+		[self.window.stackCells addObject:cellVC];
 		if (i==0) {
 			[cellVC changeDisclosureViewState:NO];
 		}
@@ -102,7 +100,7 @@
 
 #pragma mark - StackCellViewDelegate
 - (void)stackCellVC:(StackCellViewController *)stackCellVC disclosureDidChange:(BOOL)disclosureIsClosed {
-	for (StackCellViewController *cellVC in self.stackCells) {
+	for (StackCellViewController *cellVC in self.window.stackCells) {
 		if (stackCellVC != cellVC) {
 			[cellVC changeDisclosureViewState:YES];
 		}

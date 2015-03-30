@@ -20,7 +20,7 @@
 	PFNode *node = nil, *neighbor = nil;
 	NSArray *neighbors = nil;
 	NSUInteger l=0;
-	int i=0, x=0, y=0, endX=endNode.x, endY=endNode.y;
+	int i=0, x=0, y=0, endX=endNode.x, endY=endNode.y, startX=startNode.x, startY=startNode.y;
 	float ng = 0;
 	
 	// set the `g` and `f` value of the start node to be 0
@@ -133,13 +133,14 @@
 			
 			// get the distance between current node and the neighbor
 			// and calculate the next g score
+			
 			ng = node.g + ((x-node.x == 0 || y-node.y == 0) ? 1 : 1.4);
 			
 			// check if the neighbor has not been inspected yet, or
 			// can be reached with smaller cost from the current node
 			if (neighbor.opened==0 || ng < neighbor.g) {
 				neighbor.g = ng;
-				neighbor.h = neighbor.h==0 ? self.weight * [self calculateHeuristicValueWithX:abs(x - endX) andY:abs(y - endY)] : neighbor.h;
+				neighbor.h = neighbor.h==0 ? self.weight * [self calculateHeuristicValueWithX:abs(x - startX) andY:abs(y - startY)] : neighbor.h;
 				neighbor.f = neighbor.g + neighbor.h;
 				neighbor.parent = node;
 				

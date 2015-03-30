@@ -25,7 +25,7 @@
  *  http://qiao.github.io/PathFinding.js/visual/
  */
 typedef enum {
-	PathfindingAlgorithm_AStar,						// default
+	PathfindingAlgorithm_AStar = 0,						// default
 	PathfindingAlgorithm_BestFirstSearch,			//
 	PathfindingAlgorithm_Dijkstra,					//
 	PathfindingAlgorithm_JumpPointSearch,			//

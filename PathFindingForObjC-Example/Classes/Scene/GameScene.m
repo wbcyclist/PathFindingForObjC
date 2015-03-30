@@ -12,6 +12,12 @@
 #import "PFNode.h"
 #import "VectorFieldGrid.h"
 
+
+
+NSString *const PathFinding_NC_Start	= @"PathFinding_NC_Start";
+NSString *const PathFinding_NC_Finish	= @"PathFinding_NC_Finish";
+NSString *const PathFinding_NC_Result	= @"PathFinding_NC_Result";
+
 @interface GameScene ()
 
 @property (nonatomic,strong)VectorFieldGrid *fieldGrid;
@@ -37,7 +43,6 @@
 	NSMutableArray *trackArr;
 	NSUInteger currentTrackIndex;
 	BOOL isPlayTrack;
-	NSUInteger trackSpeed;
 }
 
 - (instancetype)initWithSize:(CGSize)size {
@@ -51,7 +56,7 @@
 		self.gridSize =  CGSizeMake(32, 32);
 		#endif
 		
-		trackSpeed = 1;//(the larger the slow)
+		self.trackSpeed = 1;//(the larger the slow)
 	}
 	return self;
 }
@@ -181,13 +186,13 @@
 }
 
 
-- (void)startFindingPath {
+- (void)startFindingPath:(NSDictionary *)pfInfo {
 	if (!pathFinding) {
 		pathFinding = [[PathFinding alloc] initWithMapSize:CGSizeMake(0, 0)
 												  tileSize:CGSizeMake(1, 1)
 											   coordsOrgin:CGPointMake(0, 0)];
 		pathFinding.heuristicType = HeuristicTypeManhattan;
-		pathFinding.movementType = DiagonalMovement_OnlyWhenNoObstacles;
+		pathFinding.movementType = DiagonalMovement_Always;
 		
 		pathFinding.weight = 1;
 	}
@@ -199,8 +204,22 @@
 	pathFinding.tileSize = self.gridSize;
 	pathFinding.orginPoint = CGPointZero;
 	
+	
+	// setup pfinfo
+	PathfindingAlgorithm algType = [pfInfo[@"algType"] intValue];
+	BOOL isShowWeight = [pfInfo[@"isShowWeight"] boolValue];
+	BOOL isBidirectional = [pfInfo[@"isBidirectional"] boolValue];
+	HeuristicType heuristicType = [pfInfo[@"heuristicType"] intValue];
+	DiagonalMovement movementType = [pfInfo[@"movementType"] intValue];
+	int weight = [pfInfo[@"weight"] intValue];
+	
+	pathFinding.weight = algType==PathfindingAlgorithm_AStar?weight:1;
+	pathFinding.heuristicType = heuristicType;
+	pathFinding.movementType = movementType;
+	
 	[pathFinding clearBlockTiles];
 	for (PFGridNode *node in gridLayer.children) {
+		node.showWeightValue = isShowWeight;
 		if (node.editState==kGState_Block) {
 			[pathFinding addBlockTilePosition:node.position];
 		} else if (node.editState==kGState_Start) {
@@ -209,15 +228,22 @@
 			pathFinding.endPoint = node.position;
 		}
 	}
+	self.pfState = PFState_finding;
+	[[NSNotificationCenter defaultCenter] postNotificationName:PathFinding_NC_Start object:self];
 	
 	NSMutableArray *trackArrHook = [NSMutableArray array];
-//	NSMutableArray *trackArrHook = nil;
-	
-	NSDate* tmpStartData = [NSDate date];
-	
 	foundPaths = nil;
+	if (isBidirectional) {
+		algType = algType==PathfindingAlgorithm_AStar?PathfindingAlgorithm_BiAStar:algType;
+		algType = algType==PathfindingAlgorithm_BestFirstSearch?PathfindingAlgorithm_BiBestFirst:algType;
+		algType = algType==PathfindingAlgorithm_Dijkstra?PathfindingAlgorithm_BiDijkstra:algType;
+		algType = algType==PathfindingAlgorithm_BreadthFirstSearch?PathfindingAlgorithm_BiBreadthFirst:algType;
+	}
+	NSDate* tmpStartData = [NSDate date];
+	foundPaths = [pathFinding findPathing:algType IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+	
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BestFirstSearch IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
-	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_AStar IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
+//	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_AStar IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiAStar IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_BiBestFirst IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
 //	foundPaths = [pathFinding findPathing:PathfindingAlgorithm_Dijkstra IsConvertToOriginCoords:YES trackFinding:&trackArrHook];
@@ -238,9 +264,6 @@
 	}
 	self.fieldGrid.targetPoint = pathFinding.startPoint;
 	
-	double costTime = [[NSDate date] timeIntervalSinceDate:tmpStartData];
-	NSLog(@"costTime = %fms", costTime*1000);
-	
 	NSArray *result = self.fieldGrid.nodes;
 	for (NSArray *rowArr in result) {
 		for (PFNode *node in rowArr) {
@@ -248,6 +271,12 @@
 		}
 	}
 	 */
+	
+	double costTime = [[NSDate date] timeIntervalSinceDate:tmpStartData];
+	NSLog(@"costTime = %fms, operations = %d, length = %d", costTime*1000, (int)trackArrHook.count, (int)foundPaths.count - 1);
+	[[NSNotificationCenter defaultCenter] postNotificationName:PathFinding_NC_Result
+														object:self
+													  userInfo:@{@"costTime":@(costTime*1000), @"length":@((int)foundPaths.count - 1)}];
 	
 	if ([trackArrHook count]>0) {
 		trackArr = trackArrHook;
@@ -284,6 +313,14 @@
 
 - (PFGridNode*)getGridNodeWithName:(NSString *)name {
 	return (PFGridNode*)[gridLayer childNodeWithName:name];
+}
+
+
+- (void)setPfState:(PFState)pfState {
+	_pfState = pfState;
+	if (pfState==PFState_finish) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:PathFinding_NC_Finish object:self];
+	}
 }
 
 
@@ -334,6 +371,10 @@
 
 #pragma mark - 
 - (void)gridTouchIn:(CGPoint)point {
+	if (self.pfState != PFState_Ide && self.pfState != PFState_finish) {
+		return;
+	}
+	
 	point = CGPointMake((int)point.x, (int)point.y);
 	SKNode *node = [gridLayer nodeAtPoint:point];
 	PFGridNode *grid;
@@ -360,6 +401,11 @@
 }
 
 - (void)gridTouchMoved:(CGPoint)point {
+	if ((self.pfState != PFState_Ide && self.pfState != PFState_finish)
+		|| selectGrid == nil) {
+		return;
+	}
+	
 	point = CGPointMake((int)point.x, (int)point.y);
 	SKNode *touchNode = [gridLayer nodeAtPoint:point];
 	SKNode *node = nil;
@@ -387,15 +433,18 @@
 	selectGrid = nil;
 	selectState = kGState_None;
 	
-	[self startFindingPath];
+//	[self startFindingPath];
 }
 
 
 #pragma mark - Game update loop
 static int timeCount = 0;
 -(void)update:(NSTimeInterval)currentTime {
+	if (self.pfState==PFState_pause) {
+		return;
+	}
 	timeCount++;
-	if (timeCount==trackSpeed) {
+	if (timeCount>=self.trackSpeed) {
 		timeCount = 0;
 		if (isPlayTrack) {
 			if (currentTrackIndex>=trackArr.count) {
@@ -411,6 +460,7 @@ static int timeCount = 0;
 - (void)drawPathLines:(NSArray *)pathArr {
 	[pathLinesLayer removeAllActions];
 	[pathLinesLayer removeAllChildren];
+	self.pfState = PFState_finish;
 	if ([pathArr count]==0) {
 		return;
 	}
@@ -468,6 +518,41 @@ static int timeCount = 0;
 		}
 	}
 }
+
+
+#pragma mark - PathFindingActionDelegate
+-(void)startAction:(id)sender withPFInfo:(NSDictionary *)info {
+	if (self.pfState==PFState_pause) {
+		self.pfState = PFState_finding;
+	} else {
+		if (info) {
+			[self startFindingPath:info];
+		}
+	}
+	
+}
+-(void)pauseAction:(id)sender {
+	if (self.pfState==PFState_finding) {
+		self.pfState = PFState_pause;
+	} else if (self.pfState==PFState_pause || self.pfState==PFState_finish) {
+		self.pfState = PFState_Ide;
+		[self clearFindingAction];
+	}
+}
+-(void)clearAction:(id)sender {
+	self.pfState = PFState_Ide;
+	[self clearFindingAction];
+	[self clearBlockGrid];
+}
+
+
+
+
+
+
+
+
+
 
 
 @end

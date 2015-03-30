@@ -127,6 +127,7 @@
 	}
 	self.cellData = data;
 	self.headerTitle = self.cellData[@"Algorithm"];
+	self.algType = [self.cellData[@"algType"] intValue];
 	
 	[self.disclosedView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	// Heuristic

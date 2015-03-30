@@ -20,6 +20,7 @@
 @property (nonatomic, assign, readonly)BOOL disclosureIsClosed;
 @property (nonatomic, strong)NSDictionary *cellData;
 
+@property (nonatomic, assign)int algType;
 @property (nonatomic, assign)int heuristicType;
 @property (nonatomic, assign)int movementType;
 @property (nonatomic, assign)BOOL isBidirectional;

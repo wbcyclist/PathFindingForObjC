@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.summary  = 'A Comprehensive PathFinding Library for Objective-C'
   s.screenshots = [ "https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/PathFinding_ScreenShot.png" ]
   s.source   = { :git => 'https://github.com/wbcyclist/PathFindingForObjC.git', :tag => "#{s.version}" }
-  s.source_files = 'PathFindingForObjC/*.{h,m}'
+  s.source_files = 'PathFindingForObjC/**/*.{h,m}'
   s.requires_arc = true
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.9'

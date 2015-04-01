@@ -16,9 +16,8 @@ blablabla
 DEMO
 -----------
 <p align="center" >
-<img src="https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/PathFinding_ScreenShot.gif"/>
+<img src="https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/PathFinding_ScreenShot.png" alt="screenshot" width="858px" style="width:858px;"/>
 </p>
-
 License
 -----------
 * MIT

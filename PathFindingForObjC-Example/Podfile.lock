@@ -1,0 +1,13 @@
+PODS:
+  - ECSlidingViewController (2.0.3)
+  - RadioButton (1.0)
+
+DEPENDENCIES:
+  - ECSlidingViewController
+  - RadioButton
+
+SPEC CHECKSUMS:
+  ECSlidingViewController: 6485c14f23b4487e9946535421ca8f111f86cc53
+  RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
+
+COCOAPODS: 0.36.3

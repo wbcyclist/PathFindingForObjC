@@ -132,9 +132,11 @@ NSString *const PathFinding_NC_Result	= @"PathFinding_NC_Result";
 	}
 	
 	// setup startNode
+	int cx = column/2;
+	int cy = row/2;
 	if (startNode == nil) {
 		// init startNode
-		startNode = [self.gridsDic objectForKey:@"0,0"];
+		startNode = [self.gridsDic objectForKey:[NSString stringWithFormat:@"%d,%d", cx-2, cy]];
 		[startNode setupEditGridState:kGState_Start runAnimate:YES];
 	} else {
 		if (startNode.x >= column || startNode.y >= row) {
@@ -155,7 +157,7 @@ NSString *const PathFinding_NC_Result	= @"PathFinding_NC_Result";
 	// setup endNode
 	if (endNode == nil) {
 		// init endNode
-		endNode = [self.gridsDic objectForKey:@"1,0"];
+		endNode = [self.gridsDic objectForKey:[NSString stringWithFormat:@"%d,%d", cx+2, cy]];
 		[endNode setupEditGridState:kGState_End runAnimate:YES];
 	} else {
 		if (endNode.x >= column || endNode.y >= row) {
@@ -526,6 +528,9 @@ static int timeCount = 0;
 		self.pfState = PFState_finding;
 	} else {
 		if (info) {
+			if (info[@"trackSpeed"]) {
+				self.trackSpeed = [info[@"trackSpeed"] intValue];
+			}
 			[self startFindingPath:info];
 		}
 	}

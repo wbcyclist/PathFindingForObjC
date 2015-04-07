@@ -14,7 +14,6 @@
 
 @property (weak)IBOutlet NSView *headerView;
 
-
 @end
 
 
@@ -33,39 +32,16 @@
 	//	self.skView.showsFields = YES;
 	//	self.skView.showsPhysics = YES;
 	self.skView.showsFPS = YES;
-	self.skView.showsDrawCount = YES;
-	self.skView.showsNodeCount = YES;
+//	self.skView.showsDrawCount = YES;
+//	self.skView.showsNodeCount = YES;
 	
 	[self.window.rightView setWantsLayer:YES];
 	self.window.pf_delegate = scene;
 	
-	// config data
-	NSString *aStar = @"[{\"Algorithm\": \"AStar\", \"algType\": 0, "
-						"\"Heuristic\": [\"Manhattan\", \"Euclidean\", \"Octile\", \"Chebyshev\"], "
-						"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"], "
-						"\"Options\": {\"Bi-directional\": \"true\", \"Weight\": \"true\"}},";
-	
-	NSString *bestFirstSearch = @"{\"Algorithm\": \"BestFirstSearch\", \"algType\": 1, "
-									"\"Heuristic\": [\"Manhattan\", \"Euclidean\", \"Octile\", \"Chebyshev\"], "
-									"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"], "
-									"\"Options\": {\"Bi-directional\": \"true\"}},";
-	
-	NSString *breadthFirstSearch = @"{\"Algorithm\": \"BreadthFirstSearch\", \"algType\": 4, "
-									"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"], "
-									"\"Options\": {\"Bi-directional\": \"true\"}},";
-	
-	NSString *dijkstra = @"{\"Algorithm\": \"Dijkstra\", \"algType\": 2, "
-							"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"], "
-							"\"Options\": {\"Bi-directional\": \"true\"}},";
-	
-	NSString *jumpPointSearch = @"{\"Algorithm\": \"JumpPointSearch\", \"algType\": 3, "
-								"\"Heuristic\": [\"Manhattan\", \"Euclidean\", \"Octile\", \"Chebyshev\"], "
-								"\"DiagonalMovement\": [\"Always\", \"Never\", \"IfAtMostOneObstacle\", \"OnlyWhenNoObstacles\"]}]";
-	
-	NSString *json = [NSString stringWithFormat:@"%@%@%@%@%@", aStar, bestFirstSearch, breadthFirstSearch, dijkstra, jumpPointSearch];
-	
-	
-	NSArray *pfDic = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+	// load data
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"PathFindingData" ofType:@"json"];
+	NSData *data = [NSData dataWithContentsOfFile:filePath];
+	NSArray *pfDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 	
 	[self.stackView addView:self.headerView inGravity:NSStackViewGravityLeading];
 	self.window.stackCells = [NSMutableArray array];

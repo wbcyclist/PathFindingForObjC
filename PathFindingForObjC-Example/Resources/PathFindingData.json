@@ -1,0 +1,34 @@
+[
+{
+	"Algorithm": "AStar",
+	"algType": 0,
+	"Heuristic": ["Manhattan", "Euclidean", "Octile", "Chebyshev"],
+	"DiagonalMovement": ["Always", "Never", "IfAtMostOneObstacle", "OnlyWhenNoObstacles"],
+	"Options": {"Bi-directional": "true", "Weight": "true"}
+},
+{
+	"Algorithm": "BestFirstSearch",
+	"algType": 1,
+	"Heuristic": ["Manhattan", "Euclidean", "Octile", "Chebyshev"],
+	"DiagonalMovement": ["Always", "Never", "IfAtMostOneObstacle", "OnlyWhenNoObstacles"],
+	"Options": {"Bi-directional": "true"}
+},
+{
+	"Algorithm": "BreadthFirstSearch",
+	"algType": 4,
+	"DiagonalMovement": ["Always", "Never", "IfAtMostOneObstacle", "OnlyWhenNoObstacles"],
+	"Options": {"Bi-directional": "true"}
+},
+{
+	"Algorithm": "Dijkstra",
+	"algType": 2,
+	"DiagonalMovement": ["Always", "Never", "IfAtMostOneObstacle", "OnlyWhenNoObstacles"],
+	"Options": {"Bi-directional": "true"}
+},
+{
+	"Algorithm": "JumpPointSearch",
+	"algType": 3,
+	"Heuristic": ["Manhattan", "Euclidean", "Octile", "Chebyshev"],
+	"DiagonalMovement": ["Always", "Never", "IfAtMostOneObstacle", "OnlyWhenNoObstacles"]
+}
+]

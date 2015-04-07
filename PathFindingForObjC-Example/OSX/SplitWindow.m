@@ -32,6 +32,10 @@
 	}
 }
 
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #define LEFT_VIEW_MIN_WIDTH 250.0
 #define LEFT_VIEW_MAX_WIDTH 350.0
 
@@ -50,11 +54,6 @@
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex {
 	return LEFT_VIEW_MAX_WIDTH;
 }
-
-//- (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex {
-//	NSLog(@"proposedPosition=%f, dividerIndex=%ld", proposedPosition, (long)dividerIndex);
-//	return proposedPosition;
-//}
 
 //- (void)splitView:(NSSplitView *)splitView resizeSubviewsWithOldSize:(NSSize)oldSize {
 //	if (NSEqualSizes(splitView.frame.size, oldSize)) {
@@ -79,29 +78,6 @@
 //	[self.rightView setFrame:rightFrame];
 //}
 
-//- (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)view {
-//	return YES;
-//}
-//
-//- (BOOL)splitView:(NSSplitView *)splitView shouldHideDividerAtIndex:(NSInteger)dividerIndex {
-//	
-//}
-//
-//- (NSRect)splitView:(NSSplitView *)splitView effectiveRect:(NSRect)proposedEffectiveRect forDrawnRect:(NSRect)drawnRect ofDividerAtIndex:(NSInteger)dividerIndex {
-//	
-//}
-//
-//- (NSRect)splitView:(NSSplitView *)splitView additionalEffectiveRectOfDividerAtIndex:(NSInteger)dividerIndex {
-//	
-//}
-
-//- (void)splitViewWillResizeSubviews:(NSNotification *)notification {
-////	debugMethod();
-//	
-//}
-//- (void)splitViewDidResizeSubviews:(NSNotification *)notification {
-////	debugMethod();
-//}
 
 - (void)setPf_delegate:(id<PathFindingActionDelegate>)pf_delegate {
 	if (_pf_delegate != pf_delegate) {
@@ -117,22 +93,12 @@
 static NSString *TIME_LAB_PREFIX = @"Time: ";
 static NSString *LENGTH_LAB_PREFIX = @"Length: ";
 
-//- (void)setStartBtn:(NSButton *)startBtn {
-//	if (_startBtn != startBtn) {
-//		_startBtn = startBtn;
-//		_startBtn.alphaValue = 0.8f;
-////		_startBtn.title = @"sda\nsdsd";
-//	}
-//}
-
-
-
 - (IBAction)startBtnAction:(NSButton *)sender {
 	NSMutableDictionary *pfInfo;
 	if (self.gameScene.pfState!=PFState_pause) {
 		pfInfo = [NSMutableDictionary dictionary];
 		pfInfo[@"isShowWeight"] = @(self.weightCheckBtn.state);
-		self.gameScene.trackSpeed = abs(self.speedSlider.intValue-(int)self.speedSlider.maxValue-1);
+		pfInfo[@"trackSpeed"] = @(abs(self.speedSlider.intValue-(int)self.speedSlider.maxValue-1));
 		for (StackCellViewController *cellVC in self.stackCells) {
 			if (!cellVC.disclosureIsClosed) {
 				pfInfo[@"algType"] = @(cellVC.algType);
@@ -188,19 +154,6 @@ static NSString *LENGTH_LAB_PREFIX = @"Length: ";
 	self.timeLab.stringValue = [NSString stringWithFormat:@"%@%fms", TIME_LAB_PREFIX, costTime.floatValue];
 	self.lengthLab.stringValue = [NSString stringWithFormat:@"%@%d", LENGTH_LAB_PREFIX, length.intValue];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @end

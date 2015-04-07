@@ -7,58 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9210071C4DE3A7CC9CEA3B65 /* libPods-PathFinding-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 579F730C6A6A712141FA0681 /* libPods-PathFinding-iOS.a */; };
 		A524992C1A083195002A37E0 /* VectorFieldGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A524992B1A083195002A37E0 /* VectorFieldGrid.m */; };
 		A524992D1A083195002A37E0 /* VectorFieldGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A524992B1A083195002A37E0 /* VectorFieldGrid.m */; };
-		A524992E1A083195002A37E0 /* VectorFieldGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A524992B1A083195002A37E0 /* VectorFieldGrid.m */; };
-		A524992F1A083195002A37E0 /* VectorFieldGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A524992B1A083195002A37E0 /* VectorFieldGrid.m */; };
 		A52499311A0856A8002A37E0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A52499301A0856A8002A37E0 /* arrow.png */; };
 		A52499321A0856A8002A37E0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A52499301A0856A8002A37E0 /* arrow.png */; };
-		A52499331A0856A8002A37E0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A52499301A0856A8002A37E0 /* arrow.png */; };
-		A52499341A0856A8002A37E0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A52499301A0856A8002A37E0 /* arrow.png */; };
 		A53546C919FFCC67005C629B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546BC19FFCC67005C629B /* AppDelegate.m */; };
 		A53546CA19FFCC67005C629B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53546BD19FFCC67005C629B /* LaunchScreen.xib */; };
 		A53546CB19FFCC67005C629B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53546BF19FFCC67005C629B /* Main.storyboard */; };
 		A53546CE19FFCC67005C629B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546C519FFCC67005C629B /* GameViewController.m */; };
 		A53546D119FFCC67005C629B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546C819FFCC67005C629B /* main.m */; };
-		A53546D619FFCD68005C629B /* PathFinding_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546D419FFCD68005C629B /* PathFinding_iOSTests.m */; };
 		A53546E119FFD4F0005C629B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546E019FFD4F0005C629B /* AppDelegate.m */; };
 		A53546E319FFD4F0005C629B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546E219FFD4F0005C629B /* main.m */; };
 		A53546ED19FFD4F0005C629B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53546EB19FFD4F0005C629B /* MainMenu.xib */; };
-		A53546F919FFD4F0005C629B /* PathFinding_MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A53546F819FFD4F0005C629B /* PathFinding_MacTests.m */; };
 		A535470519FFDAAA005C629B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A535470419FFDAAA005C629B /* Images.xcassets */; };
 		A535470619FFDAAA005C629B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A535470419FFDAAA005C629B /* Images.xcassets */; };
 		A53547F019FFEEBB005C629B /* Heuristic.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E219FFEEBB005C629B /* Heuristic.m */; };
 		A53547F119FFEEBB005C629B /* Heuristic.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E219FFEEBB005C629B /* Heuristic.m */; };
-		A53547F219FFEEBB005C629B /* Heuristic.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E219FFEEBB005C629B /* Heuristic.m */; };
-		A53547F319FFEEBB005C629B /* Heuristic.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E219FFEEBB005C629B /* Heuristic.m */; };
 		A53547F419FFEEBB005C629B /* PFGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E419FFEEBB005C629B /* PFGrid.m */; };
 		A53547F519FFEEBB005C629B /* PFGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E419FFEEBB005C629B /* PFGrid.m */; };
-		A53547F619FFEEBB005C629B /* PFGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E419FFEEBB005C629B /* PFGrid.m */; };
-		A53547F719FFEEBB005C629B /* PFGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E419FFEEBB005C629B /* PFGrid.m */; };
 		A53547F819FFEEBB005C629B /* PFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E619FFEEBB005C629B /* PFNode.m */; };
 		A53547F919FFEEBB005C629B /* PFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E619FFEEBB005C629B /* PFNode.m */; };
-		A53547FA19FFEEBB005C629B /* PFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E619FFEEBB005C629B /* PFNode.m */; };
-		A53547FB19FFEEBB005C629B /* PFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E619FFEEBB005C629B /* PFNode.m */; };
 		A53547FC19FFEEBB005C629B /* PFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E819FFEEBB005C629B /* PFUtil.m */; };
 		A53547FD19FFEEBB005C629B /* PFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E819FFEEBB005C629B /* PFUtil.m */; };
-		A53547FE19FFEEBB005C629B /* PFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E819FFEEBB005C629B /* PFUtil.m */; };
-		A53547FF19FFEEBB005C629B /* PFUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547E819FFEEBB005C629B /* PFUtil.m */; };
 		A535480019FFEEBB005C629B /* AStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EB19FFEEBB005C629B /* AStarFinder.m */; };
 		A535480119FFEEBB005C629B /* AStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EB19FFEEBB005C629B /* AStarFinder.m */; };
-		A535480219FFEEBB005C629B /* AStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EB19FFEEBB005C629B /* AStarFinder.m */; };
-		A535480319FFEEBB005C629B /* AStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EB19FFEEBB005C629B /* AStarFinder.m */; };
 		A535480419FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
 		A535480519FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
-		A535480619FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
-		A535480719FFEEBB005C629B /* BaseFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547ED19FFEEBB005C629B /* BaseFinder.m */; };
 		A535480819FFEEBB005C629B /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
 		A54676591A00280300C62349 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = A54676581A00280300C62349 /* grid.png */; };
 		A546765A1A00280300C62349 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = A54676581A00280300C62349 /* grid.png */; };
 		A546765D1A00371500C62349 /* PFGridNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A546765C1A00371500C62349 /* PFGridNode.m */; };
 		A546765E1A00371500C62349 /* PFGridNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A546765C1A00371500C62349 /* PFGridNode.m */; };
 		A55319CC19FFF6F700503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
-		A55319CD19FFF6F700503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
-		A55319CE19FFF6F800503E11 /* PathFinding.m in Sources */ = {isa = PBXBuildFile; fileRef = A53547EF19FFEEBB005C629B /* PathFinding.m */; };
 		A55319D019FFF8C900503E11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319CF19FFF8C900503E11 /* Foundation.framework */; };
 		A55319D219FFF8DD00503E11 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319D119FFF8DD00503E11 /* SpriteKit.framework */; };
 		A55319D419FFF8F000503E11 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55319D319FFF8F000503E11 /* CoreGraphics.framework */; };
@@ -75,62 +56,46 @@
 		A55319E719FFFCAE00503E11 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E419FFFCAE00503E11 /* GameScene.m */; };
 		A55319EA19FFFECB00503E11 /* WBGameUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E919FFFECB00503E11 /* WBGameUtilities.m */; };
 		A55319EB19FFFECB00503E11 /* WBGameUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E919FFFECB00503E11 /* WBGameUtilities.m */; };
-		A55319EC19FFFECB00503E11 /* WBGameUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E919FFFECB00503E11 /* WBGameUtilities.m */; };
-		A55319ED19FFFECB00503E11 /* WBGameUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319E919FFFECB00503E11 /* WBGameUtilities.m */; };
 		A55319F719FFFFB800503E11 /* WBArrowShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */; };
 		A55319F819FFFFB800503E11 /* WBArrowShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */; };
-		A55319F919FFFFB800503E11 /* WBArrowShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */; };
-		A55319FA19FFFFB800503E11 /* WBArrowShapeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F019FFFFB800503E11 /* WBArrowShapeNode.m */; };
 		A55319FB19FFFFB800503E11 /* BFPhysicsShape.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F219FFFFB800503E11 /* BFPhysicsShape.m */; };
 		A55319FC19FFFFB800503E11 /* BFPhysicsShape.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F219FFFFB800503E11 /* BFPhysicsShape.m */; };
-		A55319FD19FFFFB800503E11 /* BFPhysicsShape.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F219FFFFB800503E11 /* BFPhysicsShape.m */; };
-		A55319FE19FFFFB800503E11 /* BFPhysicsShape.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F219FFFFB800503E11 /* BFPhysicsShape.m */; };
 		A55319FF19FFFFB800503E11 /* SKNode+WBKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F419FFFFB800503E11 /* SKNode+WBKit.m */; };
 		A5531A0019FFFFB800503E11 /* SKNode+WBKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F419FFFFB800503E11 /* SKNode+WBKit.m */; };
-		A5531A0119FFFFB800503E11 /* SKNode+WBKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F419FFFFB800503E11 /* SKNode+WBKit.m */; };
-		A5531A0219FFFFB800503E11 /* SKNode+WBKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F419FFFFB800503E11 /* SKNode+WBKit.m */; };
 		A5531A0319FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
 		A5531A0419FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
-		A5531A0519FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
-		A5531A0619FFFFB800503E11 /* WBSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A55319F619FFFFB800503E11 /* WBSpriteButton.m */; };
+		A56658C51AD0D9730058C788 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = A56658C11AD0D9730058C788 /* checked.png */; };
+		A56658C61AD0D9730058C788 /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56658C21AD0D9730058C788 /* checked@2x.png */; };
+		A56658C71AD0D9730058C788 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = A56658C31AD0D9730058C788 /* unchecked.png */; };
+		A56658C81AD0D9730058C788 /* unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56658C41AD0D9730058C788 /* unchecked@2x.png */; };
 		A57AA4E71AC4A3CF002D9D2B /* NoHitLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A57AA4E61AC4A3CF002D9D2B /* NoHitLabel.m */; };
+		A58338591ACF46FA00B2695A /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58338581ACF46FA00B2695A /* LeftViewController.m */; };
+		A583385C1ACF476E00B2695A /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A583385B1ACF476E00B2695A /* ContentViewController.m */; };
+		A583385E1AD0732700B2695A /* cell_menu_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A583385D1AD0732700B2695A /* cell_menu_bg.png */; };
+		A58338611AD07AAA00B2695A /* StackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A58338601AD07AAA00B2695A /* StackTableViewCell.m */; };
 		A59635791A03697300B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
 		A596357A1A03697300B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
-		A596357B1A03698400B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
-		A596357C1A03698400B6D6B5 /* BestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635781A03697300B6D6B5 /* BestFirstFinder.m */; };
 		A596357F1A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */; };
 		A59635801A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */; };
-		A59635811A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */; };
-		A59635821A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596357E1A0379AC00B6D6B5 /* BiAStarFinder.m */; };
 		A59635851A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */; };
 		A59635861A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */; };
-		A59635871A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */; };
-		A59635881A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635841A03AB8C00B6D6B5 /* BiBestFirstFinder.m */; };
 		A596358B1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */; };
 		A596358C1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */; };
-		A596358D1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */; };
-		A596358E1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596358A1A03AE5200B6D6B5 /* DijkstraFinder.m */; };
 		A59635911A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */; };
 		A59635921A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */; };
-		A59635931A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */; };
-		A59635941A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635901A03B01400B6D6B5 /* BiDijkstraFinder.m */; };
 		A59635971A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */; };
 		A59635981A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */; };
-		A59635991A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */; };
-		A596359A1A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635961A03B26500B6D6B5 /* BreadthFirstFinder.m */; };
 		A596359D1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */; };
 		A596359E1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */; };
-		A596359F1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */; };
-		A59635A01A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A596359C1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m */; };
 		A59635A31A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
 		A59635A41A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
-		A59635A51A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
-		A59635A61A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = A59635A21A03E6B100B6D6B5 /* IDAStarFinder.m */; };
 		A5A8D90A1ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D9091ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m */; };
 		A5A8D90B1ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D9091ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m */; };
 		A5A8D90E1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */; };
 		A5A8D90F1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */; };
 		A5A8D9121ABB2A9400BEA593 /* SplitWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A8D9111ABB2A9400BEA593 /* SplitWindow.m */; };
+		A5D3F0FA1AD2F976001BAB64 /* PathFindingData.json in Resources */ = {isa = PBXBuildFile; fileRef = A5D3F0F91AD2F976001BAB64 /* PathFindingData.json */; };
+		A5D3F0FB1AD2F976001BAB64 /* PathFindingData.json in Resources */ = {isa = PBXBuildFile; fileRef = A5D3F0F91AD2F976001BAB64 /* PathFindingData.json */; };
 		A5DEB1651AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */; };
 		A5DEB1661AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */; };
 		A5DEB1691AB7E17D00CEA5A0 /* JumpPointFinderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DEB1681AB7E17D00CEA5A0 /* JumpPointFinderBase.m */; };
@@ -141,29 +106,12 @@
 		A5F58E441ABDCF99005FE014 /* StackCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F58E421ABDCF99005FE014 /* StackCellViewController.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A53546AB19FFC908005C629B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A535468419FFC908005C629B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A535468B19FFC908005C629B;
-			remoteInfo = "PathFindingForObjC-Example";
-		};
-		A53546F319FFD4F0005C629B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A535468419FFC908005C629B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A53546DA19FFD4F0005C629B;
-			remoteInfo = "PathFinding-Mac";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		579F730C6A6A712141FA0681 /* libPods-PathFinding-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PathFinding-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A524992A1A083195002A37E0 /* VectorFieldGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorFieldGrid.h; sourceTree = "<group>"; };
 		A524992B1A083195002A37E0 /* VectorFieldGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VectorFieldGrid.m; sourceTree = "<group>"; };
 		A52499301A0856A8002A37E0 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		A535468C19FFC908005C629B /* PathFinding-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PathFinding-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A53546AA19FFC908005C629B /* PathFinding-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PathFinding-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53546BB19FFCC67005C629B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A53546BC19FFCC67005C629B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A53546BE19FFCC67005C629B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -180,7 +128,6 @@
 		A53546E019FFD4F0005C629B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A53546E219FFD4F0005C629B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A53546EC19FFD4F0005C629B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		A53546F219FFD4F0005C629B /* PathFinding-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PathFinding-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53546F719FFD4F0005C629B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A53546F819FFD4F0005C629B /* PathFinding_MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathFinding_MacTests.m; sourceTree = "<group>"; };
 		A535470419FFDAAA005C629B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -222,8 +169,19 @@
 		A55319F519FFFFB800503E11 /* WBSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSpriteButton.h; sourceTree = "<group>"; };
 		A55319F619FFFFB800503E11 /* WBSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSpriteButton.m; sourceTree = "<group>"; };
 		A55804221AB2D2D700DA4930 /* PFTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTypes.h; sourceTree = "<group>"; };
+		A56658C11AD0D9730058C788 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		A56658C21AD0D9730058C788 /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
+		A56658C31AD0D9730058C788 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
+		A56658C41AD0D9730058C788 /* unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unchecked@2x.png"; sourceTree = "<group>"; };
 		A57AA4E51AC4A3CF002D9D2B /* NoHitLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoHitLabel.h; sourceTree = "<group>"; };
 		A57AA4E61AC4A3CF002D9D2B /* NoHitLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoHitLabel.m; sourceTree = "<group>"; };
+		A58338571ACF46FA00B2695A /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		A58338581ACF46FA00B2695A /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		A583385A1ACF476E00B2695A /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		A583385B1ACF476E00B2695A /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		A583385D1AD0732700B2695A /* cell_menu_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_menu_bg.png; sourceTree = "<group>"; };
+		A583385F1AD07AAA00B2695A /* StackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackTableViewCell.h; sourceTree = "<group>"; };
+		A58338601AD07AAA00B2695A /* StackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackTableViewCell.m; sourceTree = "<group>"; };
 		A59635771A03697300B6D6B5 /* BestFirstFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BestFirstFinder.h; sourceTree = "<group>"; };
 		A59635781A03697300B6D6B5 /* BestFirstFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BestFirstFinder.m; sourceTree = "<group>"; };
 		A596357D1A0379AC00B6D6B5 /* BiAStarFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiAStarFinder.h; sourceTree = "<group>"; };
@@ -246,6 +204,7 @@
 		A5A8D90D1ABA866000BEA593 /* JPFMoveDiagonallyIfNoObstacles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFMoveDiagonallyIfNoObstacles.m; sourceTree = "<group>"; };
 		A5A8D9101ABB2A9400BEA593 /* SplitWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitWindow.h; sourceTree = "<group>"; };
 		A5A8D9111ABB2A9400BEA593 /* SplitWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitWindow.m; sourceTree = "<group>"; };
+		A5D3F0F91AD2F976001BAB64 /* PathFindingData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PathFindingData.json; sourceTree = "<group>"; };
 		A5DEB1631AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFNeverMoveDiagonally.h; sourceTree = "<group>"; };
 		A5DEB1641AB7DF5000CEA5A0 /* JPFNeverMoveDiagonally.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFNeverMoveDiagonally.m; sourceTree = "<group>"; };
 		A5DEB1671AB7E17D00CEA5A0 /* JumpPointFinderBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpPointFinderBase.h; sourceTree = "<group>"; };
@@ -255,6 +214,8 @@
 		A5F58E401ABDCF99005FE014 /* StackCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackCellViewController.h; sourceTree = "<group>"; };
 		A5F58E411ABDCF99005FE014 /* StackCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackCellViewController.m; sourceTree = "<group>"; };
 		A5F58E421ABDCF99005FE014 /* StackCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StackCellViewController.xib; sourceTree = "<group>"; };
+		B8F747472AEAAB3A4F0425A7 /* Pods-PathFinding-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PathFinding-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-PathFinding-iOS/Pods-PathFinding-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		EC697FD289D904C54AFB8902 /* Pods-PathFinding-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PathFinding-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PathFinding-iOS/Pods-PathFinding-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,13 +229,7 @@
 				A55319D419FFF8F000503E11 /* CoreGraphics.framework in Frameworks */,
 				A55319D219FFF8DD00503E11 /* SpriteKit.framework in Frameworks */,
 				A55319D019FFF8C900503E11 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A53546A719FFC908005C629B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				9210071C4DE3A7CC9CEA3B65 /* libPods-PathFinding-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,16 +246,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A53546EF19FFD4F0005C629B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		029C26FE123FB657A6544DFF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC697FD289D904C54AFB8902 /* Pods-PathFinding-iOS.debug.xcconfig */,
+				B8F747472AEAAB3A4F0425A7 /* Pods-PathFinding-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A52499291A083154002A37E0 /* fieldGrid */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +279,7 @@
 				A535468D19FFC908005C629B /* Products */,
 				A535470D19FFDC2A005C629B /* Frameworks */,
 				A535470319FFDA56005C629B /* Resources */,
+				029C26FE123FB657A6544DFF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -329,9 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				A535468C19FFC908005C629B /* PathFinding-iOS.app */,
-				A53546AA19FFC908005C629B /* PathFinding-iOSTests.xctest */,
 				A53546DB19FFD4F0005C629B /* PathFinding-Mac.app */,
-				A53546F219FFD4F0005C629B /* PathFinding-MacTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -345,6 +301,12 @@
 				A53546BF19FFCC67005C629B /* Main.storyboard */,
 				A53546C419FFCC67005C629B /* GameViewController.h */,
 				A53546C519FFCC67005C629B /* GameViewController.m */,
+				A58338571ACF46FA00B2695A /* LeftViewController.h */,
+				A58338581ACF46FA00B2695A /* LeftViewController.m */,
+				A583385F1AD07AAA00B2695A /* StackTableViewCell.h */,
+				A58338601AD07AAA00B2695A /* StackTableViewCell.m */,
+				A583385A1ACF476E00B2695A /* ContentViewController.h */,
+				A583385B1ACF476E00B2695A /* ContentViewController.m */,
 				A535470019FFD7B5005C629B /* Supporting Files */,
 			);
 			path = iOS;
@@ -415,6 +377,9 @@
 		A535470319FFDA56005C629B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5D3F0F91AD2F976001BAB64 /* PathFindingData.json */,
+				A56658C01AD0D9730058C788 /* radio-res-ios */,
+				A583385D1AD0732700B2695A /* cell_menu_bg.png */,
 				A52499301A0856A8002A37E0 /* arrow.png */,
 				A54676581A00280300C62349 /* grid.png */,
 				A535470419FFDAAA005C629B /* Images.xcassets */,
@@ -493,6 +458,7 @@
 				A55319CF19FFF8C900503E11 /* Foundation.framework */,
 				A55319D919FFF91D00503E11 /* OSX */,
 				A55319D819FFF91400503E11 /* iOS */,
+				579F730C6A6A712141FA0681 /* libPods-PathFinding-iOS.a */,
 			);
 			name = Frameworks;
 			path = Classes;
@@ -589,6 +555,17 @@
 			path = WBArrowShapeNode;
 			sourceTree = "<group>";
 		};
+		A56658C01AD0D9730058C788 /* radio-res-ios */ = {
+			isa = PBXGroup;
+			children = (
+				A56658C11AD0D9730058C788 /* checked.png */,
+				A56658C21AD0D9730058C788 /* checked@2x.png */,
+				A56658C31AD0D9730058C788 /* unchecked.png */,
+				A56658C41AD0D9730058C788 /* unchecked@2x.png */,
+			);
+			path = "radio-res-ios";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -596,9 +573,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A53546B419FFC908005C629B /* Build configuration list for PBXNativeTarget "PathFinding-iOS" */;
 			buildPhases = (
+				8C634F3B5191E47856F1487A /* Check Pods Manifest.lock */,
 				A535468819FFC908005C629B /* Sources */,
 				A535468919FFC908005C629B /* Frameworks */,
 				A535468A19FFC908005C629B /* Resources */,
+				E90592C35369075C4D166260 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -608,24 +587,6 @@
 			productName = "PathFindingForObjC-Example";
 			productReference = A535468C19FFC908005C629B /* PathFinding-iOS.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A53546A919FFC908005C629B /* PathFinding-iOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A53546B719FFC908005C629B /* Build configuration list for PBXNativeTarget "PathFinding-iOSTests" */;
-			buildPhases = (
-				A53546A619FFC908005C629B /* Sources */,
-				A53546A719FFC908005C629B /* Frameworks */,
-				A53546A819FFC908005C629B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A53546AC19FFC908005C629B /* PBXTargetDependency */,
-			);
-			name = "PathFinding-iOSTests";
-			productName = "PathFindingForObjC-ExampleTests";
-			productReference = A53546AA19FFC908005C629B /* PathFinding-iOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		A53546DA19FFD4F0005C629B /* PathFinding-Mac */ = {
 			isa = PBXNativeTarget;
@@ -644,24 +605,6 @@
 			productReference = A53546DB19FFD4F0005C629B /* PathFinding-Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A53546F119FFD4F0005C629B /* PathFinding-MacTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A53546FD19FFD4F0005C629B /* Build configuration list for PBXNativeTarget "PathFinding-MacTests" */;
-			buildPhases = (
-				A53546EE19FFD4F0005C629B /* Sources */,
-				A53546EF19FFD4F0005C629B /* Frameworks */,
-				A53546F019FFD4F0005C629B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A53546F419FFD4F0005C629B /* PBXTargetDependency */,
-			);
-			name = "PathFinding-MacTests";
-			productName = "PathFinding-MacTests";
-			productReference = A53546F219FFD4F0005C629B /* PathFinding-MacTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -674,16 +617,8 @@
 					A535468B19FFC908005C629B = {
 						CreatedOnToolsVersion = 6.1;
 					};
-					A53546A919FFC908005C629B = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = A535468B19FFC908005C629B;
-					};
 					A53546DA19FFD4F0005C629B = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					A53546F119FFD4F0005C629B = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = A53546DA19FFD4F0005C629B;
 					};
 				};
 			};
@@ -702,8 +637,6 @@
 			targets = (
 				A535468B19FFC908005C629B /* PathFinding-iOS */,
 				A53546DA19FFD4F0005C629B /* PathFinding-Mac */,
-				A53546A919FFC908005C629B /* PathFinding-iOSTests */,
-				A53546F119FFD4F0005C629B /* PathFinding-MacTests */,
 			);
 		};
 /* End PBXProject section */
@@ -715,17 +648,15 @@
 			files = (
 				A53546CA19FFCC67005C629B /* LaunchScreen.xib in Resources */,
 				A54676591A00280300C62349 /* grid.png in Resources */,
+				A56658C61AD0D9730058C788 /* checked@2x.png in Resources */,
 				A535470519FFDAAA005C629B /* Images.xcassets in Resources */,
+				A583385E1AD0732700B2695A /* cell_menu_bg.png in Resources */,
+				A5D3F0FA1AD2F976001BAB64 /* PathFindingData.json in Resources */,
+				A56658C51AD0D9730058C788 /* checked.png in Resources */,
 				A52499311A0856A8002A37E0 /* arrow.png in Resources */,
+				A56658C81AD0D9730058C788 /* unchecked@2x.png in Resources */,
+				A56658C71AD0D9730058C788 /* unchecked.png in Resources */,
 				A53546CB19FFCC67005C629B /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A53546A819FFC908005C629B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A52499331A0856A8002A37E0 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,19 +668,45 @@
 				A535470619FFDAAA005C629B /* Images.xcassets in Resources */,
 				A53546ED19FFD4F0005C629B /* MainMenu.xib in Resources */,
 				A546765A1A00280300C62349 /* grid.png in Resources */,
+				A5D3F0FB1AD2F976001BAB64 /* PathFindingData.json in Resources */,
 				A52499321A0856A8002A37E0 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A53546F019FFD4F0005C629B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8C634F3B5191E47856F1487A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A52499341A0856A8002A37E0 /* arrow.png in Resources */,
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		E90592C35369075C4D166260 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PathFinding-iOS/Pods-PathFinding-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A535468819FFC908005C629B /* Sources */ = {
@@ -779,43 +736,17 @@
 				A53547F019FFEEBB005C629B /* Heuristic.m in Sources */,
 				A53546C919FFCC67005C629B /* AppDelegate.m in Sources */,
 				A5A8D90A1ABA838200BEA593 /* JPFMoveDiagonallyIfAtMostOneObstacle.m in Sources */,
+				A583385C1ACF476E00B2695A /* ContentViewController.m in Sources */,
 				A59635851A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,
 				A59635971A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
+				A58338591ACF46FA00B2695A /* LeftViewController.m in Sources */,
 				A55319FF19FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
 				A535480819FFEEBB005C629B /* PathFinding.m in Sources */,
 				A5DEB16D1AB81F1400CEA5A0 /* JPFAlwaysMoveDiagonally.m in Sources */,
 				A596357F1A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */,
 				A59635911A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */,
+				A58338611AD07AAA00B2695A /* StackTableViewCell.m in Sources */,
 				A53547FC19FFEEBB005C629B /* PFUtil.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A53546A619FFC908005C629B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A59635811A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */,
-				A55319FD19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
-				A596358D1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */,
-				A55319EC19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
-				A535480619FFEEBB005C629B /* BaseFinder.m in Sources */,
-				A5531A0519FFFFB800503E11 /* WBSpriteButton.m in Sources */,
-				A596357B1A03698400B6D6B5 /* BestFirstFinder.m in Sources */,
-				A53547FE19FFEEBB005C629B /* PFUtil.m in Sources */,
-				A59635A51A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */,
-				A59635931A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */,
-				A59635871A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,
-				A596359F1A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
-				A53547F219FFEEBB005C629B /* Heuristic.m in Sources */,
-				A53547F619FFEEBB005C629B /* PFGrid.m in Sources */,
-				A55319CD19FFF6F700503E11 /* PathFinding.m in Sources */,
-				A55319F919FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
-				A535480219FFEEBB005C629B /* AStarFinder.m in Sources */,
-				A59635991A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
-				A5531A0119FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
-				A524992E1A083195002A37E0 /* VectorFieldGrid.m in Sources */,
-				A53546D619FFCD68005C629B /* PathFinding_iOSTests.m in Sources */,
-				A53547FA19FFEEBB005C629B /* PFNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,49 +790,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A53546EE19FFD4F0005C629B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A59635821A0379AC00B6D6B5 /* BiAStarFinder.m in Sources */,
-				A55319FE19FFFFB800503E11 /* BFPhysicsShape.m in Sources */,
-				A596358E1A03AE5200B6D6B5 /* DijkstraFinder.m in Sources */,
-				A55319ED19FFFECB00503E11 /* WBGameUtilities.m in Sources */,
-				A535480719FFEEBB005C629B /* BaseFinder.m in Sources */,
-				A5531A0619FFFFB800503E11 /* WBSpriteButton.m in Sources */,
-				A596357C1A03698400B6D6B5 /* BestFirstFinder.m in Sources */,
-				A53547FF19FFEEBB005C629B /* PFUtil.m in Sources */,
-				A59635A61A03E6B100B6D6B5 /* IDAStarFinder.m in Sources */,
-				A59635941A03B01400B6D6B5 /* BiDijkstraFinder.m in Sources */,
-				A59635881A03AB8C00B6D6B5 /* BiBestFirstFinder.m in Sources */,
-				A59635A01A03E0B900B6D6B5 /* BiBreadthFirstFinder.m in Sources */,
-				A53547F319FFEEBB005C629B /* Heuristic.m in Sources */,
-				A53547F719FFEEBB005C629B /* PFGrid.m in Sources */,
-				A55319CE19FFF6F800503E11 /* PathFinding.m in Sources */,
-				A55319FA19FFFFB800503E11 /* WBArrowShapeNode.m in Sources */,
-				A535480319FFEEBB005C629B /* AStarFinder.m in Sources */,
-				A596359A1A03B26500B6D6B5 /* BreadthFirstFinder.m in Sources */,
-				A5531A0219FFFFB800503E11 /* SKNode+WBKit.m in Sources */,
-				A524992F1A083195002A37E0 /* VectorFieldGrid.m in Sources */,
-				A53546F919FFD4F0005C629B /* PathFinding_MacTests.m in Sources */,
-				A53547FB19FFEEBB005C629B /* PFNode.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A53546AC19FFC908005C629B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A535468B19FFC908005C629B /* PathFinding-iOS */;
-			targetProxy = A53546AB19FFC908005C629B /* PBXContainerItemProxy */;
-		};
-		A53546F419FFD4F0005C629B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A53546DA19FFD4F0005C629B /* PathFinding-Mac */;
-			targetProxy = A53546F319FFD4F0005C629B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A53546BD19FFCC67005C629B /* LaunchScreen.xib */ = {
@@ -968,6 +857,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1006,6 +896,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1015,6 +906,7 @@
 		};
 		A53546B519FFC908005C629B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC697FD289D904C54AFB8902 /* Pods-PathFinding-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1022,11 +914,13 @@
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info-ios.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		A53546B619FFC908005C629B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F747472AEAAB3A4F0425A7 /* Pods-PathFinding-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1034,40 +928,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info-ios.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		A53546B819FFC908005C629B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = iOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PathFinding-iOS.app/PathFinding-iOS";
-			};
-			name = Debug;
-		};
-		A53546B919FFC908005C629B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = iOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PathFinding-iOS.app/PathFinding-iOS";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1085,7 +946,6 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/OSX/Info-mac.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1102,50 +962,8 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/PathFinding-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/OSX/Info-mac.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		A53546FE19FFD4F0005C629B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OSXTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PathFinding-Mac.app/Contents/MacOS/PathFinding-Mac";
-			};
-			name = Debug;
-		};
-		A53546FF19FFD4F0005C629B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OSXTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PathFinding-Mac.app/Contents/MacOS/PathFinding-Mac";
 			};
 			name = Release;
 		};
@@ -1170,29 +988,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A53546B719FFC908005C629B /* Build configuration list for PBXNativeTarget "PathFinding-iOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A53546B819FFC908005C629B /* Debug */,
-				A53546B919FFC908005C629B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		A53546FA19FFD4F0005C629B /* Build configuration list for PBXNativeTarget "PathFinding-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A53546FB19FFD4F0005C629B /* Debug */,
 				A53546FC19FFD4F0005C629B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A53546FD19FFD4F0005C629B /* Build configuration list for PBXNativeTarget "PathFinding-MacTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A53546FE19FFD4F0005C629B /* Debug */,
-				A53546FF19FFD4F0005C629B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

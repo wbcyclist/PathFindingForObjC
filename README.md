@@ -5,7 +5,6 @@ A Comprehensive PathFinding Library for Objective-C.
 Based on [PathFinding.js](https://github.com/qiao/PathFinding.js) by [@qiao](https://github.com/qiao).
 
 ## Installation
----
 #### Cocoapods
 * Edit your Podfile
 ``` ruby
@@ -49,7 +48,6 @@ end
 ![](https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/Screenshot_01.png)
 
 ## Basic Usage
----
 ``` objective-c
 PathFinding *finder = [[PathFinding alloc] initWithMapSize:CGSizeMake(6, 5)
 												  tileSize:CGSizeMake(1, 1)
@@ -107,14 +105,15 @@ NSArray *foundPaths = [finder findPathing:PathfindingAlgorithm_AStar IsConvertTo
 
 
 ##DEMO
----
-[Download](https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/PathFinding-Mac.zip)
+* OSX [Download](https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/PathFinding-Mac.zip)
 <p align="center" >
 <img src="https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/PathFinding_ScreenShot.png" alt="OS X" width="858px" style="width:858px;"/>
 </p>
+
+* iOS
 <p align="center" >
-<img src="https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/PathFinding_ScreenShot_iOS.png" alt="iOS" width="858px" style="width:858px;"/>
+<img src="https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/PathFinding_ScreenShot_iOS.png" alt="iOS" width="764px" style="width:764px;"/>
 </p>
-License
------------
+
+## License
 * MIT

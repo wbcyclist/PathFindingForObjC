@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'PathFindingForObjC'
-  s.version  = '1.0'
+  s.version  = '1.0.0'
   s.license  = 'MIT'
   s.homepage = 'https://github.com/wbcyclist/PathFindingForObjC'
   s.author   = { 'Jasio Woo' => 'wbcyclist@gmail.com' }

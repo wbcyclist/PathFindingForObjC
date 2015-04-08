@@ -153,7 +153,7 @@ typedef enum {
 }
 
 - (void)addBlockTilePosition:(CGPoint)point {
-	ConvertToMatrixPoint(point, self.tileSize, self.orginPoint);
+	PF_ConvertToMatrixPoint(point, self.tileSize, self.orginPoint);
 	PFNode *node = [self getNodeAtX:point.x andY:point.y];
 	if (node) {
 		node.walkable = NO;
@@ -161,7 +161,7 @@ typedef enum {
 }
 
 - (void)setTargetPoint:(CGPoint)targetPoint {
-	ConvertToMatrixPoint(targetPoint, self.tileSize, self.orginPoint);
+	PF_ConvertToMatrixPoint(targetPoint, self.tileSize, self.orginPoint);
 	if (targetPoint.x==_targetPoint.x && targetPoint.y==_targetPoint.y) {
 		return;
 	}

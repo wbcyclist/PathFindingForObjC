@@ -21,10 +21,19 @@
 
 - (instancetype)initWithMapSize:(CGSize)mapSize tileSize:(CGSize)tileSize coordsOrgin:(CGPoint)orginPoint;
 
+/**
+ * position of the immobile obstacle, like a wall.
+ */
 - (void)addBlockTilePosition:(CGPoint)point;
-- (void)addDynamicBlockTilePosition:(CGPoint)point;
 /// @param points = @[[NSValue valueWithCGPoint:CGPointMake(x, y)]]
 - (void)addBlockTilePositions:(NSArray*)points;
+
+/**
+ * position of the mobile obstacle, like a moving car. (! Clear DynamicBlock after each invoke findPathing:IsConvertToOriginCoords: )
+ */
+- (void)addDynamicBlockTilePosition:(CGPoint)point;
+
+
 - (void)clearBlockTiles;
 
 /// @return An PFNode Array.

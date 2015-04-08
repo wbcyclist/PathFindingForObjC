@@ -8,18 +8,28 @@
 #ifndef PathFindingForObjC_PFTypes_h
 #define PathFindingForObjC_PFTypes_h
 
+#import "TargetConditionals.h"
 
 #if TARGET_OS_IPHONE
-	#define CGPointToNSValue(p) [NSValue valueWithCGPoint:p]
-	#define NSValueToCGPoint(v) v.CGPointValue
+	#import <UIKit/UIKit.h>
+	#define PF_CGPointToNSValue(p) [NSValue valueWithCGPoint:p]
+	#define PF_NSValueToCGPoint(v) v.CGPointValue
 #else
-	#define CGPointToNSValue(p) [NSValue valueWithPoint:p]
-	#define NSValueToCGPoint(v) v.pointValue
+	#import <AppKit/AppKit.h>
+	#define PF_CGPointToNSValue(p) [NSValue valueWithPoint:p]
+	#define PF_NSValueToCGPoint(v) v.pointValue
 #endif
 
-#define ConvertToMatrixPoint(p, t, o) do{ p.x = (int)((p.x+o.x)/t.width); p.y = (int)((p.y+o.y)/t.height);}while(0)
-#define ConvertToOriginPoint(p, t, o) do{ p.x = p.x*t.width - o.x + t.width/2.0; p.y = p.y*t.height - o.y + t.height/2.0;}while(0)
+#define PF_ConvertToMatrixPoint(p, t, o) do{ p.x = (int)((p.x+o.x)/t.width); p.y = (int)((p.y+o.y)/t.height);}while(0)
+#define PF_ConvertToOriginPoint(p, t, o) do{ p.x = p.x*t.width - o.x + t.width/2.0; p.y = p.y*t.height - o.y + t.height/2.0;}while(0)
 
+#ifndef PF_DEBUG
+	#ifdef DEBUG
+		#define PF_DEBUG 1
+	#else
+		#define PF_DEBUG 0
+	#endif
+#endif
 
 /**
  *  http://qiao.github.io/PathFinding.js/visual/

@@ -68,10 +68,10 @@
 }
 
 - (void)addBlockTilePosition:(CGPoint)point {
-	[self.blockTiles addObject:CGPointToNSValue(point)];
+	[self.blockTiles addObject:PF_CGPointToNSValue(point)];
 }
 - (void)addDynamicBlockTilePosition:(CGPoint)point {
-	[self.dynamicBlockTiles addObject:CGPointToNSValue(point)];
+	[self.dynamicBlockTiles addObject:PF_CGPointToNSValue(point)];
 }
 
 - (void)addBlockTilePositions:(NSArray *)points {
@@ -98,26 +98,26 @@
 	
 	NSMutableArray *blockPoints = [NSMutableArray arrayWithCapacity:self.blockTiles.count];
 	for (NSValue *value in self.blockTiles) {
-		CGPoint point = NSValueToCGPoint(value);
-		ConvertToMatrixPoint(point, self.tileSize, self.orginPoint);
-		[blockPoints addObject:CGPointToNSValue(point)];
+		CGPoint point = PF_NSValueToCGPoint(value);
+		PF_ConvertToMatrixPoint(point, self.tileSize, self.orginPoint);
+		[blockPoints addObject:PF_CGPointToNSValue(point)];
 	}
 	NSArray *dyArr = self.dynamicBlockTiles;
 	self.dynamicBlockTiles = nil;
 	for (NSValue *value in dyArr) {
-		CGPoint point = NSValueToCGPoint(value);
-		ConvertToMatrixPoint(point, self.tileSize, self.orginPoint);
-		[blockPoints addObject:CGPointToNSValue(point)];
+		CGPoint point = PF_NSValueToCGPoint(value);
+		PF_ConvertToMatrixPoint(point, self.tileSize, self.orginPoint);
+		[blockPoints addObject:PF_CGPointToNSValue(point)];
 	}
 	
 	
 	CGPoint sPoint = self.startPoint;
 	//	sPoint.x = (int)((sPoint.x+self.orginPoint.x)/self.tileSize.width);
 	//	sPoint.y = (int)((sPoint.y+self.orginPoint.y)/self.tileSize.height);
-	ConvertToMatrixPoint(sPoint, self.tileSize, self.orginPoint);
+	PF_ConvertToMatrixPoint(sPoint, self.tileSize, self.orginPoint);
 	
 	CGPoint ePoint = self.endPoint;
-	ConvertToMatrixPoint(ePoint, self.tileSize, self.orginPoint);
+	PF_ConvertToMatrixPoint(ePoint, self.tileSize, self.orginPoint);
 	
 	PFGrid *grid = [[PFGrid alloc] initWithColumn:column andRow:row andBlockPoints:blockPoints];
 	PFNode *startNode = [grid getNodeAtX:sPoint.x andY:sPoint.y];
@@ -127,7 +127,7 @@
 //		NSLog(@"mapSize=%@, tileSize=%@, orginPoint=%@", NSStringFromCGSize(self.mapSize), NSStringFromCGSize(self.tileSize), NSStringFromCGPoint(self.orginPoint));
 		return nil;
 	} else if (startNode.x==endNode.x && startNode.y==endNode.y) {
-		return @[CGPointToNSValue(self.startPoint), CGPointToNSValue(self.endPoint)];
+		return @[PF_CGPointToNSValue(self.startPoint), PF_CGPointToNSValue(self.endPoint)];
 	}
 	
 	BaseFinder *finder = [self getFinder:alg];
@@ -145,13 +145,13 @@
 			if ([obj isKindOfClass:[PFNode class]]) {
 				PFNode *node = (PFNode *)obj;
 				CGPoint originPoint = CGPointMake(node.x, node.y);
-				ConvertToOriginPoint(originPoint, self.tileSize, self.orginPoint);
+				PF_ConvertToOriginPoint(originPoint, self.tileSize, self.orginPoint);
 				node.originPoint = originPoint;
 			} else if ([obj isKindOfClass:[NSMutableArray class]]) {
 				NSArray *arr = (NSArray*)obj;
 				for (PFNode *node in arr) {
 					CGPoint originPoint = CGPointMake(node.x, node.y);
-					ConvertToOriginPoint(originPoint, self.tileSize, self.orginPoint);
+					PF_ConvertToOriginPoint(originPoint, self.tileSize, self.orginPoint);
 					node.originPoint = originPoint;
 				}
 			}
@@ -165,13 +165,15 @@
 			for (int i=1; i<result.count-1; i++) {
 				PFNode *node = result[i];
 				CGPoint originPoint = CGPointMake(node.x, node.y);
-				ConvertToOriginPoint(originPoint, self.tileSize, self.orginPoint);
+				PF_ConvertToOriginPoint(originPoint, self.tileSize, self.orginPoint);
 				node.originPoint = originPoint;
 			}
 		}
 	}
 	
-//	[grid printFoundPath:result];
+	if (PF_DEBUG) {
+		[grid printFoundPath:result];
+	}
 //	NSLog(@"result=%@", trackArr);
 	return result;
 }

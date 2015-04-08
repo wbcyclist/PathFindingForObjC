@@ -120,16 +120,12 @@
 		A53546C519FFCC67005C629B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		A53546C719FFCC67005C629B /* Info-ios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-ios.plist"; sourceTree = "<group>"; };
 		A53546C819FFCC67005C629B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A53546D319FFCD68005C629B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A53546D419FFCD68005C629B /* PathFinding_iOSTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathFinding_iOSTests.m; sourceTree = "<group>"; };
 		A53546DB19FFD4F0005C629B /* PathFinding-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PathFinding-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53546DE19FFD4F0005C629B /* Info-mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-mac.plist"; sourceTree = "<group>"; };
 		A53546DF19FFD4F0005C629B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A53546E019FFD4F0005C629B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A53546E219FFD4F0005C629B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A53546EC19FFD4F0005C629B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		A53546F719FFD4F0005C629B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A53546F819FFD4F0005C629B /* PathFinding_MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathFinding_MacTests.m; sourceTree = "<group>"; };
 		A535470419FFDAAA005C629B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A53547E119FFEEBB005C629B /* Heuristic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Heuristic.h; sourceTree = "<group>"; };
 		A53547E219FFEEBB005C629B /* Heuristic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Heuristic.m; sourceTree = "<group>"; };
@@ -274,8 +270,6 @@
 				A535470719FFDB33005C629B /* Classes */,
 				A53546BA19FFCC67005C629B /* iOS */,
 				A53546DC19FFD4F0005C629B /* OSX */,
-				A53546D219FFCD68005C629B /* iOSTests */,
-				A53546F519FFD4F0005C629B /* OSXTests */,
 				A535468D19FFC908005C629B /* Products */,
 				A535470D19FFDC2A005C629B /* Frameworks */,
 				A535470319FFDA56005C629B /* Resources */,
@@ -312,15 +306,6 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		A53546D219FFCD68005C629B /* iOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				A53546D319FFCD68005C629B /* Info.plist */,
-				A53546D419FFCD68005C629B /* PathFinding_iOSTests.m */,
-			);
-			path = iOSTests;
-			sourceTree = "<group>";
-		};
 		A53546DC19FFD4F0005C629B /* OSX */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,23 +329,6 @@
 			children = (
 				A53546DE19FFD4F0005C629B /* Info-mac.plist */,
 				A53546E219FFD4F0005C629B /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A53546F519FFD4F0005C629B /* OSXTests */ = {
-			isa = PBXGroup;
-			children = (
-				A53546F819FFD4F0005C629B /* PathFinding_MacTests.m */,
-				A53546F619FFD4F0005C629B /* Supporting Files */,
-			);
-			path = OSXTests;
-			sourceTree = "<group>";
-		};
-		A53546F619FFD4F0005C629B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A53546F719FFD4F0005C629B /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -847,6 +815,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/PathFinding-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
+					"PF_DEBUG=0",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;

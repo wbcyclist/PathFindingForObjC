@@ -27,7 +27,7 @@
 	#define APP_SCREEN_WIDTH            [UIScreen mainScreen].bounds.size.width
 	#define APP_SCREEN_HEIGHT           [UIScreen mainScreen].bounds.size.height
 	//debug下显示log，在release下自动屏蔽log输出
-	#ifndef __OPTIMIZE__
+	#ifdef DEBUG
 		#define NSLog(...) NSLog(__VA_ARGS__)
 		#define DLog(...) NSLog(__VA_ARGS__)
 		#define debugMethod() NSLog(@"%s", __func__)

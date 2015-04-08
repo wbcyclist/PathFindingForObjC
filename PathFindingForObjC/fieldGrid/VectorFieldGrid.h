@@ -6,10 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PFTypes.h"
 #import "PFNode.h"
 
-#define ConvertToMatrixPoint(p, t, o) do{ p.x = (int)((p.x+o.x)/t.width); p.y = (int)((p.y+o.y)/t.height);}while(0)
-#define ConvertToOriginPoint(p, t, o) do{ p.x = p.x*t.width - o.x + t.width/2.0; p.y = p.y*t.height - o.y + t.height/2.0;}while(0)
 
 @interface VectorFieldGrid : NSObject
 /// The number of columns of the grid.

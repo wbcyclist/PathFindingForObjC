@@ -56,7 +56,7 @@
 		// setup block zone
 		CGPoint blockPoint;
 		for (NSValue *value in blockPoints) {
-			blockPoint = NSValueToCGPoint(value);
+			blockPoint = PF_NSValueToCGPoint(value);
 			node = [self getNodeAtX:blockPoint.x andY:blockPoint.y];
 			if (node) {
 				node.walkable = NO;

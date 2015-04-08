@@ -8,9 +8,10 @@ Pod::Spec.new do |s|
   s.screenshots = [ "https://raw.githubusercontent.com/wbcyclist/PathFindingForObjC/master/demo/PathFinding_ScreenShot.png" ]
   s.source   = { :git => 'https://github.com/wbcyclist/PathFindingForObjC.git', :tag => s.version, :submodules => true }
   s.requires_arc = true
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '7.0'
   s.osx.deployment_target = '10.9'
-  s.frameworks = 'Foundation'
+  s.ios.frameworks = 'UIKit'
+  s.osx.frameworks = 'AppKit'
 
   s.source_files = 'PathFindingForObjC/*.{h,m}'
   s.subspec 'core' do |ss|

@@ -6,8 +6,6 @@
 //
 
 #import "PathFinding.h"
-#import "PFNode.h"
-#import "PFGrid.h"
 
 #import "AStarFinder.h"
 #import "BestFirstFinder.h"

@@ -6,6 +6,8 @@
 //
 
 #import "PFTypes.h"
+#import "PFNode.h"
+#import "PFGrid.h"
 
 @interface PathFinding : NSObject
 

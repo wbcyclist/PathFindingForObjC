@@ -7,10 +7,12 @@ Based on [PathFinding.js](https://github.com/qiao/PathFinding.js) by [@qiao](htt
 ## Installation
 #### Cocoapods
 * Edit your Podfile
+
 ``` ruby
 pod 'PathFindingForObjC'
 ```
 or use the `master` branch of the repo :
+
 ``` ruby
 pod 'PathFindingForObjC', :git => 'https://github.com/wbcyclist/PathFindingForObjC.git'
 ```
@@ -20,7 +22,8 @@ pod 'PathFindingForObjC', :git => 'https://github.com/wbcyclist/PathFindingForOb
 > **Disable logging**
 > 
 > add this code in `Podfile`
-> ``` ruby
+> 
+``` ruby
 post_install do |installer|
 	installer.project.targets.each do |target|
 		target.build_configurations.each do |config|
@@ -35,7 +38,7 @@ post_install do |installer|
 		end
 	end
 end
-> ```
+```
 
 #### Manually
 1. Download the [latest code version](https://github.com/wbcyclist/PathFindingForObjC/archive/master.zip) or add the repository as a git submodule to your git-tracked project. 
@@ -80,18 +83,21 @@ NSArray *foundPaths = [finder findPathing:PathfindingAlgorithm_AStar IsConvertTo
 
 #### Options
 `HeuristicType` :
+
 * HeuristicTypeManhattan
 * HeuristicTypeEuclidean
 * HeuristicTypeOctile
 * HeuristicTypeChebyshev
 
 `DiagonalMovement` :
+
 * DiagonalMovement_Always
 * DiagonalMovement_Never
 * DiagonalMovement_IfAtMostOneObstacle
 * DiagonalMovement_OnlyWhenNoObstacles
 
 `PathfindingAlgorithm` :
+
 * PathfindingAlgorithm_AStar
 * PathfindingAlgorithm_BestFirstSearch
 * PathfindingAlgorithm_Dijkstra

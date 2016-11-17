@@ -1,11 +1,7 @@
 inhibit_all_warnings!
 
-def import_ios_pods
+target 'PathFinding-iOS' do
+	platform :ios, '8.0'
 	pod 'ECSlidingViewController'
 	pod 'RadioButton'
-end
-
-target :'PathFinding-iOS', :exclusive => true do
-	platform :ios, '8.0'
-	import_ios_pods
 end

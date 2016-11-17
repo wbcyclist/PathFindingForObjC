@@ -9,7 +9,6 @@
 
 #import "StackCellViewController.h"
 
-#import <Quartz/Quartz.h>
 
 #define DISCLOSED_HEIGHT 320
 
@@ -362,8 +361,8 @@
 		NSButtonCell *selCell = [sender selectedCell];
 		self.movementType = (int)selCell.tag;
 	} else if ([sender tag]==2) {
-		self.isBidirectional = [sender state];
-        //self.isBidirectional = [((NSButton *)sender) state];
+		//self.isBidirectional = [sender state];
+        self.isBidirectional = [((NSButton *)sender) state];
 	}
 }
 

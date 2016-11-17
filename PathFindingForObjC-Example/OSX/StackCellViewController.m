@@ -9,6 +9,7 @@
 
 #import "StackCellViewController.h"
 
+#import <Quartz/Quartz.h>
 
 #define DISCLOSED_HEIGHT 320
 

@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 language: objective-c
 sudo: required
 osx_image: xcode8.2
 xcode_project: PathFindingForObjC-Example.xcodeproj
 xcode_scheme: PathFinding-iOS
 xcode_sdk: iphonesimulator10.2
-=======
-osx_image: xcode8.2
->>>>>>> parent of b962663... Modified travis yml

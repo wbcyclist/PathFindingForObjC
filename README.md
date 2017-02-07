@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Adobels/PathFindingForObjC.svg?branch=master)](https://travis-ci.org/Adobels/PathFindingForObjC)
 PathFindingForObjC
 ===================
 
